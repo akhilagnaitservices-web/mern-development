@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Recover Password"})
+
+        @@include('./partials/head-css.html')
+
+    </head>
+
+    <body>
+        <!-- Begin page -->
+        <div class="account-page">
+            <div class="container-fluid p-0">
+                <div class="row align-items-center g-0 px-3 py-3 vh-100">
+
+                    <div class="col-xl-5">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="mb-0 p-0 p-lg-3">
+                                            <div class="mb-0 border-0 p-md-4 p-lg-0">
+                                                <div class="mb-4 p-0">
+                                                    <div class="auth-brand">
+                                                        <a href="index.html" class="logo logo-light">
+                                                            <span class="logo-lg">
+                                                                <img src="assets/images/logo-light-3.png" alt="" height="24">
+                                                            </span>
+                                                        </a>
+                                                        <a href="index.html" class="logo logo-dark">
+                                                            <span class="logo-lg">
+                                                                <img src="assets/images/logo-dark-3.png" alt="" height="24">
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="auth-title-section mb-4 text-lg-start text-center"> 
+                                                    <h3 class="text-dark fw-semibold mb-3">Reset your password!</h3>
+                                                    <p class="text-muted fs-14 mb-0">Enter your email and we'll send you a link to reset your password.</p>
+                                                </div>
+                
+                                                <div class="pt-0">
+                                                    <!-- Messages -->
+                                                    <div id="forgotError" class="alert alert-danger d-none" role="alert"></div>
+                                                    <div id="forgotSuccess" class="alert alert-success d-none" role="alert"></div>
+
+                                                    <form id="forgotPasswordForm" class="my-4">
+                                                        <div class="form-group mb-3">
+                                                            <label for="email" class="form-label">Email address</label>
+                                                            <input class="form-control" type="email" id="email" name="email" required placeholder="Enter your email">
+                                                        </div>
+                                                        
+                                                        <div class="form-group mb-0 row">
+                                                            <div class="col-12">
+                                                                <div class="d-grid">
+                                                                    <button class="btn btn-primary" type="submit" id="forgotBtn">
+                                                                        <span id="forgotBtnText">Send Reset Link</span>
+                                                                        <span id="forgotSpinner" class="spinner-border spinner-border-sm ms-1 d-none" role="status"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                    <div class="text-center text-muted">
+                                                        <p class="mb-0">Remember your password? <a class='text-primary ms-2 fw-medium' href='auth-login.html'>Back to Login</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-7 d-none d-xl-inline-block">
+                        <div class="account-page-bg rounded-4">
+                            <div class="auth-user-review text-center">
+                                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <p class="prelead mb-2">With Untitled, your support process can be as enjoyable as your product.</p>
+                                            <h4 class="mb-1">Camilla Johnson</h4>
+                                            <p class="mb-0">Software Developer</p>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <p class="prelead mb-2">Pretty nice theme, hoping you guys could add more features to this.</p>
+                                            <h4 class="mb-1">Palak Awoo</h4>
+                                            <p class="mb-0">Lead Designer</p>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <p class="prelead mb-2">This is a great product, helped us a lot and very quick to work with.</p>
+                                            <h4 class="mb-1">Laurent Smith</h4>
+                                            <p class="mb-0">Product designer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END wrapper -->
+
+        @@include('./partials/vendor.html')
+
+        <!-- App js-->
+        <script src="assets/js/app.js"></script>
+        <!-- Auth js -->
+        <script src="assets/js/auth.js"></script>
+        
+    </body>
+</html>
