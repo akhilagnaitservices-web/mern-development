@@ -757,20 +757,20 @@
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <div>
         <h6 class="fw-semibold mb-0">
-            Carousel Management
+            quick Service List
         </h6>
         <small class="text-muted">
-            Manage Home Page Banners
+            Manage Quick Services
         </small>
     </div>
 
     <button
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
+        data-bs-target="#quickServiceModal">
 
         <i class="ri-add-line"></i>
-        Add Banner
+        Add Quick Service
 
     </button>
 </div>
@@ -781,7 +781,7 @@
 
     <div class="card-header">
         <h5 class="card-title mb-0">
-            Banner List
+            Quick Service List
         </h5>
     </div>
 
@@ -789,7 +789,7 @@
 
         <table
             class="table bordered-table mb-0"
-            id="dataTable">
+            id="quickServiceTable">
 
             <thead>
 
@@ -804,7 +804,7 @@
                     </th>
 
                     <th>
-                        Banner Title
+                        Service Name
                     </th>
 
                     <th width="120">
@@ -819,7 +819,7 @@
 
             </thead>
 
-            <tbody id="bannerTableBody">
+            <tbody id="quickServiceTableBody">
 
             </tbody>
 
@@ -831,11 +831,11 @@
     </div>
 </div>
 
-<!-- Banner Modal -->
+<!-- quick Service Modal -->
 
 <div
     class="modal fade"
-    id="bannerModal"
+    id="quickServiceModal"
     tabindex="-1">
 
 
@@ -846,7 +846,7 @@
         <div class="modal-header">
 
             <h5 class="modal-title">
-                Add Banner
+                Add Quick Service
             </h5>
 
             <button
@@ -858,7 +858,7 @@
         </div>
 
         <form
-            id="bannerForm"
+            id="quickServiceForm"
             enctype="multipart/form-data">
 
             <div class="modal-body">
@@ -868,12 +868,12 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Title
+                            Service Name
                         </label>
 
                         <input
                             type="text"
-                            name="banner_title"
+                            name="service_name"
                             class="form-control"
                             required>
 
@@ -882,11 +882,11 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Subtitle
+                            Short Description
                         </label>
 
                         <textarea
-                            name="banner_subtitle"
+                            name="short_description"
                             class="form-control"
                             rows="3"></textarea>
 
@@ -895,97 +895,39 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Image
+                            Service Icon
                         </label>
 
                         <input
                             type="file"
-                            name="banner_image"
+                            name="service_icon"
                             class="form-control">
 
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Button 1 Name
+                            Redirect URL
                         </label>
 
                         <input
                             type="text"
-                            name="button1_name"
+                            name="redirect_url"
                             class="form-control">
 
                     </div>
 
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 1 Link
+                   <div>
+                     <label class="form-label">
+                            display order
                         </label>
+                    <input
+                    type="number"
+                    name="display_order"
+                    class="form-control">
+                   </div>
 
-                        <input
-                            type="text"
-                            name="button1_link"
-                            class="form-control">
-
-                    </div>
-
-
-
- <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 2 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
-
-                    </div>
-
-
-
-                     <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_link"
-                            class="form-control">
-
-                    </div>
 
                     <div class="col-md-12 mb-3">
 
@@ -1028,7 +970,7 @@
                     type="submit"
                     class="btn btn-primary">
 
-                    Save Banner
+                    Save 
 
                 </button>
 
@@ -1042,50 +984,17 @@
 
 </div>
 
-<!-- View Banner Modal -->
+<!-- View quick Service Modal -->
 <div
     class="modal fade"
-    id="viewBannerModal"
-    tabindex="-1"
-    aria-hidden="true">
+    id="viewQuickServiceModal">
 
     <div class="modal-dialog modal-lg modal-dialog-centered">
 
-        <div class="modal-content border-0 shadow">
+        <div class="modal-content">
 
-            <div class="modal-header">
-
-                <h5 class="modal-title">
-                    <i class="ri-image-line me-2"></i>
-                    Banner Details
-                </h5>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
-
-            </div>
-
-            <div
-                class="modal-body"
-                id="viewBannerContent">
-
-                <!-- Dynamic Content -->
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Close
-
-                </button>
+            <div class="modal-body"
+                 id="viewQuickServiceContent">
 
             </div>
 
@@ -1147,8 +1056,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
+<script src="assets/js/api/home/quickServiceApi.js"></script>
 
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/quick-services.js"></script>
 </body>
 </html>

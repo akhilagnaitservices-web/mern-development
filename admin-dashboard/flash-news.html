@@ -757,20 +757,20 @@
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <div>
         <h6 class="fw-semibold mb-0">
-            Carousel Management
+            Flash News Management
         </h6>
         <small class="text-muted">
-            Manage Home Page Banners
+            Manage Flash News Items
         </small>
     </div>
 
     <button
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
+        data-bs-target="#FlashNewsModal">
 
         <i class="ri-add-line"></i>
-        Add Banner
+        Add Flash News
 
     </button>
 </div>
@@ -781,7 +781,7 @@
 
     <div class="card-header">
         <h5 class="card-title mb-0">
-            Banner List
+            Flash News List
         </h5>
     </div>
 
@@ -804,12 +804,20 @@
                     </th>
 
                     <th>
-                        Banner Title
+                        News Title
+                    </th>
+                    <th>
+                        Slug
                     </th>
 
                     <th width="120">
                         Status
                     </th>
+
+                    <th width="120">
+                       Date
+                    </th>
+
 
                     <th width="150">
                         Action
@@ -819,7 +827,7 @@
 
             </thead>
 
-            <tbody id="bannerTableBody">
+            <tbody id="FlashNewsTableBody">
 
             </tbody>
 
@@ -831,11 +839,13 @@
     </div>
 </div>
 
+
+
 <!-- Banner Modal -->
 
 <div
     class="modal fade"
-    id="bannerModal"
+    id="FlashNewsModal"
     tabindex="-1">
 
 
@@ -846,7 +856,7 @@
         <div class="modal-header">
 
             <h5 class="modal-title">
-                Add Banner
+                Add Flash News
             </h5>
 
             <button
@@ -858,7 +868,7 @@
         </div>
 
         <form
-            id="bannerForm"
+            id="FlashNewsForm"
             enctype="multipart/form-data">
 
             <div class="modal-body">
@@ -868,25 +878,50 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Title
+                            News Title
                         </label>
 
                         <input
                             type="text"
-                            name="banner_title"
+                            name="news_title"
                             class="form-control"
                             required>
 
                     </div>
 
+    <div class="col-md-12 mb-3">
+        <label class="form-label">
+            News Slug
+        </label>
+
+        <input
+            type="text"
+            name="news_slug"
+            class="form-control">
+    </div>
+
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Subtitle
+                            Short Description
                         </label>
 
                         <textarea
-                            name="banner_subtitle"
+                            name="short_description"
+                            class="form-control"
+                            rows="3"></textarea>
+
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">
+                          Full Description
+                        </label>
+
+                        <textarea
+                            name="full_description"
                             class="form-control"
                             rows="3"></textarea>
 
@@ -895,119 +930,52 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Image
+                            Flash News Image
                         </label>
 
                         <input
                             type="file"
-                            name="banner_image"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 1 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button1_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 1 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button1_link"
+                            name="news_image"
                             class="form-control">
 
                     </div>
 
 
-
- <div class="col-md-6 mb-3">
+                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Button 2 Name
+                            Date
                         </label>
 
                         <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
-
-                    </div>
-
-
-
-                     <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_link"
+                            type="date"
+                            name="news_date"
                             class="form-control">
 
                     </div>
 
                     <div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Status
-                        </label>
+    <label class="form-label">
+        Status
+    </label>
 
-                        <select
-                            name="status"
-                            class="form-select">
+    <select
+        name="status"
+        class="form-control">
 
-                            <option value="active">
-                                Active
-                            </option>
+        <option value="active">
+            Active
+        </option>
 
-                            <option value="inactive">
-                                Inactive
-                            </option>
+        <option value="inactive">
+            Inactive
+        </option>
 
-                        </select>
+    </select>
 
-                    </div>
+</div>
+
 
                 </div>
 
@@ -1028,7 +996,7 @@
                     type="submit"
                     class="btn btn-primary">
 
-                    Save Banner
+                    Save News
 
                 </button>
 
@@ -1042,10 +1010,10 @@
 
 </div>
 
-<!-- View Banner Modal -->
+<!-- View Flash News Modal -->
 <div
     class="modal fade"
-    id="viewBannerModal"
+    id="viewFlashNewsModal"
     tabindex="-1"
     aria-hidden="true">
 
@@ -1057,7 +1025,7 @@
 
                 <h5 class="modal-title">
                     <i class="ri-image-line me-2"></i>
-                    Banner Details
+                    Flash News Details
                 </h5>
 
                 <button
@@ -1070,9 +1038,8 @@
 
             <div
                 class="modal-body"
-                id="viewBannerContent">
+                id="viewFlashNewsContent">
 
-                <!-- Dynamic Content -->
 
             </div>
 
@@ -1147,8 +1114,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
+<script src="assets/js/api/home/flashNewsApi.js"></script>
 
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/flash-news.js"></script>
 </body>
 </html>

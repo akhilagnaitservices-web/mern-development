@@ -750,27 +750,26 @@
  
 
     <!-- main -->
-    <div class="dashboard-main-body ">
-
+<div class="dashboard-main-body ">
 
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <div>
         <h6 class="fw-semibold mb-0">
-            Carousel Management
+            President Message Management
         </h6>
         <small class="text-muted">
-            Manage Home Page Banners
+            Manage President Messages
         </small>
     </div>
 
     <button
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
+        data-bs-target="#presidentModal">
 
         <i class="ri-add-line"></i>
-        Add Banner
+        Add President Message
 
     </button>
 </div>
@@ -781,7 +780,7 @@
 
     <div class="card-header">
         <h5 class="card-title mb-0">
-            Banner List
+            President Message List
         </h5>
     </div>
 
@@ -789,7 +788,7 @@
 
         <table
             class="table bordered-table mb-0"
-            id="dataTable">
+            id="presidentTableBody">
 
             <thead>
 
@@ -804,7 +803,7 @@
                     </th>
 
                     <th>
-                        Banner Title
+                        President Name
                     </th>
 
                     <th width="120">
@@ -819,7 +818,7 @@
 
             </thead>
 
-            <tbody id="bannerTableBody">
+            <tbody id="presidentTableBody">
 
             </tbody>
 
@@ -831,13 +830,10 @@
     </div>
 </div>
 
-<!-- Banner Modal -->
 
-<div
-    class="modal fade"
-    id="bannerModal"
-    tabindex="-1">
+<!-- President Modal -->
 
+<div class="modal fade" id="presidentModal" tabindex="-1">
 
 <div class="modal-dialog modal-lg">
 
@@ -846,7 +842,8 @@
         <div class="modal-header">
 
             <h5 class="modal-title">
-                Add Banner
+                <i class="ri-image-line me-2"></i>
+                Add / Edit President Message
             </h5>
 
             <button
@@ -858,7 +855,7 @@
         </div>
 
         <form
-            id="bannerForm"
+            id="presidentForm"
             enctype="multipart/form-data">
 
             <div class="modal-body">
@@ -868,12 +865,12 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Title
+                            President Name
                         </label>
 
                         <input
                             type="text"
-                            name="banner_title"
+                            name="president_name"
                             class="form-control"
                             required>
 
@@ -882,11 +879,11 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Subtitle
+                            Designation
                         </label>
 
                         <textarea
-                            name="banner_subtitle"
+                            name="designation"
                             class="form-control"
                             rows="3"></textarea>
 
@@ -895,12 +892,51 @@
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">
-                            Banner Image
+                            President Image
                         </label>
 
                         <input
                             type="file"
-                            name="banner_image"
+                            name="president_photo"
+                            class="form-control">
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+    <label class="form-label">
+        Message Title
+    </label>
+
+    <input
+        type="text"
+        name="message_title"
+        class="form-control">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+    <label class="form-label">
+        Message Description
+    </label>
+
+    <textarea
+        name="message_description"
+        class="form-control"
+        rows="5"></textarea>
+
+</div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Button  Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="button_name"
                             class="form-control">
 
                     </div>
@@ -908,84 +944,18 @@
                     <div class="col-md-6 mb-3">
 
                         <label class="form-label">
-                            Button 1 Name
+                            Button  Link
                         </label>
 
                         <input
                             type="text"
-                            name="button1_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 1 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button1_link"
+                            name="button_link"
                             class="form-control">
 
                     </div>
 
 
 
- <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 2 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
-
-                    </div>
-
-
-
-                     <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_link"
-                            class="form-control">
-
-                    </div>
 
                     <div class="col-md-12 mb-3">
 
@@ -1043,11 +1013,7 @@
 </div>
 
 <!-- View Banner Modal -->
-<div
-    class="modal fade"
-    id="viewBannerModal"
-    tabindex="-1"
-    aria-hidden="true">
+<div class="modal fade" id="viewPresidentModal" tabindex="-1" aria-hidden="true">
 
     <div class="modal-dialog modal-lg modal-dialog-centered">
 
@@ -1057,7 +1023,7 @@
 
                 <h5 class="modal-title">
                     <i class="ri-image-line me-2"></i>
-                    Banner Details
+                    President Message Details
                 </h5>
 
                 <button
@@ -1068,9 +1034,7 @@
 
             </div>
 
-            <div
-                class="modal-body"
-                id="viewBannerContent">
+            <div class="modal-body" id="viewPresidentContent">
 
                 <!-- Dynamic Content -->
 
@@ -1147,8 +1111,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
+<script src="assets/js/api/home/presidentApi.js"></script>
 
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/president-message.js"></script>
 </body>
 </html>
