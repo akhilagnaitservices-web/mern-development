@@ -749,351 +749,369 @@
 
  
 
-    <!-- main -->
-    <div class="dashboard-main-body ">
-
-
+<!-- main -->
+<div class="dashboard-main-body">
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+
     <div>
+
         <h6 class="fw-semibold mb-0">
-            Carousel Management
+            Gallery Management
         </h6>
+
         <small class="text-muted">
-            Manage Home Page Banners
+            Manage Gallery Images
         </small>
+
     </div>
 
     <button
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
+        data-bs-target="#galleryModal">
 
         <i class="ri-add-line"></i>
-        Add Banner
+        Add Gallery
 
     </button>
+
 </div>
 
 <div class="row">
-    <div class="col-12">
-        <div class="card basic-data-table  shadow-none border-0">
 
-    <div class="card-header">
-        <h5 class="card-title mb-0">
-            Banner List
-        </h5>
-    </div>
+<div class="col-12">
 
-    <div class="card-body">
+<div class="card basic-data-table shadow-none border-0">
 
-        <table
-            class="table bordered-table mb-0"
-            id="dataTable">
+<div class="card-header">
 
-            <thead>
-
-                <tr>
-
-                    <th width="80">
-                        ID
-                    </th>
-
-                    <th width="120">
-                        Image
-                    </th>
-
-                    <th>
-                        Banner Title
-                    </th>
-
-                    <th width="120">
-                        Status
-                    </th>
-
-                    <th width="150">
-                        Action
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="bannerTableBody">
-
-            </tbody>
-
-        </table>
-
-    </div>
+<h5 class="card-title mb-0">
+Gallery List
+</h5>
 
 </div>
-    </div>
+
+<div class="card-body">
+
+<table
+    class="table bordered-table mb-0"
+    id="dataTable">
+
+    <thead>
+
+        <tr>
+
+            <th width="80">
+                ID
+            </th>
+
+            <th width="120">
+                Image
+            </th>
+
+            <th>
+                Gallery Title
+            </th>
+
+            <th>
+                Category
+            </th>
+
+            <th width="120">
+                Status
+            </th>
+
+            <th width="180">
+                Action
+            </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="galleryTableBody">
+
+    </tbody>
+
+</table>
+
 </div>
 
-<!-- Banner Modal -->
+</div>
+
+</div>
+
+</div>
 
 <div
-    class="modal fade"
-    id="bannerModal"
-    tabindex="-1">
-
+class="modal fade"
+id="galleryModal"
+tabindex="-1">
 
 <div class="modal-dialog modal-lg">
 
-    <div class="modal-content">
+<div class="modal-content">
 
-        <div class="modal-header">
+<div class="modal-header">
 
-            <h5 class="modal-title">
-                Add Banner
-            </h5>
+<h5 class="modal-title">
+Add Gallery
+</h5>
 
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
-            </button>
+<button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
 
-        </div>
+</div>
 
-        <form
-            id="bannerForm"
-            enctype="multipart/form-data">
+<form
+id="galleryForm"
+enctype="multipart/form-data">
 
-            <div class="modal-body">
+<div class="modal-body">
 
-                <div class="row">
+<div class="row">
 
-                    <div class="col-md-12 mb-3">
+    <div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Banner Title
-                        </label>
+<label>
+Gallery Title
+</label>
 
-                        <input
-                            type="text"
-                            name="banner_title"
-                            class="form-control"
-                            required>
+<input
+type="text"
+id="gallery_title"
+name="gallery_title"
+class="form-control"
+required>
 
-                    </div>
+</div>
 
-                    <div class="col-md-12 mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Banner Subtitle
-                        </label>
+<label>
+Gallery Subtitle
+</label>
 
-                        <textarea
-                            name="banner_subtitle"
-                            class="form-control"
-                            rows="3"></textarea>
+<input
+type="text"
+id="gallery_subtitle"
+name="gallery_subtitle"
+class="form-control">
 
-                    </div>
+</div>
 
-                    <div class="col-md-12 mb-3">
+<div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Banner Image
-                        </label>
+<label>
+Image Title
+</label>
 
-                        <input
-                            type="file"
-                            name="banner_image"
-                            class="form-control">
+<input
+type="text"
+id="image_title"
+name="image_title"
+class="form-control">
 
-                    </div>
+</div>
 
-                    <div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Button 1 Name
-                        </label>
+<div class="col-md-12 mb-3">
 
-                        <input
-                            type="text"
-                            name="button1_name"
-                            class="form-control">
+<label>
+Gallery Image
+</label>
 
-                    </div>
+<input
+type="file"
+id="gallery_image"
+name="gallery_image"
+class="form-control"
+accept="image/*">
 
-                    <div class="col-md-6 mb-3">
+</div>
 
-                        <label class="form-label">
-                            Button 1 Link
-                        </label>
 
-                        <input
-                            type="text"
-                            name="button1_link"
-                            class="form-control">
+<div class="col-md-12 mb-3">
 
-                    </div>
+<label>
+Short Description
+</label>
 
+<textarea
+id="short_description"
+name="short_description"
+rows="5"
+class="form-control"></textarea>
 
+</div>
+<div class="col-md-12 mb-3">
 
- <div class="col-md-6 mb-3">
+<label>
+Full Description
+</label>
 
-                        <label class="form-label">
-                            Button 2 Name
-                        </label>
+<textarea
+id="full_description"
+name="full_description"
+rows="5"
+class="form-control"></textarea>
 
-                        <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
+</div>
 
-                    </div>
+<div class="col-md-6 mb-3">
 
-                    <div class="col-md-6 mb-3">
+<label>
+Category
+</label>
 
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
+<input
+type="text"
+id="category"
+name="category"
+class="form-control">
 
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
+</div>
 
-                    </div>
+<div class="col-md-3 mb-3">
 
+<label>
+Button Name
+</label>
 
+<input
+type="text"
+id="button_name"
+name="button_name"
+class="form-control">
 
-                     <div class="col-md-6 mb-3">
+</div>
 
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
+<div class="col-md-3 mb-3">
 
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
+<label>
+Button Link
+</label>
 
-                    </div>
+<input
+type="text"
+id="button_link"
+name="button_link"
+class="form-control">
 
-                    <div class="col-md-6 mb-3">
+</div>
+<div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
+<label>
+Status
+</label>
 
-                        <input
-                            type="text"
-                            name="button3_link"
-                            class="form-control">
+<select
+id="status"
+name="status"
+class="form-select">
 
-                    </div>
+<option value="active">
+Active
+</option>
 
-                    <div class="col-md-12 mb-3">
+<option value="inactive">
+Inactive
+</option>
 
-                        <label class="form-label">
-                            Status
-                        </label>
-
-                        <select
-                            name="status"
-                            class="form-select">
-
-                            <option value="active">
-                                Active
-                            </option>
-
-                            <option value="inactive">
-                                Inactive
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Cancel
-
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Save Banner
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
+</select>
 
 </div>
 
 </div>
 
-<!-- View Banner Modal -->
+</div>
+
+<div class="modal-footer">
+
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<button
+type="submit"
+class="btn btn-primary">
+
+Save Gallery
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
 <div
-    class="modal fade"
-    id="viewBannerModal"
-    tabindex="-1"
-    aria-hidden="true">
+class="modal fade"
+id="viewGalleryModal"
+tabindex="-1">
 
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal-dialog modal-lg modal-dialog-centered">
 
-        <div class="modal-content border-0 shadow">
+<div class="modal-content border-0 shadow">
 
-            <div class="modal-header">
+<div class="modal-header">
 
-                <h5 class="modal-title"> <i class="ri-image-line me-2"></i> Banner Details </h5>
+<h5 class="modal-title">
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+<i class="ri-image-line me-2"></i>
 
-            </div>
+Gallery Details
 
-            <div
-                class="modal-body"
-                id="viewBannerContent">
+</h5>
 
-                <!-- Dynamic Content -->
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Close
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+<button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
 
 </div>
 
+<div
+class="modal-body"
+id="viewGalleryContent">
 
 </div>
 
+<div class="modal-footer">
 
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
 
+Close
 
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </main>
   
@@ -1131,8 +1149,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
+<script src="assets/js/api/home/gallerypreviewApi.js"></script>
 
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/gallerypreview.js"></script>
 </body>
 </html>

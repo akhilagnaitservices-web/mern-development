@@ -258,7 +258,7 @@ async function viewQuickService(id){
     <img
     src="${service.service_icon}"
     class="img-fluid rounded mb-3"
-    style="max-width:100px">
+    >
 
     <h4>
 

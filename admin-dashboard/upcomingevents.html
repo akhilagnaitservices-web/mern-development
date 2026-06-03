@@ -753,24 +753,23 @@
     <div class="dashboard-main-body ">
 
 
-
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <div>
         <h6 class="fw-semibold mb-0">
-            Carousel Management
+             Event Management
         </h6>
         <small class="text-muted">
-            Manage Home Page Banners
+            Manage Upcoming Events
         </small>
     </div>
 
     <button
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
+        data-bs-target="#eventModal">
 
         <i class="ri-add-line"></i>
-        Add Banner
+        Add Event
 
     </button>
 </div>
@@ -781,7 +780,7 @@
 
     <div class="card-header">
         <h5 class="card-title mb-0">
-            Banner List
+            Event List
         </h5>
     </div>
 
@@ -791,37 +790,33 @@
             class="table bordered-table mb-0"
             id="dataTable">
 
-            <thead>
+          <thead>
 
-                <tr>
+<tr>
 
-                    <th width="80">
-                        ID
-                    </th>
+<th>ID</th>
 
-                    <th width="120">
-                        Image
-                    </th>
+<th>Image</th>
 
-                    <th>
-                        Banner Title
-                    </th>
+<th>Event Title</th>
 
-                    <th width="120">
-                        Status
-                    </th>
+<th>Event Date</th>
 
-                    <th width="150">
-                        Action
-                    </th>
+<th>Venue</th>
 
-                </tr>
+<th>Status</th>
 
-            </thead>
+<th>Action</th>
 
-            <tbody id="bannerTableBody">
+</tr>
 
-            </tbody>
+</thead>
+
+<tbody id="eventTableBody">
+
+</tbody>
+
+
 
         </table>
 
@@ -835,7 +830,7 @@
 
 <div
     class="modal fade"
-    id="bannerModal"
+    id="eventModal"
     tabindex="-1">
 
 
@@ -846,7 +841,7 @@
         <div class="modal-header">
 
             <h5 class="modal-title">
-                Add Banner
+                Add Event
             </h5>
 
             <button
@@ -857,184 +852,208 @@
 
         </div>
 
-        <form
-            id="bannerForm"
-            enctype="multipart/form-data">
+           <form
+id="eventForm"
+enctype="multipart/form-data">
 
-            <div class="modal-body">
+<div class="modal-body">
 
-                <div class="row">
+<div class="row">
 
-                    <div class="col-md-12 mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Banner Title
-                        </label>
+<label>
+Event Title
+</label>
 
-                        <input
-                            type="text"
-                            name="banner_title"
-                            class="form-control"
-                            required>
+<input
+type="text"
+id="event_title"
+name="event_title"
+class="form-control"
+required>
 
-                    </div>
+</div>
 
-                    <div class="col-md-12 mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Banner Subtitle
-                        </label>
+<label>
+Event Subtitle
+</label>
 
-                        <textarea
-                            name="banner_subtitle"
-                            class="form-control"
-                            rows="3"></textarea>
+<input
+type="text"
+id="event_subtitle"
+name="event_subtitle"
+class="form-control">
 
-                    </div>
+</div>
 
-                    <div class="col-md-12 mb-3">
+<div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Banner Image
-                        </label>
+<label>
+Short Description
+</label>
 
-                        <input
-                            type="file"
-                            name="banner_image"
-                            class="form-control">
+<textarea
+id="short_description"
+name="short_description"
+class="form-control"
+rows="3"></textarea>
 
-                    </div>
+</div>
 
-                    <div class="col-md-6 mb-3">
+<div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Button 1 Name
-                        </label>
+<label>
+Full Description
+</label>
 
-                        <input
-                            type="text"
-                            name="button1_name"
-                            class="form-control">
+<textarea
+id="full_description"
+name="full_description"
+class="form-control"
+rows="5"></textarea>
 
-                    </div>
+</div>
 
-                    <div class="col-md-6 mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Button 1 Link
-                        </label>
+<label>
+Event Date
+</label>
 
-                        <input
-                            type="text"
-                            name="button1_link"
-                            class="form-control">
+<input
+type="date"
+id="event_date"
+name="event_date"
+class="form-control"
+required>
 
-                    </div>
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+Event Time
+</label>
+
+<input
+type="time"
+id="event_time"
+name="event_time"
+class="form-control">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>
+Venue
+</label>
+
+<input
+type="text"
+id="venue"
+name="venue"
+class="form-control">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>
+Event Image
+</label>
+
+<input
+type="file"
+id="event_image"
+name="event_image"
+class="form-control"
+accept="image/*">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+Button Name
+</label>
+
+<input
+type="text"
+id="button_name"
+name="button_name"
+class="form-control">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+Button Link
+</label>
+
+<input
+type="text"
+id="button_link"
+name="button_link"
+class="form-control">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>
+Status
+</label>
+
+<select
+id="status"
+name="status"
+class="form-select">
+
+<option value="upcoming">
+Upcoming
+</option>
+
+<option value="completed">
+Completed
+</option>
 
 
 
- <div class="col-md-6 mb-3">
+</select>
 
-                        <label class="form-label">
-                            Button 2 Name
-                        </label>
+</div>
 
-                        <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
+</div>
 
-                    </div>
+</div>
 
-                    <div class="col-md-6 mb-3">
+<div class="modal-footer">
 
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
 
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
+Cancel
 
-                    </div>
+</button>
 
+<button
+type="submit"
+class="btn btn-primary">
 
+Save Event
 
-                     <div class="col-md-6 mb-3">
+</button>
 
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
+</div>
 
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
-
-                        <input
-                            type="text"
-                            name="button3_link"
-                            class="form-control">
-
-                    </div>
-
-                    <div class="col-md-12 mb-3">
-
-                        <label class="form-label">
-                            Status
-                        </label>
-
-                        <select
-                            name="status"
-                            class="form-select">
-
-                            <option value="active">
-                                Active
-                            </option>
-
-                            <option value="inactive">
-                                Inactive
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Cancel
-
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Save Banner
-
-                </button>
-
-            </div>
-
-        </form>
+</form>
 
     </div>
 
@@ -1045,7 +1064,7 @@
 <!-- View Banner Modal -->
 <div
     class="modal fade"
-    id="viewBannerModal"
+    id="viewEventModal"
     tabindex="-1"
     aria-hidden="true">
 
@@ -1055,15 +1074,22 @@
 
             <div class="modal-header">
 
-                <h5 class="modal-title"> <i class="ri-image-line me-2"></i> Banner Details </h5>
+                <h5 class="modal-title">
+                    <i class="ri-image-line me-2"></i>
+                    Event Details
+                </h5>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
 
             </div>
 
             <div
                 class="modal-body"
-                id="viewBannerContent">
+                id="viewEventContent">
 
                 <!-- Dynamic Content -->
 
@@ -1094,7 +1120,16 @@
 
 
 
-
+  <footer class="d-footer">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-auto">
+      <p class="mb-0">© 2024 WowDash. All Rights Reserved.</p>
+    </div>
+    <div class="col-auto">
+      <p class="mb-0">Made by <span class="text-primary-600">wowtheme7</span></p>
+    </div>
+  </div>
+</footer>
 </main>
   
   <!-- jQuery library js -->
@@ -1130,9 +1165,10 @@
 <script src="assets/js/config.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="assets/js/api/home/upcomingeventsApi.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
-
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/upcomingevents.js"></script>
 </body>
 </html>

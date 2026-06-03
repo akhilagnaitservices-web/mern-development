@@ -749,339 +749,212 @@
 
  
 
-    <!-- main -->
-    <div class="dashboard-main-body ">
+<!-- main -->
+<div class="dashboard-main-body">
 
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 
+        <div>
 
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <div>
-        <h6 class="fw-semibold mb-0">
-            Carousel Management
-        </h6>
-        <small class="text-muted">
-            Manage Home Page Banners
-        </small>
-    </div>
+            <h6 class="fw-semibold mb-0">
+                About Samiti
+            </h6>
 
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#bannerModal">
-
-        <i class="ri-add-line"></i>
-        Add Banner
-
-    </button>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card basic-data-table  shadow-none border-0">
-
-    <div class="card-header">
-        <h5 class="card-title mb-0">
-            Banner List
-        </h5>
-    </div>
-
-    <div class="card-body">
-
-        <table
-            class="table bordered-table mb-0"
-            id="dataTable">
-
-            <thead>
-
-                <tr>
-
-                    <th width="80">
-                        ID
-                    </th>
-
-                    <th width="120">
-                        Image
-                    </th>
-
-                    <th>
-                        Banner Title
-                    </th>
-
-                    <th width="120">
-                        Status
-                    </th>
-
-                    <th width="150">
-                        Action
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="bannerTableBody">
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</div>
-    </div>
-</div>
-
-<!-- Banner Modal -->
-
-<div
-    class="modal fade"
-    id="bannerModal"
-    tabindex="-1">
-
-
-<div class="modal-dialog modal-lg">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-
-            <h5 class="modal-title">
-                Add Banner
-            </h5>
-
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
-            </button>
+            <small class="text-muted">
+                Manage About Samiti Content
+            </small>
 
         </div>
 
-        <form
-            id="bannerForm"
-            enctype="multipart/form-data">
+    </div>
 
-            <div class="modal-body">
+    <div class="row">
 
-                <div class="row">
+        <div class="col-12">
 
-                    <div class="col-md-12 mb-3">
+            <div class="card">
 
-                        <label class="form-label">
-                            Banner Title
-                        </label>
+                <div class="card-header">
 
-                        <input
-                            type="text"
-                            name="banner_title"
-                            class="form-control"
-                            required>
+                    <h5 class="card-title mb-0">
+                        About Samiti Details
+                    </h5>
 
-                    </div>
+                </div>
 
-                    <div class="col-md-12 mb-3">
+                <div class="card-body">
 
-                        <label class="form-label">
-                            Banner Subtitle
-                        </label>
+                    <form
+                        id="aboutSamitiForm"
+                        enctype="multipart/form-data">
 
-                        <textarea
-                            name="banner_subtitle"
-                            class="form-control"
-                            rows="3"></textarea>
+                        <div class="row">
 
-                    </div>
+                            <div class="col-md-6 mb-3">
 
-                    <div class="col-md-12 mb-3">
+                                <label class="form-label">
+                                    About Title
+                                </label>
 
-                        <label class="form-label">
-                            Banner Image
-                        </label>
+                                <input
+                                    type="text"
+                                    name="about_title"
+                                    class="form-control">
 
-                        <input
-                            type="file"
-                            name="banner_image"
-                            class="form-control">
+                            </div>
 
-                    </div>
+                            <div class="col-md-6 mb-3">
 
-                    <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    About Subtitle
+                                </label>
 
-                        <label class="form-label">
-                            Button 1 Name
-                        </label>
+                                <input
+                                    type="text"
+                                    name="about_subtitle"
+                                    class="form-control">
 
-                        <input
-                            type="text"
-                            name="button1_name"
-                            class="form-control">
+                            </div>
 
-                    </div>
+                            <div class="col-md-12 mb-3">
 
-                    <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    About Image
+                                </label>
 
-                        <label class="form-label">
-                            Button 1 Link
-                        </label>
+                                <input
+                                    type="file"
+                                    name="about_image"
+                                    class="form-control">
 
-                        <input
-                            type="text"
-                            name="button1_link"
-                            class="form-control">
+                            </div>
 
-                    </div>
+                            <div class="col-md-12 mb-3">
 
+                                <img
+                                    id="aboutPreview"
+                                    src=""
+                                    class="img-fluid rounded border"
+                                    style="max-height:200px">
 
+                            </div>
 
- <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Button 2 Name
-                        </label>
+                                <label class="form-label">
+                                    Vision
+                                </label>
 
-                        <input
-                            type="text"
-                            name="button2_name"
-                            class="form-control">
+                                <textarea
+                                    name="vision"
+                                    rows="4"
+                                    class="form-control"></textarea>
 
-                    </div>
+                            </div>
 
-                    <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
 
-                        <label class="form-label">
-                            Button 2 Link
-                        </label>
+                                <label class="form-label">
+                                    Mission
+                                </label>
 
-                        <input
-                            type="text"
-                            name="button2_link"
-                            class="form-control">
+                                <textarea
+                                    name="mission"
+                                    rows="4"
+                                    class="form-control"></textarea>
 
-                    </div>
+                            </div>
 
+                            <div class="col-md-12 mb-3">
 
+                                <label class="form-label">
+                                    Objectives
+                                </label>
 
-                     <div class="col-md-6 mb-3">
+                                <textarea
+                                    name="objectives"
+                                    rows="4"
+                                    class="form-control"></textarea>
 
-                        <label class="form-label">
-                            Button 3 Name
-                        </label>
+                            </div>
 
-                        <input
-                            type="text"
-                            name="button3_name"
-                            class="form-control">
+                            <div class="col-md-6 mb-3">
 
-                    </div>
+                                <label class="form-label">
+                                    Button Name
+                                </label>
 
-                    <div class="col-md-6 mb-3">
+                                <input
+                                    type="text"
+                                    name="button_name"
+                                    class="form-control">
 
-                        <label class="form-label">
-                            Button 3 Link
-                        </label>
+                            </div>
 
-                        <input
-                            type="text"
-                            name="button3_link"
-                            class="form-control">
+                            <div class="col-md-6 mb-3">
 
-                    </div>
+                                <label class="form-label">
+                                    Button Link
+                                </label>
 
-                    <div class="col-md-12 mb-3">
+                                <input
+                                    type="text"
+                                    name="button_link"
+                                    class="form-control">
 
-                        <label class="form-label">
-                            Status
-                        </label>
+                            </div>
 
-                        <select
-                            name="status"
-                            class="form-select">
+                            <div class="col-md-4 mb-3">
 
-                            <option value="active">
-                                Active
-                            </option>
+                                <label class="form-label">
+                                    Status
+                                </label>
 
-                            <option value="inactive">
-                                Inactive
-                            </option>
+                                <select
+                                    name="status"
+                                    class="form-select">
 
-                        </select>
+                                    <option value="active">
+                                        Active
+                                    </option>
 
-                    </div>
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex gap-2 mt-3">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                Save Changes
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onclick="deleteAboutSamitiRecord()">
+
+                                Delete
+
+                            </button>
+
+                        </div>
+
+                    </form>
 
                 </div>
 
             </div>
 
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Cancel
-
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Save Banner
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-</div>
-
-<!-- View Banner Modal -->
-<div
-    class="modal fade"
-    id="viewBannerModal"
-    tabindex="-1"
-    aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-
-        <div class="modal-content border-0 shadow">
-
-            <div class="modal-header">
-
-                <h5 class="modal-title"> <i class="ri-image-line me-2"></i> Banner Details </h5>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-
-            </div>
-
-            <div
-                class="modal-body"
-                id="viewBannerContent">
-
-                <!-- Dynamic Content -->
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Close
-
-                </button>
-
-            </div>
-
         </div>
 
     </div>
@@ -1089,12 +962,18 @@
 </div>
 
 
-</div>
 
 
-
-
-
+  <footer class="d-footer">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-auto">
+      <p class="mb-0">© 2024 WowDash. All Rights Reserved.</p>
+    </div>
+    <div class="col-auto">
+      <p class="mb-0">Made by <span class="text-primary-600">wowtheme7</span></p>
+    </div>
+  </div>
+</footer>
 </main>
   
   <!-- jQuery library js -->
@@ -1131,8 +1010,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/bannerApi.js"></script>
+<script src="assets/js/api/home/aboutSamitiApi.js"></script>
 
-<script src="assets/js/pages/home/carousel.js"></script>
+<script src="assets/js/pages/home/aboutSamiti.js"></script>
 </body>
 </html>
