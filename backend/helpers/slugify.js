@@ -1,12 +1,10 @@
-const slugify = require("slugify");
+import slugify from "slugify";
 
 const createSlug = (text) => {
-
     return slugify(text, {
         lower: true,
         strict: true
     });
-
 };
 
-module.exports = createSlug;
+export default createSlug;

@@ -11,8 +11,18 @@ import galleryRoutes from "./routes/home/galleryRoutes.js";
 import pageBannerRoutes from "./routes/pageBannerRoutes.js";
 import heritageFeatureRoutes from "./routes/aboutus/heritageFeatureRoutes.js";
 import coreValueRoutes from "./routes/aboutus/coreValueRoutes.js";
-
+import leadershipMemberRoutes from "./routes/aboutus/leadershipMemberRoutes.js";
+import gothraRoutes from "./routes/gothras/gothraRoutes.js";
+import eventroutes from "./routes/events/eventRoutes.js";
+import eventGalleryRoutes from "./routes/events/eventGalleryRoutes.js";
+import eventRegistrationRoutes from "./routes/events/eventRegistrationRoutes.js";
+import galleryCategoryRoutes from "./routes/gallery/galleryCategoryRoutes.js";
+import getGalleryAlbums  from "./routes/gallery/galleryAlbumRoutes.js";
+import getphotos from "./routes/gallery/galleryPhotoRoutes.js";
+import galleryVideoRoutes from "./routes/gallery/galleryVideoRoutes.js";
+import contactInformationRoutes from "./routes/contact/contactInformationRoutes.js";
 const app = express();
+
 
 app.use(cors());
 
@@ -32,7 +42,14 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api/page-banners",pageBannerRoutes);
 app.use("/api/heritage-features",heritageFeatureRoutes);
 app.use("/api/core-values",coreValueRoutes);
-
-
-
+app.use("/api/leadership-members",leadershipMemberRoutes);
+app.use("/api/gothras", gothraRoutes);
+app.use("/api/mainevents", eventroutes);
+app.use("/api/event-gallery", eventGalleryRoutes);
+app.use("/api/event-registrations", eventRegistrationRoutes);
+app.use("/api/gallery-categories", galleryCategoryRoutes);
+app.use("/api/gallery-albums", getGalleryAlbums);
+app.use("/api/gallery-photos", getphotos);
+app.use("/api/gallery-videos", galleryVideoRoutes);
+app.use("/api/contact-information", contactInformationRoutes);
 export default app;

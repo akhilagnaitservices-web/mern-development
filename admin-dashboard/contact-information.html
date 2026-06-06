@@ -750,683 +750,228 @@
  
 
 <!-- main -->
-
 <div class="dashboard-main-body">
 
-   
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+<div class="card">
 
-    <div>
+<div class="card-header">
 
-        <h6 class="fw-semibold mb-0">
-            Event Management
-        </h6>
-
-        <small class="text-muted">
-            Manage Events
-        </small>
-
-    </div>
-
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#masterEventModal">
-
-        <i class="ri-add-line"></i>
-        add event
-
-    </button>
+<h5 class="card-title mb-0">
+Contact Information Settings
+</h5>
 
 </div>
 
+<div class="card-body">
 
+<form id="contactInformationForm">
 
 <div class="row">
 
-    <div class="col-12">
+<div class="col-md-6 mb-3">
 
-        <div class="card basic-data-table shadow-none border-0">
+<label>
+Office Name
+</label>
 
-            <div class="card-header">
+<input
+type="text"
+id="office_name"
+class="form-control">
 
-                <h5 class="card-title mb-0">
-                    Event List
-                </h5>
+</div>
 
-            </div>
+<div class="col-md-6 mb-3">
 
-            <div class="card-body">
+<label>
+Office Hours
+</label>
 
-                <table
-                    class="table bordered-table mb-0"
-                    id="masterEventsTable">
-
-                    <thead>
-
-                        <tr>
-
-                            <th width="80">
-                                ID
-                            </th>
-
-                            <th width="100">
-                                Image
-                            </th>
-
-                            <th>
-                                Event Title
-                            </th>
-
-                            <th width="120">
-                                Category
-                            </th>
-
-                            <th width="150">
-                                Event Date
-                            </th>
-
-                            <th width="150">
-                                City
-                            </th>
-
-                            <th width="120">
-                                Status
-                            </th>
-
-                            <th width="180">
-                                Action
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="masterEventsTableBody">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
+<input
+type="text"
+id="office_hours"
+class="form-control">
 
 </div>
 
 
 
-<!-- ADD / EDIT MODAL -->
-
-<div
-    class="modal fade"
-    id="masterEventModal"
-    tabindex="-1">
-
-    <div class="modal-dialog modal-xl">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <h5 class="modal-title">
-                    Add Event
-                </h5>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
-
-            </div>
-
-            <form
-                id="masterEventForm"
-                enctype="multipart/form-data">
-
-                <div class="modal-body">
-
-                    <div class="row">
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Event Title
-                            </label>
-
-                            <input
-                                type="text"
-                                id="event_title"
-                                name="event_title"
-                                class="form-control"
-                                required>
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Event Image
-                            </label>
-
-                            <input
-                                type="file"
-                                id="event_image"
-                                name="event_image"
-                                class="form-control"
-                                accept="image/*">
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Category
-                            </label>
-
-                            <input
-                                type="text"
-                                id="event_category"
-                                name="event_category"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Type
-                            </label>
-
-                            <input
-                                type="text"
-                                id="event_type"
-                                name="event_type"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Event Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="event_date"
-                                name="event_date"
-                                class="form-control"
-                                required>
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Start Time
-                            </label>
-
-                            <input
-                                type="time"
-                                id="start_time"
-                                name="start_time"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                End Time
-                            </label>
-
-                            <input
-                                type="time"
-                                id="end_time"
-                                name="end_time"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Venue Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="venue_name"
-                                name="venue_name"
-                                class="form-control"
-                                required>
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Venue Address
-                            </label>
-
-                            <textarea
-                                id="venue_address"
-                                name="venue_address"
-                                rows="2"
-                                class="form-control"></textarea>
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                City
-                            </label>
-
-                            <input
-                                type="text"
-                                id="city"
-                                name="city"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                State
-                            </label>
-
-                            <input
-                                type="text"
-                                id="state"
-                                name="state"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Pincode
-                            </label>
-
-                            <input
-                                type="text"
-                                id="pincode"
-                                name="pincode"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Organized By
-                            </label>
-
-                            <input
-                                type="text"
-                                id="organized_by"
-                                name="organized_by"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-
-                            <label class="form-label">
-                                Open To
-                            </label>
-
-                            <input
-                                type="text"
-                                id="open_to"
-                                name="open_to"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Contact Person
-                            </label>
-
-                            <input
-                                type="text"
-                                id="contact_person"
-                                name="contact_person"
-                                class="form-control"
-                                required>
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Contact Phone
-                            </label>
-
-                            <input
-                                type="text"
-                                id="contact_phone"
-                                name="contact_phone"
-                                class="form-control"
-                                required>
-
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Contact Email
-                            </label>
-
-                            <input
-                                type="email"
-                                id="contact_email"
-                                name="contact_email"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-
-                            <label class="form-label">
-                                Registration Link
-                            </label>
-
-                            <input
-                                type="url"
-                                id="registration_link"
-                                name="registration_link"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-
-                            <label class="form-label">
-                                Short Description
-                            </label>
-
-                            <textarea
-                                id="short_description"
-                                name="short_description"
-                                rows="3"
-                                class="form-control"></textarea>
-
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-
-                            <label class="form-label">
-                                Event Description
-                            </label>
-
-                            <textarea
-                                id="event_description"
-                                name="event_description"
-                                rows="4"
-                                class="form-control"></textarea>
-
-                        </div>
-
-                        <div class="col-md-3 mb-3">
-
-                            <label class="form-label">
-                                Display Order
-                            </label>
-
-                            <input
-                                type="number"
-                                id="display_order"
-                                name="display_order"
-                                min="0"
-                                value="0"
-                                class="form-control">
-
-                        </div>
-
-                        <div class="col-md-3 mb-3">
-
-                            <label class="form-label">
-                                Status
-                            </label>
-
-                            <select
-                                id="status"
-                                name="status"
-                                class="form-select">
-
-                                <option value="upcoming">
-                                    Upcoming
-                                </option>
-
-                                <option value="ongoing">
-                                    Ongoing
-                                </option>
-
-                                <option value="completed">
-                                    Completed
-                                </option>
-
-                                <option value="cancelled">
-                                    Cancelled
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-
-                        Cancel
-
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary">
-
-                        Save Event
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
+<div class="col-md-12 mb-3">
+
+<label>
+Address
+</label>
+
+<textarea
+id="address"
+rows="4"
+class="form-control"></textarea>
 
 </div>
 
 
 
-<!-- VIEW MODAL -->
+<div class="col-md-6 mb-3">
 
-<div
-    class="modal fade"
-    id="viewMasterEventModal"
-    tabindex="-1">
+<label>
+Primary Phone
+</label>
 
-    <div class="modal-dialog modal-xl modal-dialog-centered">
+<input
+type="text"
+id="primary_phone"
+class="form-control">
 
-        <div class="modal-content border-0 shadow">
+</div>
 
-            <div class="modal-header">
+<div class="col-md-6 mb-3">
 
-                <h5 class="modal-title">
+<label>
+Secondary Phone
+</label>
 
-                    <i class="ri-calendar-event-line me-2"></i>
+<input
+type="text"
+id="secondary_phone"
+class="form-control">
 
-                    Event Details
+</div>
 
-                </h5>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
 
-            </div>
+<div class="col-md-6 mb-3">
 
-            <div class="modal-body">
+<label>
+Primary Email
+</label>
 
-                <div class="row g-4">
+<input
+type="email"
+id="primary_email"
+class="form-control">
 
-                    <!-- Event Image -->
-                    <div class="col-md-4">
+</div>
 
-                        <img
-                            id="view_event_image"
-                            src=""
-                            class="img-fluid rounded border w-100"
-                            alt="Event Image">
+<div class="col-md-6 mb-3">
 
-                    </div>
+<label>
+Secondary Email
+</label>
 
-                    <!-- Event Details -->
-                    <div class="col-md-8">
+<input
+type="email"
+id="secondary_email"
+class="form-control">
 
-                        <div class="row">
+</div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-semibold">Event Title</label>
-                                <div id="view_event_title"></div>
-                            </div>
 
-                            <div class="col-md-3 mb-3">
-                                <label class="fw-semibold">Category</label>
-                                <div id="view_event_category"></div>
-                            </div>
 
-                            <div class="col-md-3 mb-3">
-                                <label class="fw-semibold">Type</label>
-                                <div id="view_event_type"></div>
-                            </div>
+<div class="col-md-12 mb-3">
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">Date</label>
-                                <div id="view_event_date"></div>
-                            </div>
+<label>
+Google Map URL
+</label>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">Start Time</label>
-                                <div id="view_start_time"></div>
-                            </div>
+<textarea
+id="google_map_url"
+rows="3"
+class="form-control"></textarea>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">End Time</label>
-                                <div id="view_end_time"></div>
-                            </div>
+</div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-semibold">Venue</label>
-                                <div id="view_venue_name"></div>
-                            </div>
 
-                            <div class="col-md-2 mb-3">
-                                <label class="fw-semibold">City</label>
-                                <div id="view_city"></div>
-                            </div>
 
-                            <div class="col-md-2 mb-3">
-                                <label class="fw-semibold">State</label>
-                                <div id="view_state"></div>
-                            </div>
+<hr class="my-4">
 
-                            <div class="col-md-2 mb-3">
-                                <label class="fw-semibold">Pincode</label>
-                                <div id="view_pincode"></div>
-                            </div>
+<h6 class="mb-3">
+Emergency Contact Numbers
+</h6>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-semibold">Organized By</label>
-                                <div id="view_organized_by"></div>
-                            </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-semibold">Open To</label>
-                                <div id="view_open_to"></div>
-                            </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">Contact Person</label>
-                                <div id="view_contact_person"></div>
-                            </div>
+<div class="col-md-4 mb-3">
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">Phone</label>
-                                <div id="view_contact_phone"></div>
-                            </div>
+<label>
+Membership Phone
+</label>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-semibold">Email</label>
-                                <div id="view_contact_email"></div>
-                            </div>
+<input
+type="text"
+id="membership_phone"
+class="form-control">
 
-                            <div class="col-12 mb-3">
-                                <label class="fw-semibold">Registration Link</label>
-                                <div id="view_registration_link"></div>
-                            </div>
+</div>
 
-                        </div>
+<div class="col-md-4 mb-3">
 
-                    </div>
+<label>
+Matrimony Phone
+</label>
 
-                </div>
+<input
+type="text"
+id="matrimony_phone"
+class="form-control">
 
-                <hr>
+</div>
 
-                <div class="mb-3">
+<div class="col-md-4 mb-3">
 
-                    <label class="fw-semibold">
-                        Description
-                    </label>
+<label>
+Events Phone
+</label>
 
-                    <div
-                        id="view_event_description"
-                        class="mt-2">
-                    </div>
+<input
+type="text"
+id="events_phone"
+class="form-control">
 
-                </div>
+</div>
 
-            </div>
 
-            <div class="modal-footer">
 
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
+<div class="col-md-12 mb-3">
 
-                    Close
+<label>
+Status
+</label>
 
-                </button>
+<select
+id="status"
+class="form-select">
 
-            </div>
+<option value="active">
+Active
+</option>
 
-        </div>
+<option value="inactive">
+Inactive
+</option>
 
-    </div>
+</select>
+
+</div>
+
+
+
+<div class="col-md-12">
+
+<button
+type="submit"
+class="btn btn-primary">
+
+Save Contact Information
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
 
 </div>
 
@@ -1468,8 +1013,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/events/events-api.js"></script>
+<script src="assets/js/api/contact-information-api.js"></script>
 
-<script src="assets/js/pages/events/events.js"></script>
+<script src="assets/js/pages/contact/contact-information.js"></script>
+<script src="assets/js/utils/dateFormatter.js"></script>
 </body>
 </html>
