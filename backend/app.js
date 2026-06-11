@@ -21,6 +21,7 @@ import getGalleryAlbums  from "./routes/gallery/galleryAlbumRoutes.js";
 import getphotos from "./routes/gallery/galleryPhotoRoutes.js";
 import galleryVideoRoutes from "./routes/gallery/galleryVideoRoutes.js";
 import contactInformationRoutes from "./routes/contact/contactInformationRoutes.js";
+import contactMessageRoutes from "./routes/contact/contactMessageRoutes.js";
 const app = express();
 
 
@@ -52,4 +53,5 @@ app.use("/api/gallery-albums", getGalleryAlbums);
 app.use("/api/gallery-photos", getphotos);
 app.use("/api/gallery-videos", galleryVideoRoutes);
 app.use("/api/contact-information", contactInformationRoutes);
+app.use("/api/contact-messages", contactMessageRoutes);
 export default app;

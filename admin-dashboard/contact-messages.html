@@ -187,7 +187,7 @@
       <li class="sidebar-menu-group-title">Pages & Layouts</li>
 
       
-        <li class="dropdown">
+<li class="dropdown">
 
     <a href="javascript:void(0)">
         <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon">
@@ -196,14 +196,13 @@
     </a>
 
     <ul class="sidebar-submenu">
-
-        <li><a href="carousel.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Carousel</a></li>
+  <li><a href="carousel.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Carousel</a></li>
         <li><a href="flash-news.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Flash News</a></li>
-        <li><a href="aboutsamiti.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>About Samiti</a></li>
+       <li><a href="aboutsamiti.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>About Samiti</a></li>
         <li><a href="president-message.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>President Message</a></li>
         <li><a href="quick-services.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Quick Services</a></li>
-        <li><a href="upcomingevents.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Upcoming Events</a></li>
-        <li><a href="gallery-preview.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Gallery Preview</a></li>
+              <li><a href="upcomingevents.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Upcoming Events</a></li>
+       <li><a href="gallery-preview.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Gallery Preview</a></li>
 
     </ul>
 
@@ -223,7 +222,8 @@
         <li><a href="heritage-features.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Heritage Features</a></li>
         <li><a href="core-values.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Core Values</a></li>
         <li><a href="leadership-members.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Leadership Members</a></li>
-
+        <li><a href="about-us.html">About Samiti</a></li>
+       
 
     </ul>
 
@@ -300,9 +300,8 @@
           </li>
 
         </ul>
-</li> 
+</li>   
 
-      </li>
 
       <li class="dropdown">
         <a href="javascript:void(0)">
@@ -428,7 +427,7 @@
 
           <li><a href="notification-alert.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>Notification Alert</a></li>
           
-          </li>          
+               
           
         </ul>
       </li>
@@ -831,310 +830,150 @@
 
  
 
-    <!-- main -->
-    <div class="dashboard-main-body ">
+<!-- main -->
+<div class="dashboard-main-body">
 
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 
+        <div>
 
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <div>
-        <h6 class="fw-semibold mb-0">
-            Flash News Management
-        </h6>
-        <small class="text-muted">
-            Manage Flash News Items
-        </small>
-    </div>
+            <h6 class="fw-semibold mb-0">
+                Contact Messages
+            </h6>
 
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#FlashNewsModal">
-
-        <i class="ri-add-line"></i>
-        Add Flash News
-
-    </button>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card basic-data-table  shadow-none border-0">
-
-    <div class="card-header">
-        <h5 class="card-title mb-0">
-            Flash News List
-        </h5>
-    </div>
-
-    <div class="card-body">
-
-        <table
-            class="table bordered-table mb-0"
-            id="dataTable">
-
-            <thead>
-
-                <tr>
-
-                    <th width="80">
-                        ID
-                    </th>
-
-                    <th width="120">
-                        Image
-                    </th>
-
-                    <th>
-                        News Title
-                    </th>
-                    <th>
-                        Slug
-                    </th>
-
-                    <th width="120">
-                        Status
-                    </th>
-
-                    <th width="120">
-                       Date
-                    </th>
-
-
-                    <th width="150">
-                        Action
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="FlashNewsTableBody">
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</div>
-    </div>
-</div>
-
-
-
-<!-- Banner Modal -->
-
-<div
-    class="modal fade"
-    id="FlashNewsModal"
-    tabindex="-1">
-
-
-<div class="modal-dialog modal-lg">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-
-            <h5 class="modal-title">
-                Add Flash News
-            </h5>
-
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
-            </button>
+            <small class="text-muted">
+                Manage Contact Form Messages
+            </small>
 
         </div>
 
-        <form
-            id="FlashNewsForm"
-            enctype="multipart/form-data">
-
-            <div class="modal-body">
-
-                <div class="row">
-
-                    <div class="col-md-12 mb-3">
-
-                        <label class="form-label">
-                            News Title
-                        </label>
-
-                        <input
-                            type="text"
-                            name="news_title"
-                            class="form-control"
-                            required>
-
-                    </div>
-
-    <div class="col-md-12 mb-3">
-        <label class="form-label">
-            News Slug
-        </label>
-
-        <input
-            type="text"
-            name="news_slug"
-            class="form-control">
     </div>
 
-                    <div class="col-md-12 mb-3">
-
-                        <label class="form-label">
-                            Short Description
-                        </label>
-
-                        <textarea
-                            name="short_description"
-                            class="form-control"
-                            rows="3"></textarea>
-
-                    </div>
 
 
-                    <div class="col-md-12 mb-3">
+    <div class="row">
 
-                        <label class="form-label">
-                          Full Description
-                        </label>
+        <div class="col-12">
 
-                        <textarea
-                            name="full_description"
-                            class="form-control"
-                            rows="3"></textarea>
+            <div class="card basic-data-table shadow-none border-0">
 
-                    </div>
+                <div class="card-header">
 
-                    <div class="col-md-12 mb-3">
+                    <h5 class="card-title mb-0">
+                        Contact Messages List
+                    </h5>
 
-                        <label class="form-label">
-                            Flash News Image
-                        </label>
+                </div>
 
-                        <input
-                            type="file"
-                            name="news_image"
-                            class="form-control">
+                <div class="card-body">
 
-                    </div>
+                    <table
+                        class="table bordered-table mb-0"
+                        id="dataTable">
 
+                        <thead>
 
-                     <div class="col-md-12 mb-3">
+                            <tr>
 
-                        <label class="form-label">
-                            Date
-                        </label>
+                                <th width="80">
+                                    ID
+                                </th>
 
-                        <input
-                            type="date"
-                            name="news_date"
-                            class="form-control">
+                                <th>
+                                    Contact ID
+                                </th>
 
-                    </div>
+                                <th>
+                                    Name
+                                </th>
 
-                    <div class="col-md-12 mb-3">
+                                <th>
+                                    Email
+                                </th>
 
-    <label class="form-label">
-        Status
-    </label>
+                                <th>
+                                    Subject
+                                </th>
 
-    <select
-        name="status"
-        class="form-control">
+                                <th width="120">
+                                    Status
+                                </th>
 
-        <option value="active">
-            Active
-        </option>
+                                <th width="180">
+                                    Date
+                                </th>
 
-        <option value="inactive">
-            Inactive
-        </option>
+                                <th width="150">
+                                    Action
+                                </th>
 
-    </select>
+                            </tr>
 
-</div>
+                        </thead>
 
+                        <tbody id="contactMessagesTableBody">
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 
             </div>
 
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Cancel
-
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Save News
-
-                </button>
-
-            </div>
-
-        </form>
+        </div>
 
     </div>
 
-</div>
-
-</div>
-
-<!-- View Flash News Modal -->
-<div
-    class="modal fade"
-    id="viewFlashNewsModal"
-    tabindex="-1"
-    aria-hidden="true">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-
-        <div class="modal-content border-0 shadow">
-
-            <div class="modal-header">
-
-                <h5 class="modal-title">
-                    <i class="ri-image-line me-2"></i>
-                    Flash News Details
-                </h5>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
-
-            </div>
-
-            <div
-                class="modal-body"
-                id="viewFlashNewsContent">
 
 
-            </div>
+    <!-- VIEW MESSAGE MODAL -->
 
-            <div class="modal-footer">
+    <div
+        class="modal fade"
+        id="viewContactMessageModal"
+        tabindex="-1">
 
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
 
-                    Close
+            <div class="modal-content border-0 shadow">
 
-                </button>
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+
+                        <i class="ri-mail-line me-2"></i>
+
+                        Contact Message Details
+
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div
+                    class="modal-body"
+                    id="viewContactMessageContent">
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Close
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -1143,23 +982,6 @@
     </div>
 
 </div>
-
-
-</div>
-
-
-
-
-  <footer class="d-footer">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-auto">
-      <p class="mb-0">© 2026 Vrkss. All Rights Reserved.</p>
-    </div>
-    <div class="col-auto">
-      <p class="mb-0">Made by <span class="text-primary-600">sjcreativeworks</span></p>
-    </div>
-  </div>
-</footer>
 </main>
   
   <!-- jQuery library js -->
@@ -1196,8 +1018,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/home/flashNewsApi.js"></script>
+<script src="assets/js/api/contact/contact-messages-api.js"></script>
 
-<script src="assets/js/pages/home/flash-news.js"></script>
+<script src="assets/js/pages/contact/contact-messages.js"></script>
+<script src="assets/js/utils/dateFormatter.js"></script>
 </body>
 </html>

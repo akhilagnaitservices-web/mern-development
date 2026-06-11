@@ -12139,7 +12139,7 @@ svg.radial-progress text {
   border-collapse: separate;
   border: 1px solid var(--neutral-200);
   border-radius: 8px;
-  min-width: max-content;
+  /* min-width: max-content; */
   vertical-align: middle;
 }
 
@@ -15965,3 +15965,35 @@ td.fc-header-center {
 }
 
 /* === footer css end === */
+
+/* === event section (event page code css for view) === */
+.view-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #6c757d;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .view-value {
+        font-size: 15px;
+        font-weight: 500;
+        color: #212529;
+        word-break: break-word;
+        margin-bottom: 20px; /* Uniform bottom spacing */
+    }
+
+    .event-view-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #dee2e6;
+    }
+
+    .event-description-box {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+    }
