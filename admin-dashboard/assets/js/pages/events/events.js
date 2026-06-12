@@ -279,32 +279,40 @@ async function editMasterEvent(id) {
 
         masterEventId = id;
 
-       Object.keys(event)
-       .forEach(key => {
+Object.keys(event).forEach(key => {
 
-       if (key === "event_image") {
-           return;
-       }
+    if (key === "event_image") {
+        return;
+    }
 
-        const field =  document.getElementById(key);
+    const field =
+    document.getElementById(key);
 
-   if (
-    key === "event_date" &&
-    event[key]
-) {
+    if (!field) {
+        return;
+    }
 
-    field.value =
-    event[key]
-    .split("T")[0];
+    if (
+        key === "event_date" &&
+        event[key]
+    ) {
 
-} else {
+        field.value =
+        event[key]
+        .split("T")[0];
 
-    field.value =
-    event[key] || "";
+    } else {
 
-}
+        field.value =
+        event[key] ?? "";
 
-    });
+    }
+
+});
+
+        document.getElementById(
+            "event_image"
+        ).value = "";
 
         document.querySelector(
             "#masterEventModal .modal-title"

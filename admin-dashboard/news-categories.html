@@ -222,7 +222,7 @@
         <li><a href="heritage-features.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Heritage Features</a></li>
         <li><a href="core-values.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Core Values</a></li>
         <li><a href="leadership-members.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Leadership Members</a></li>
-          
+
 
     </ul>
 
@@ -301,7 +301,7 @@
         </ul>
 </li>   
 
-      <li class="dropdown">
+         <li class="dropdown">
         <a href="javascript:void(0)">
           <i class="ri-booklet-line text-xl me-14 d-flex w-auto"></i>
           <span>News</span>
@@ -317,6 +317,8 @@
 
         </ul>
 </li> 
+
+
       <li class="dropdown">
         <a href="javascript:void(0)">
           <i class="ri-news-line text-xl me-14 d-flex w-auto"></i>
@@ -845,340 +847,285 @@
  
 
 <!-- main -->
+
 <div class="dashboard-main-body">
 
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 
-    <div>
+        <div>
 
-        <h6 class="fw-semibold mb-0">
-            Gallery Photos
-        </h6>
+            <h6 class="fw-semibold mb-0">
+                News Category Management
+            </h6>
 
-        <small class="text-muted">
-            Manage Gallery Photos
-        </small>
+            <small class="text-muted">
+                Manage News Categories
+            </small>
+
+        </div>
+
+        <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#newsCategoryModal">
+
+            <i class="ri-add-line"></i>
+            Add News Category
+
+        </button>
 
     </div>
 
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#galleryPhotoModal">
 
-        <i class="ri-add-line"></i>
-        Add Photo
 
-    </button>
+    <div class="row">
 
-</div>
+        <div class="col-12">
 
+            <div class="card basic-data-table shadow-none border-0">
 
+                <div class="card-header">
 
-<div class="card basic-data-table shadow-none border-0">
+                    <h5 class="card-title mb-0">
+                        News Categories List
+                    </h5>
 
-<div class="card-header">
+                </div>
 
-<h5 class="card-title mb-0">
-Gallery Photos List
-</h5>
+                <div class="card-body">
 
-</div>
+                    <table
+                        class="table bordered-table mb-0"
+                        id="dataTable">
 
-<div class="card-body">
+                        <thead>
 
-<table
-class="table bordered-table mb-0"
-id="dataTable">
+                            <tr>
 
-<thead>
+                                <th width="80">
+                                    ID
+                                </th>
 
-<tr>
+                                <th>
+                                    Category Name
+                                </th>
 
-<th width="80">
-ID
-</th>
+                                <th>
+                                    Slug
+                                </th>
 
-<th width="120">
-Photo
-</th>
+                                <th width="150">
+                                    Display Order
+                                </th>
 
-<th>
-Album
-</th>
+                                <th width="120">
+                                    Status
+                                </th>
 
-<th>
-Photo Title
-</th>
+                                <th width="180">
+                                    Action
+                                </th>
 
-<th width="120">
-Featured
-</th>
+                            </tr>
 
-<th width="120">
-Status
-</th>
+                        </thead>
 
-<th width="180">
-Action
-</th>
+                        <tbody id="newsCategoriesTableBody">
 
-</tr>
+                        </tbody>
 
-</thead>
+                    </table>
 
-<tbody id="galleryPhotosTableBody">
+                </div>
 
-</tbody>
+            </div>
 
-</table>
+        </div>
 
-</div>
+    </div>
 
-</div>
 
 
+    <!-- ADD / EDIT MODAL -->
 
-<div
-class="modal fade"
-id="galleryPhotoModal"
-tabindex="-1">
+    <div
+        class="modal fade"
+        id="newsCategoryModal"
+        tabindex="-1">
 
-<div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
 
-<div class="modal-content">
+            <div class="modal-content">
 
-<div class="modal-header">
+                <div class="modal-header">
 
-<h5 class="modal-title">
-Add Photo
-</h5>
+                    <h5 class="modal-title">
+                        Add News Category
+                    </h5>
 
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
 
-</div>
+                </div>
 
-<form
-id="galleryPhotoForm"
-enctype="multipart/form-data">
+                <form id="newsCategoryForm">
 
-<div class="modal-body">
+                    <div class="modal-body">
 
-<div class="row">
+                        <div class="mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
+                                Category Name
+                            </label>
 
-<label>
-Album
-</label>
+                            <input
+                                type="text"
+                                id="category_name"
+                                class="form-control"
+                                required>
 
-<select
-id="album_id"
-name="album_id"
-class="form-select"
-required>
+                        </div>
 
-<option value="">
-Select Album
-</option>
+                        <div class="mb-3">
 
-</select>
+                            <label class="form-label">
+                                Category Slug
+                            </label>
 
-</div>
+                            <input
+                                type="text"
+                                id="category_slug"
+                                class="form-control"
+                                placeholder="political-news"
+                                required>
 
-<div class="col-md-6 mb-3">
+                        </div>
 
-<label>
-Photo Title
-</label>
+                        <div class="mb-3">
 
-<input
-type="text"
-id="photo_title"
-name="photo_title"
-class="form-control">
+                            <label class="form-label">
+                                Display Order
+                            </label>
 
-</div>
+                            <input
+                                type="number"
+                                id="display_order"
+                                class="form-control"
+                                value="0">
 
-<div class="col-md-12 mb-3">
+                        </div>
 
-<label>
-Photo Image
-</label>
+                        <div class="mb-3">
 
-<input
-type="file"
-id="photo_image"
-name="photo_image"
-class="form-control"
-accept="image/*">
+                            <label class="form-label">
+                                Status
+                            </label>
 
-</div>
+                            <select
+                                id="status"
+                                class="form-select">
 
-<div class="col-md-12 mb-3">
+                                <option value="Active">
+                                    Active
+                                </option>
 
-<label>
-Photo Description
-</label>
+                                <option value="Inactive">
+                                    Inactive
+                                </option>
 
-<textarea
-id="photo_description"
-name="photo_description"
-rows="5"
-class="form-control"></textarea>
+                            </select>
 
-</div>
+                        </div>
 
-<div class="col-md-6 mb-3">
+                    </div>
 
-<label>
-Image Alt Tag
-</label>
+                    <div class="modal-footer">
 
-<input
-type="text"
-id="image_alt_tag"
-name="image_alt_tag"
-class="form-control">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
 
-</div>
+                            Cancel
 
-<div class="col-md-3 mb-3">
+                        </button>
 
-<label>
-Image Order
-</label>
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
 
-<input
-type="number"
-id="image_order"
-name="image_order"
-value="0"
-class="form-control">
+                            Save Category
 
-</div>
+                        </button>
 
-<div class="col-md-3 mb-3">
+                    </div>
 
-<label>
-Featured
-</label>
+                </form>
 
-<select
-id="featured_photo"
-name="featured_photo"
-class="form-select">
+            </div>
 
-<option value="No">
-No
-</option>
+        </div>
 
-<option value="Yes">
-Yes
-</option>
+    </div>
 
-</select>
 
-</div>
 
-<div class="col-md-12 mb-3">
+    <!-- VIEW MODAL -->
 
-<label>
-Status
-</label>
+    <div
+        class="modal fade"
+        id="viewNewsCategoryModal"
+        tabindex="-1">
 
-<select
-id="status"
-name="status"
-class="form-select">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
 
-<option value="active">
-Active
-</option>
+            <div class="modal-content border-0 shadow">
 
-<option value="inactive">
-Inactive
-</option>
+                <div class="modal-header">
 
-</select>
+                    <h5 class="modal-title">
 
-</div>
+                        <i class="ri-information-line me-2"></i>
 
-</div>
+                        News Category Details
 
-</div>
+                    </h5>
 
-<div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
 
-<button
-type="button"
-class="btn btn-secondary"
-data-bs-dismiss="modal">
+                </div>
 
-Cancel
+                <div
+                    class="modal-body"
+                    id="viewNewsCategoryContent">
 
-</button>
+                </div>
 
-<button
-type="submit"
-class="btn btn-primary">
+                <div class="modal-footer">
 
-Save Photo
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
 
-</button>
+                        Close
 
-</div>
+                    </button>
 
-</form>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-
-
-<div
-class="modal fade"
-id="viewGalleryPhotoModal"
-tabindex="-1">
-
-<div class="modal-dialog modal-xl modal-dialog-centered">
-
-<div class="modal-content">
-
-<div class="modal-header">
-
-<h5 class="modal-title">
-
-Gallery Photo Details
-
-</h5>
-
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
-
-</div>
-
-<div
-class="modal-body"
-id="viewGalleryPhotoContent">
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 </main>
@@ -1217,9 +1164,8 @@ id="viewGalleryPhotoContent">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/gallery/gallery-photos-api.js"></script>
+<script src="assets/js/api/news/news-categories-api.js"></script>
 
-<script src="assets/js/pages/gallery/gallery-photos.js"></script>
-<script src="assets/js/utils/dateFormatter.js"></script>
+<script src="assets/js/pages/news/news-categories.js"></script>
 </body>
 </html>

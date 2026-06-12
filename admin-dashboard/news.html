@@ -222,7 +222,7 @@
         <li><a href="heritage-features.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Heritage Features</a></li>
         <li><a href="core-values.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Core Values</a></li>
         <li><a href="leadership-members.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Leadership Members</a></li>
-          
+
 
     </ul>
 
@@ -301,7 +301,7 @@
         </ul>
 </li>   
 
-      <li class="dropdown">
+               <li class="dropdown">
         <a href="javascript:void(0)">
           <i class="ri-booklet-line text-xl me-14 d-flex w-auto"></i>
           <span>News</span>
@@ -317,6 +317,8 @@
 
         </ul>
 </li> 
+
+
       <li class="dropdown">
         <a href="javascript:void(0)">
           <i class="ri-news-line text-xl me-14 d-flex w-auto"></i>
@@ -847,338 +849,446 @@
 <!-- main -->
 <div class="dashboard-main-body">
 
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 
-    <div>
+        <div>
 
-        <h6 class="fw-semibold mb-0">
-            Gallery Photos
-        </h6>
+            <h6 class="fw-semibold mb-0">
+                News Management
+            </h6>
 
-        <small class="text-muted">
-            Manage Gallery Photos
-        </small>
+            <small class="text-muted">
+                Manage News Articles
+            </small>
+
+        </div>
+
+        <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#newsModal">
+
+            <i class="ri-add-line"></i>
+            Add News
+
+        </button>
 
     </div>
 
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#galleryPhotoModal">
 
-        <i class="ri-add-line"></i>
-        Add Photo
 
-    </button>
+    <div class="row">
 
-</div>
+        <div class="col-12">
 
+            <div class="card basic-data-table shadow-none border-0">
 
+                <div class="card-header">
 
-<div class="card basic-data-table shadow-none border-0">
+                    <h5 class="card-title mb-0">
+                        News List
+                    </h5>
 
-<div class="card-header">
+                </div>
 
-<h5 class="card-title mb-0">
-Gallery Photos List
-</h5>
+                <div class="card-body">
 
-</div>
+                    <table
+                        class="table bordered-table mb-0"
+                        id="dataTable">
 
-<div class="card-body">
+                        <thead>
 
-<table
-class="table bordered-table mb-0"
-id="dataTable">
+                            <tr>
 
-<thead>
+                                <th width="90">
+                                    Image
+                                </th>
 
-<tr>
+                                <th>
+                                    News Title
+                                </th>
 
-<th width="80">
-ID
-</th>
+                                <th width="180">
+                                    Category
+                                </th>
 
-<th width="120">
-Photo
-</th>
+                                <th width="150">
+                                    Author
+                                </th>
 
-<th>
-Album
-</th>
+                                <th width="150">
+                                    Date
+                                </th>
 
-<th>
-Photo Title
-</th>
+                                <th width="100">
+                                    Views
+                                </th>
 
-<th width="120">
-Featured
-</th>
+                                <th width="120">
+                                    Popular
+                                </th>
 
-<th width="120">
-Status
-</th>
+                                <th width="120">
+                                    Status
+                                </th>
 
-<th width="180">
-Action
-</th>
+                                <th width="180">
+                                    Action
+                                </th>
 
-</tr>
+                            </tr>
 
-</thead>
+                        </thead>
 
-<tbody id="galleryPhotosTableBody">
+                        <tbody id="newsTableBody">
 
-</tbody>
+                        </tbody>
 
-</table>
+                    </table>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
+        </div>
 
+    </div>
 
-<div
-class="modal fade"
-id="galleryPhotoModal"
-tabindex="-1">
 
-<div class="modal-dialog modal-lg">
 
-<div class="modal-content">
+    <!-- ADD / EDIT MODAL -->
 
-<div class="modal-header">
+    <div
+        class="modal fade"
+        id="newsModal"
+        tabindex="-1">
 
-<h5 class="modal-title">
-Add Photo
-</h5>
+        <div class="modal-dialog modal-xl">
 
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
+            <div class="modal-content">
 
-</div>
+                <div class="modal-header">
 
-<form
-id="galleryPhotoForm"
-enctype="multipart/form-data">
+                    <h5 class="modal-title">
+                        Add News
+                    </h5>
 
-<div class="modal-body">
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
 
-<div class="row">
+                </div>
 
-<div class="col-md-6 mb-3">
+                <form
+                    id="newsForm"
+                    enctype="multipart/form-data">
 
-<label>
-Album
-</label>
+                    <div class="modal-body">
 
-<select
-id="album_id"
-name="album_id"
-class="form-select"
-required>
+                        <div class="row">
 
-<option value="">
-Select Album
-</option>
+                            <!-- CATEGORY -->
 
-</select>
+                            <div class="col-md-6 mb-3">
 
-</div>
+                                <label class="form-label">
+                                    Category
+                                </label>
 
-<div class="col-md-6 mb-3">
+                                <select
+                                    id="category_id"
+                                    name="category_id"
+                                    class="form-select"
+                                    required>
 
-<label>
-Photo Title
-</label>
+                                </select>
 
-<input
-type="text"
-id="photo_title"
-name="photo_title"
-class="form-control">
+                            </div>
 
-</div>
+                            <!-- AUTHOR -->
 
-<div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
 
-<label>
-Photo Image
-</label>
+                                <label class="form-label">
+                                    Author Name
+                                </label>
 
-<input
-type="file"
-id="photo_image"
-name="photo_image"
-class="form-control"
-accept="image/*">
+                                <input
+                                    type="text"
+                                    id="author_name"
+                                    name="author_name"
+                                    class="form-control">
 
-</div>
+                            </div>
 
-<div class="col-md-12 mb-3">
+                            <!-- TITLE -->
 
-<label>
-Photo Description
-</label>
+                            <div class="col-md-12 mb-3">
 
-<textarea
-id="photo_description"
-name="photo_description"
-rows="5"
-class="form-control"></textarea>
+                                <label class="form-label">
+                                    News Title
+                                </label>
 
-</div>
+                                <input
+                                    type="text"
+                                    id="news_title"
+                                    name="news_title"
+                                    class="form-control"
+                                    required>
 
-<div class="col-md-6 mb-3">
+                            </div>
 
-<label>
-Image Alt Tag
-</label>
+                            <!-- IMAGE -->
 
-<input
-type="text"
-id="image_alt_tag"
-name="image_alt_tag"
-class="form-control">
+                            <div class="col-md-6 mb-3">
 
-</div>
+                                <label class="form-label">
+                                    Featured Image
+                                </label>
 
-<div class="col-md-3 mb-3">
+                                <input
+                                    type="file"
+                                    id="featured_image"
+                                    name="featured_image"
+                                    class="form-control"
+                                    accept="image/*">
 
-<label>
-Image Order
-</label>
+                            </div>
 
-<input
-type="number"
-id="image_order"
-name="image_order"
-value="0"
-class="form-control">
+                            <!-- IMAGE PREVIEW -->
 
-</div>
+                            <div class="col-md-6 mb-3">
 
-<div class="col-md-3 mb-3">
+                                <label class="form-label">
+                                    Image Preview
+                                </label>
 
-<label>
-Featured
-</label>
+                                <div>
 
-<select
-id="featured_photo"
-name="featured_photo"
-class="form-select">
+                                    <img
+                                        id="featured_image_preview"
+                                        src=""
+                                        class="rounded border"
+                                        style="
+                                            width:120px;
+                                            height:90px;
+                                            object-fit:cover;
+                                        ">
 
-<option value="No">
-No
-</option>
+                                </div>
 
-<option value="Yes">
-Yes
-</option>
+                            </div>
 
-</select>
+                            <!-- NEWS DATE -->
 
-</div>
+                            <div class="col-md-6 mb-3">
 
-<div class="col-md-12 mb-3">
+                                <label class="form-label">
+                                    News Date
+                                </label>
 
-<label>
-Status
-</label>
+                                <input
+                                    type="date"
+                                    id="news_date"
+                                    name="news_date"
+                                    class="form-control">
 
-<select
-id="status"
-name="status"
-class="form-select">
+                            </div>
 
-<option value="active">
-Active
-</option>
+                            <!-- DISPLAY ORDER -->
 
-<option value="inactive">
-Inactive
-</option>
+                            <div class="col-md-6 mb-3">
 
-</select>
+                                <label class="form-label">
+                                    Display Order
+                                </label>
 
-</div>
+                                <input
+                                    type="number"
+                                    id="display_order"
+                                    name="display_order"
+                                    value="0"
+                                    class="form-control">
 
-</div>
+                            </div>
 
-</div>
+                            <!-- SHORT DESCRIPTION -->
 
-<div class="modal-footer">
+                            <div class="col-md-12 mb-3">
 
-<button
-type="button"
-class="btn btn-secondary"
-data-bs-dismiss="modal">
+                                <label class="form-label">
+                                    Short Description
+                                </label>
 
-Cancel
+                                <textarea
+                                    id="short_description"
+                                    name="short_description"
+                                    rows="4"
+                                    class="form-control"></textarea>
 
-</button>
+                            </div>
 
-<button
-type="submit"
-class="btn btn-primary">
+                            <!-- NEWS CONTENT -->
 
-Save Photo
+                            <div class="col-md-12 mb-3">
 
-</button>
+                                <label class="form-label">
+                                    News Content
+                                </label>
 
-</div>
+                                <textarea
+                                    id="news_content"
+                                    name="news_content"
+                                    rows="8"
+                                    class="form-control"></textarea>
 
-</form>
+                            </div>
 
-</div>
+                            <!-- POPULAR -->
 
-</div>
+                            <div class="col-md-6 mb-3">
 
-</div>
+                                <label class="form-label">
+                                    Popular News
+                                </label>
 
+                                <select
+                                    id="popular_news"
+                                    name="popular_news"
+                                    class="form-select">
 
+                                    <option value="No">
+                                        No
+                                    </option>
 
-<div
-class="modal fade"
-id="viewGalleryPhotoModal"
-tabindex="-1">
+                                    <option value="Yes">
+                                        Yes
+                                    </option>
 
-<div class="modal-dialog modal-xl modal-dialog-centered">
+                                </select>
 
-<div class="modal-content">
+                            </div>
 
-<div class="modal-header">
+                            <!-- STATUS -->
 
-<h5 class="modal-title">
+                            <div class="col-md-6 mb-3">
 
-Gallery Photo Details
+                                <label class="form-label">
+                                    Status
+                                </label>
 
-</h5>
+                                <select
+                                    id="status"
+                                    name="status"
+                                    class="form-select">
 
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
+                                    <option value="Published">
+                                        Published
+                                    </option>
 
-</div>
+                                    <option value="Draft">
+                                        Draft
+                                    </option>
 
-<div
-class="modal-body"
-id="viewGalleryPhotoContent">
+                                    <option value="Archived">
+                                        Archived
+                                    </option>
 
-</div>
+                                </select>
 
-</div>
+                            </div>
 
-</div>
+                        </div>
 
-</div>
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Save News
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- VIEW MODAL -->
+
+    <div
+        class="modal fade"
+        id="viewNewsModal"
+        tabindex="-1">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content border-0 shadow">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+
+                        <i class="ri-newspaper-line me-2"></i>
+
+                        News Details
+
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div
+                    class="modal-body"
+                    id="viewNewsContent">
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Close
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 </main>
@@ -1217,9 +1327,8 @@ id="viewGalleryPhotoContent">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/gallery/gallery-photos-api.js"></script>
+<script src="assets/js/api/news/news-api.js"></script>
 
-<script src="assets/js/pages/gallery/gallery-photos.js"></script>
-<script src="assets/js/utils/dateFormatter.js"></script>
+<script src="assets/js/pages/news/news.js"></script>
 </body>
 </html>

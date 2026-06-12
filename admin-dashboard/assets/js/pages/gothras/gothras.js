@@ -140,8 +140,6 @@ onclick="removeGothra(${gothra.id})">
 
 }
 
-
-
 // SAVE
 async function saveGothra(e) {
 
@@ -210,7 +208,6 @@ async function saveGothra(e) {
 }
 
 
-
 // EDIT
 async function editGothra(id) {
 
@@ -265,8 +262,6 @@ async function editGothra(id) {
 
 }
 
-
-
 // DELETE
 async function removeGothra(id) {
 
@@ -281,8 +276,6 @@ async function removeGothra(id) {
     loadGothras();
 
 }
-
-
 
 // VIEW
 async function viewGothra(id) {
