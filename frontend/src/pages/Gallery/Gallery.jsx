@@ -11,7 +11,6 @@ import {
     getGalleryBanner
 } from "../../services/galleryService";
 
-import GalleryBanner from "../../components/gallery/GalleryBanner";
 import GalleryFilters from "../../components/gallery/GalleryFilters";
 import GalleryGrid from "../../components/gallery/GalleryGrid";
 import GalleryLightbox from "../../components/gallery/GalleryLightbox";
@@ -42,6 +41,9 @@ const Gallery = () => {
     const [lightboxIndex, setLightboxIndex] =
         useState(0);
 
+    const [loading, setLoading] =
+        useState(true);
+
     useEffect(() => {
 
         Promise.all([
@@ -50,55 +52,63 @@ const Gallery = () => {
             getGalleryAlbums(),
             getGalleryPhotos()
         ])
-        .then(
-            ([
-                bannerRes,
-                catsRes,
-                albumsRes,
-                photosRes
-            ]) => {
+            .then(
+                ([
+                    bannerRes,
+                    catsRes,
+                    albumsRes,
+                    photosRes
+                ]) => {
 
-                setBanner(
-                    bannerRes?.data?.data || null
-                );
+                    setBanner(
+                        bannerRes?.data?.data || null
+                    );
 
-                setCategories(
-                    catsRes?.data?.data || []
-                );
+                    setCategories(
+                        catsRes?.data?.data || []
+                    );
 
-                setAlbums(
-                    albumsRes?.data?.data || []
-                );
+                    setAlbums(
+                        albumsRes?.data?.data || []
+                    );
 
-                setPhotos(
-                    photosRes?.data?.data || []
-                );
-
-            }
-        )
-        .catch(console.error);
+                    setPhotos(
+                        photosRes?.data?.data || []
+                    );
+                }
+            )
+            .catch(console.error)
+            .finally(() => setLoading(false));
 
     }, []);
 
+    // FILTER ALBUMS BY CATEGORY
+    const filteredAlbums = useMemo(() => {
+
+        if (activeFilter === "All") {
+            return albums;
+        }
+
+        return albums.filter(
+            album =>
+                String(album.category_id) ===
+                String(activeFilter)
+        );
+
+    }, [albums, activeFilter]);
+
+    // FILTER PHOTOS
     const filteredPhotos = useMemo(() => {
 
         let filtered = photos;
 
-        // Category Filter
         if (activeFilter !== "All") {
 
-            const albumIds = albums
-                .filter(
-                    album =>
-                        String(album.category_id) ===
-                        String(activeFilter)
-                )
-                .map(
-                    album =>
-                        album.album_id
-                );
+            const albumIds = filteredAlbums.map(
+                album => album.album_id
+            );
 
-            filtered = photos.filter(
+            filtered = filtered.filter(
                 photo =>
                     albumIds.includes(
                         photo.album_id
@@ -106,7 +116,6 @@ const Gallery = () => {
             );
         }
 
-        // Album Filter
         if (selectedAlbum) {
 
             filtered = filtered.filter(
@@ -119,11 +128,20 @@ const Gallery = () => {
         return filtered;
 
     }, [
+        photos,
         activeFilter,
         selectedAlbum,
-        albums,
-        photos
+        filteredAlbums
     ]);
+
+    const handleFilterChange = (filter) => {
+
+        setActiveFilter(filter);
+
+        // Reset album selection
+        setSelectedAlbum(null);
+
+    };
 
     const openLightbox =
         (photo, index) => {
@@ -169,41 +187,49 @@ const Gallery = () => {
 
     return (
         <>
-
             <PageBanner page="gallery" />
 
             <section className="gallery-filters">
-
                 <div className="container">
 
                     <GalleryFilters
                         categories={categories}
                         activeFilter={activeFilter}
-                        setActiveFilter={setActiveFilter}
+                        setActiveFilter={handleFilterChange}
                     />
 
                 </div>
-
             </section>
 
             <section className="gallery-page-section">
 
                 <div className="container">
 
-                    {/* Albums Section */}
+                    {loading ? (
+                        <div
+                            style={{
+                                textAlign: "center",
+                                padding: "50px"
+                            }}
+                        >
+                            Loading...
+                        </div>
+                    ) : (
+                        <>
+                            {/* FILTERED ALBUMS */}
+                            <GalleryAlbums
+                                albums={filteredAlbums}
+                                selectedAlbum={selectedAlbum}
+                                setSelectedAlbum={setSelectedAlbum}
+                            />
 
-                    <GalleryAlbums
-                        albums={albums}
-                        selectedAlbum={selectedAlbum}
-                        setSelectedAlbum={setSelectedAlbum}
-                    />
-
-                    {/* Photos Section */}
-
-                    <GalleryGrid
-                        photos={filteredPhotos}
-                        openLightbox={openLightbox}
-                    />
+                            {/* FILTERED PHOTOS */}
+                            <GalleryGrid
+                                photos={filteredPhotos}
+                                openLightbox={openLightbox}
+                            />
+                        </>
+                    )}
 
                 </div>
 
@@ -216,6 +242,8 @@ const Gallery = () => {
                 }
                 prev={prevImage}
                 next={nextImage}
+                current={lightboxIndex}
+                total={filteredPhotos.length}
             />
 
         </>

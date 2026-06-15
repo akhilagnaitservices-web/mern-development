@@ -1,3 +1,58 @@
+.membership-banner {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(87, 11, 11, 0.75),
+            rgba(40, 10, 10, 0.85)
+        ),
+        url("https://www.shutterstock.com/image-vector/group-hands-on-top-each-260nw-2576885721.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.membership-banner-content {
+    max-width: 800px;
+    padding: 0 20px;
+    color: #fff;
+}
+
+.membership-banner-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f8f5ef;
+}   
+
+.membership-banner-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+
+    .membership-banner {
+        min-height: 320px;
+    }
+
+    .membership-banner-content h1 {
+        font-size: 2rem;
+    }
+
+    .membership-banner-content p {
+        font-size: 1rem;
+    }
+
+}
+
 .membership-page{
     background:#f8f5ef;
     padding:60px 0;

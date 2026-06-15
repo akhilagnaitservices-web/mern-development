@@ -35,7 +35,7 @@ const PresidentMessage = ({ data }) => {
                         </p>
                         {data.button_name && (
                             <Link
-                                to={data.button_link || '/about'}
+                                to={data.button_link || '/membership'}
                                 className="btn btn-primary"
                             >
                                 {data.button_name}

@@ -198,115 +198,223 @@ async (req, res) => {
 
 };
 
+// export const updateLeadershipMember =
+// async (req, res) => {
+
+//   try {
+
+//     const { id } =
+//     req.params;
+
+//     const [rows] =
+//     await db.query(
+//       `
+//       SELECT *
+//       FROM leadership_members
+//       WHERE id = ?
+//       `,
+//       [id]
+//     );
+
+//     if (!rows.length) {
+
+//       return res.status(404).json({
+//         success: false,
+//         message:
+//         "Member not found"
+//       });
+
+//     }
+
+//     const member =
+//     rows[0];
+
+//     let imageName =
+//     member.profile_image;
+
+//     if (req.file) {
+
+//       const oldImage =
+//       path.join(
+//         "uploads",
+//         "leadership-members",
+//         imageName
+//       );
+
+//       if (
+//         fs.existsSync(oldImage)
+//       ) {
+
+//         fs.unlinkSync(
+//           oldImage
+//         );
+
+//       }
+
+//       imageName =
+//       req.file.filename;
+
+//     }
+
+//     const {
+    
+//       full_name,
+//       designation,
+//       mobile_number,
+//       email,
+//       display_order,
+//       status
+//     } = req.body;
+
+//     await db.query(
+//       `
+//       UPDATE leadership_members
+//       SET
+        
+//         full_name = ?,
+//         designation = ?,
+//         profile_image = ?,
+//         mobile_number = ?,
+//         email = ?,
+//         display_order = ?,
+//         status = ?
+//       WHERE id = ?
+//       `,
+//       [
+        
+//         full_name,
+//         designation,
+//         imageName,
+//         mobile_number,
+//         email,
+//         display_order,
+//         status,
+//         id
+//       ]
+//     );
+
+//     return res.status(200).json({
+//       success: true,
+//       message:
+//       "Member updated successfully"
+//     });
+
+//   } catch (error) {
+
+//     return res.status(500).json({
+//       success: false,
+//       message: error.message
+//     });
+
+//   }
+
+// };
 export const updateLeadershipMember =
 async (req, res) => {
 
-  try {
+    try {
 
-    const { id } =
-    req.params;
+        const { id } = req.params;
 
-    const [rows] =
-    await db.query(
-      `
-      SELECT *
-      FROM leadership_members
-      WHERE id = ?
-      `,
-      [id]
-    );
-
-    if (!rows.length) {
-
-      return res.status(404).json({
-        success: false,
-        message:
-        "Member not found"
-      });
-
-    }
-
-    const member =
-    rows[0];
-
-    let imageName =
-    member.profile_image;
-
-    if (req.file) {
-
-      const oldImage =
-      path.join(
-        "uploads",
-        "leadership-members",
-        imageName
-      );
-
-      if (
-        fs.existsSync(oldImage)
-      ) {
-
-        fs.unlinkSync(
-          oldImage
+        const [rows] = await db.query(
+            `
+            SELECT *
+            FROM leadership_members
+            WHERE id = ?
+            `,
+            [id]
         );
 
-      }
+        if (!rows.length) {
 
-      imageName =
-      req.file.filename;
+            return res.status(404).json({
+                success: false,
+                message: "Member not found"
+            });
+
+        }
+
+        const member = rows[0];
+
+        let imageName = member.profile_image || null;
+
+        // Handle new image upload
+        if (req.file) {
+
+            // Delete old image only if it exists
+            if (imageName && typeof imageName === "string") {
+
+                const oldImagePath = path.join(
+                    "uploads",
+                    "leadership-members",
+                    imageName
+                );
+
+                if (fs.existsSync(oldImagePath)) {
+                    fs.unlinkSync(oldImagePath);
+                }
+
+            }
+
+            imageName = req.file.filename;
+
+        }
+
+        const {
+
+            full_name,
+            designation,
+            mobile_number,
+            email,
+            display_order,
+            status
+
+        } = req.body;
+
+        await db.query(
+            `
+            UPDATE leadership_members
+            SET
+                full_name = ?,
+                designation = ?,
+                profile_image = ?,
+                mobile_number = ?,
+                email = ?,
+                display_order = ?,
+                status = ?
+            WHERE id = ?
+            `,
+            [
+                full_name,
+                designation,
+                imageName,
+                mobile_number,
+                email,
+                display_order || 0,
+                status || "Active",
+                id
+            ]
+        );
+
+        return res.status(200).json({
+
+            success: true,
+            message: "Member updated successfully"
+
+        });
+
+    } catch (error) {
+
+        console.error("Update Leadership Member Error:", error);
+
+        return res.status(500).json({
+
+            success: false,
+            message: error.message
+
+        });
 
     }
-
-    const {
-    
-      full_name,
-      designation,
-      mobile_number,
-      email,
-      display_order,
-      status
-    } = req.body;
-
-    await db.query(
-      `
-      UPDATE leadership_members
-      SET
-        
-        full_name = ?,
-        designation = ?,
-        profile_image = ?,
-        mobile_number = ?,
-        email = ?,
-        display_order = ?,
-        status = ?
-      WHERE id = ?
-      `,
-      [
-        
-        full_name,
-        designation,
-        imageName,
-        mobile_number,
-        email,
-        display_order,
-        status,
-        id
-      ]
-    );
-
-    return res.status(200).json({
-      success: true,
-      message:
-      "Member updated successfully"
-    });
-
-  } catch (error) {
-
-    return res.status(500).json({
-      success: false,
-      message: error.message
-    });
-
-  }
 
 };
 

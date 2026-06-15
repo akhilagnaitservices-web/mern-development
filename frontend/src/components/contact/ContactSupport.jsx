@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react'
 import { getContactInfo } from '../../services/contactService'
 import { getSocialMediaLinks } from '../../services/headerService'
 
+import {
+    FaFacebookF,
+    FaInstagram,
+    FaYoutube,
+    FaTwitter,
+    FaLinkedinIn,
+    FaWhatsapp,
+    FaTelegramPlane,
+    FaGlobe
+} from 'react-icons/fa';
+
 const getSocialIcon = (name) => {
     const icons = {
         facebook: 'f', instagram: '◎', youtube: '▶',
@@ -24,6 +35,7 @@ const ContactSupport = () => {
                     setSocials(socialRes.data.data || [])
                 }
             })
+            
             .catch(() => {})
     }, [])
 
@@ -31,9 +43,9 @@ const ContactSupport = () => {
         {
             icon: '📞',
             title: 'Call Us',
-            text: info?.office_hours || 'Monday - Saturday: 9:00 AM - 6:00 PM',
+            text: info?.office_hours || 'Monday - Saturday  9:00 AM - 6:00 PM',
             action: info?.primary_phone
-                ? <a href={`tel:${info.primary_phone}`} className="btn btn-primary" style={{ marginTop: '16px' }}>
+                ? <a href={`tel:${info.primary_phone}`} className="btn btn-primary" style={{ marginTop: '34x' }}>
                     Call Now
                   </a>
                 : null,
@@ -52,23 +64,78 @@ const ContactSupport = () => {
             icon: '🌐',
             title: 'Follow Us',
             text: 'Stay connected on social media for latest updates and announcements.',
-            action: socials.length > 0
-                ? <div className="contact-social-links" style={{ marginTop: '16px' }}>
-                    {socials.map(s => (
-                        <a
-                            key={s.id}
-                            href={s.platform_link || '#'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="contact-social-link"
-                            title={s.platform_name}
-                        >
-                            {getSocialIcon(s.platform_name)}
-                        </a>
-                    ))}
-                  </div>
-                : null,
-        },
+
+            action: (
+                <div
+                    className="contact-social-links"
+                    style={{ marginTop: '16px' }}
+                >
+
+                    {socials.length > 0 ? (
+
+                        socials.map((s) => (
+
+                            <a
+                                key={s.id}
+                                href={s.platform_link || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                title={s.platform_name}
+                            >
+                                {getSocialIcon(s.platform_name)}
+                            </a>
+
+                        ))
+
+                    ) : (
+
+                        <>
+                            <a
+                                href="https://instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                title="Instagram"
+                            >
+                                <FaInstagram />
+                            </a>
+
+                            <a
+                                href="https://wa.me/919999999999"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                title="WhatsApp"
+                            >
+                                <FaWhatsapp />
+                            </a>
+
+                            <a
+                                href="https://telegram.org"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                title="Telegram"
+                            >
+                                <FaTelegramPlane />
+                            </a>
+                            <a
+                                href="https://facebook.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                title="Facebook"
+                            >
+                                <FaFacebookF />
+                            </a>
+                        </>
+
+                    )}
+
+                </div>
+            )
+        }
     ]
 
     return (

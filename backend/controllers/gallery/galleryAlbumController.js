@@ -301,9 +301,7 @@ async (
 
     try {
 
-        const {
-            id
-        } = req.params;
+        const { id } = req.params;
 
         const [existing] =
         await db.query(
@@ -318,38 +316,40 @@ async (
         if (!existing.length) {
 
             return res.status(404).json({
-
                 success: false,
-
-                message:
-                "Album not found"
-
+                message: "Album not found"
             });
 
         }
 
         let imageName =
-        existing[0]
-        .album_cover_image;
+        existing[0].album_cover_image || null;
 
+        // New image uploaded
         if (req.file) {
 
-            const oldImage =
-            path.join(
-                "uploads",
-                "gallery-albums",
-                imageName
-            );
+            // Delete old image only if it exists
+            if (imageName) {
 
-            if (
-                fs.existsSync(
-                    oldImage
-                )
-            ) {
-
-                fs.unlinkSync(
-                    oldImage
+                const oldImagePath =
+                path.join(
+                    process.cwd(),
+                    "uploads",
+                    "gallery-albums",
+                    imageName
                 );
+
+                if (
+                    fs.existsSync(
+                        oldImagePath
+                    )
+                ) {
+
+                    fs.unlinkSync(
+                        oldImagePath
+                    );
+
+                }
 
             }
 
@@ -361,17 +361,11 @@ async (
         const {
 
             category_id,
-
             album_title,
-
             album_description,
-
             event_date,
-
             location,
-
             display_order,
-
             status
 
         } = req.body;
@@ -397,17 +391,19 @@ async (
 
                 album_title,
 
-                createSlug(album_title),
+                createSlug(
+                    album_title
+                ),
 
                 imageName,
 
                 album_description,
 
-                event_date,
+                event_date || null,
 
                 location,
 
-                display_order,
+                display_order || 0,
 
                 status,
 
@@ -427,6 +423,11 @@ async (
 
     } catch (error) {
 
+        console.error(
+            "Update Gallery Album Error:",
+            error
+        );
+
         return res.status(500).json({
 
             success: false,
@@ -438,7 +439,7 @@ async (
 
     }
 
-};
+};;
 
 export const deleteGalleryAlbum =
 async (

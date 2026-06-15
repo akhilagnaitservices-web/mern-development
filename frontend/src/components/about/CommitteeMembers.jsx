@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import {getImageUrl} from '../../utils/imageHelper'
 const CommitteeMembers = ({ leaders }) => {
 
     if (!leaders.length) return null
@@ -22,11 +22,11 @@ const CommitteeMembers = ({ leaders }) => {
                             className="leader-card"
                         >
 
-                            {leader.president_photo ? (
+                            {leader.profile_image ? (
 
                                 <img
-                                    src={leader.president_photo}
-                                    alt={leader.president_name}
+                                    src={getImageUrl(leader.profile_image)}
+                                    alt={leader.full_name}
                                     className="leader-photo"
                                 />
 
@@ -52,16 +52,6 @@ const CommitteeMembers = ({ leaders }) => {
 
                 </div>
 
-                <div className="leadership-view-all">
-
-                    <Link
-                        to="/membership"
-                        className="btn btn-outline"
-                    >
-                        View All Committee Members
-                    </Link>
-
-                </div>
 
             </div>
 

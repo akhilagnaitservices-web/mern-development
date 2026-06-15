@@ -24,6 +24,7 @@ import contactInformationRoutes from "./routes/contact/contactInformationRoutes.
 import contactMessageRoutes from "./routes/contact/contactMessageRoutes.js";
 import newsCategoryRoutes from "./routes/news/newsCategoryRoutes.js";
 import newsRoutes from "./routes/news/newsRoutes.js";
+import headerRoutes from "./routes/header/headerRoutes.js";
 const app = express();
 
 
@@ -34,7 +35,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/uploads", express.static("uploads"));
- 
+
+app.use("/api/header", headerRoutes);
 app.use("/api/banners", bannerRoutes);
 app.use("/api/flash-news", flashNewsRoutes);
 app.use("/api/president-message", presidentMessageRoutes);
