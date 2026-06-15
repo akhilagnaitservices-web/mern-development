@@ -1,0 +1,446 @@
+/* ═══════════════════════════════════════════
+   GOTHRAS PAGE
+═══════════════════════════════════════════ */
+
+.gothras-page {}
+
+/* ── INTRO ── */
+.gothras-intro {
+    background: var(--bg-white);
+    padding: var(--space-12) 0 var(--space-6);
+    text-align: center;
+}
+
+.gothras-intro-text {
+    font-size: var(--text-base);
+    color: var(--text-medium);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: var(--space-4) auto 0;
+}
+
+/* ── FILTER BAR ── */
+.gothras-filters {
+    background: var(--bg-white);
+    padding: var(--space-5) 0 var(--space-8);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.gothras-filters-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start; 
+    gap: 20px;
+}
+
+/* Alphabet tabs */
+.gothras-alpha-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    flex: 1;
+}
+
+.alpha-tab {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    background: transparent;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+}
+
+.alpha-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(122, 31, 31, 0.05);
+}
+
+.alpha-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--text-light);
+}
+
+.alpha-tab.all {
+    width: auto;
+    padding: 0 12px;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+.alpha-tab.all:not(.active) {
+    background: transparent;
+    color: var(--text-medium);
+    border-color: var(--border);
+}
+
+/* Search */
+.gothras-search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: auto;
+    margin-top: 0%;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 14px;
+    background: var(--bg-white);
+    width: 280px;
+    min-width: 280px;
+
+    transition: var(--transition-fast);
+}
+
+.gothras-search:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(122,31,31,0.08);
+}
+
+.gothras-search input {
+    border: none;
+    outline: none;
+    font-size: var(--text-sm);
+    color: var(--text-dark);
+    background: transparent;
+    flex: 1;
+    font-family: var(--font-body);
+}
+
+.gothras-search-btn {
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: var(--text-base);
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.gothras-search-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* ── GOTHRAS SECTION ── */
+.gothras-section {
+    background: var(--bg-main);
+    padding: var(--space-12) 0 var(--space-20);
+}
+
+.gothras-count {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-8);
+    text-align: center;
+}
+
+/* ── GOTHRAS GRID ── */
+.gothras-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-5);
+}
+
+/* ── GOTHRA CARD ── */
+.gothra-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6) var(--space-5);
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.gothra-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: var(--transition-fast);
+}
+
+.gothra-card:hover::before {
+    transform: scaleX(1);
+}
+
+.gothra-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary);
+}
+
+.gothra-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--bg-main);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+.gothra-card:hover .gothra-icon-wrap {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.gothra-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--space-2);
+}
+
+.gothra-letter-badge {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--bg-dark);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: var(--space-2);
+}
+
+.gothra-desc {
+    font-size: var(--text-sm);
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 40px;
+}
+
+.gothra-view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    padding: 0;
+}
+
+.gothra-view-link:hover {
+    color: var(--secondary);
+    gap: var(--space-2);
+}
+
+/* ── EMPTY STATE ── */
+.gothras-empty {
+    text-align: center;
+    padding: var(--space-20);
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+}
+
+.gothras-empty-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+/* ── GOTHRA DETAIL MODAL ── */
+.gothra-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+.gothra-modal {
+    background: var(--bg-white);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: modalIn 0.3s ease;
+}
+
+.gothra-modal-header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    padding: var(--space-8);
+    text-align: center;
+    position: relative;
+}
+
+.gothra-modal-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: var(--space-3);
+}
+
+.gothra-modal-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: var(--space-2);
+}
+
+.gothra-modal-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--bg-dark);
+    padding: 4px 16px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 700;
+}
+
+.gothra-modal-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: var(--text-base);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.gothra-modal-close:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.gothra-modal-body {
+    padding: var(--space-8);
+}
+
+.gothra-modal-desc {
+    font-size: var(--text-base);
+    color: var(--text-medium);
+    line-height: 1.9;
+    margin-bottom: var(--space-6);
+    text-align: center;
+}
+
+.gothra-modal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    background: var(--bg-main);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+}
+
+.gothra-modal-info-item {
+    text-align: center;
+}
+
+.gothra-modal-info-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-1);
+}
+
+.gothra-modal-info-value {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--primary);
+    font-family: var(--font-heading);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+    .gothras-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .gothras-grid { grid-template-columns: repeat(3, 1fr); }
+    .gothras-filters-inner { flex-direction: column; align-items: flex-start; }
+    .gothras-search { min-width: unset; width: 100%; }
+}
+
+@media (max-width: 600px) {
+    .gothras-grid { grid-template-columns: repeat(2, 1fr); }
+    .alpha-tab { width: 28px; height: 28px; font-size: 11px; }
+    .gothra-modal { max-height: 90vh; overflow-y: auto; }
+    .gothra-modal-info { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 380px) {
+    .gothras-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 992px) {
+
+    .gothras-filters-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gothras-search {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .gothras-alpha-tabs {
+        justify-content: center;
+    }
+
+}

@@ -1,0 +1,669 @@
+/* ─────────────────────────────────────────
+   NAVBAR STYLES — Royal Heritage Design
+───────────────────────────────────────── */
+
+/* ── TOP BAR ── */
+.topbar {
+    background: var(--primary-dark);
+    border-bottom: 1px solid rgba(200, 164, 77, 0.3);
+    padding: var(--space-2) 0;
+}
+
+.topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: rgba(248, 243, 231, 0.85);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.topbar-item:hover {
+    color: var(--secondary);
+}
+
+.topbar-item-icon {
+    color: var(--secondary);
+    font-size: var(--text-base);
+}
+
+.topbar-divider {
+    color: var(--secondary);
+    opacity: 0.5;
+    font-size: var(--text-xs);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.topbar-follow {
+    font-size: var(--text-sm);
+    color: rgba(248, 243, 231, 0.7);
+    margin-right: var(--space-2);
+}
+
+.topbar-social {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.topbar-social-link {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(200, 164, 77, 0.15);
+    border: 1px solid rgba(200, 164, 77, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    transition: var(--transition-fast);
+}
+
+.topbar-social-link:hover {
+    background: var(--secondary);
+    color: var(--bg-dark);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* ── MAIN NAVBAR ── */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--primary);
+    border-bottom: 3px solid var(--secondary);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-lg);
+}
+
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* max-width: var(--container); */
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    height: var(--navbar-height);
+}
+
+/* ── LOGO ── */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.navbar-logo-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--secondary);
+}
+
+.navbar-logo-placeholder {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+    background: rgba(200, 164, 77, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--secondary);
+    flex-shrink: 0;
+}
+
+.navbar-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-logo-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.navbar-logo-subtitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    color: var(--secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.navbar-logo-tagline {
+    font-size: 10px;
+    color: rgba(248, 243, 231, 0.6);
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* ── NAV LINKS ── */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+}
+
+.navbar-links > li {
+    position: relative;
+}
+
+.navbar-links > li > a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-3) var(--space-3);
+    color: rgba(248, 243, 231, 0.9);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    position: relative;
+    white-space: nowrap;
+}
+
+.navbar-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: var(--transition-fast);
+    border-radius: var(--radius-full);
+}
+
+.navbar-links > li > a:hover,
+.navbar-links > li > a.active {
+    color: var(--secondary);
+}
+
+.navbar-links > li > a:hover::after,
+.navbar-links > li > a.active::after {
+    width: 70%;
+}
+
+/* ── DROPDOWN ── */
+.navbar-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 200px;
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--secondary);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: var(--transition-fast);
+    z-index: 100;
+    list-style: none;
+    padding: var(--space-2) 0;
+}
+
+.navbar-dropdown.open,
+.navbar-links > li:hover .navbar-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navbar-dropdown li a {
+    display: block;
+    padding: var(--space-3) var(--space-5);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.navbar-dropdown li a:hover {
+    background: var(--bg-main);
+    color: var(--primary);
+    border-left-color: var(--secondary);
+    padding-left: calc(var(--space-5) + 4px);
+}
+
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0 var(--space-2);
+    color: rgba(248, 243, 231, 0.9);
+    cursor: pointer;
+    font-size: inherit;
+    line-height: 1;
+    transition: var(--transition-fast);
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-links > li:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus-visible {
+    color: var(--secondary);
+}
+
+/* ── NAV ACTIONS ── */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+}
+
+.navbar-actions .btn {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* ── HAMBURGER ── */
+.navbar-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: var(--space-2);
+    background: none;
+    border: none;
+}
+
+.navbar-hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--text-light);
+    border-radius: var(--radius-full);
+    transition: var(--transition-fast);
+}
+
+.navbar-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── MOBILE MENU ── */
+.navbar-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-dark);
+    flex-direction: column;
+    padding: var(--space-6);
+    overflow-y: auto;
+    z-index: 998;
+    padding-top: calc(var(--navbar-height) + 60px);
+}
+
+.navbar-mobile.open {
+    display: flex;
+}
+
+.navbar-mobile-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-8);
+}
+
+.navbar-mobile-links a {
+    display: block;
+    padding: var(--space-4);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(200, 164, 77, 0.15);
+    transition: var(--transition-fast);
+}
+
+.navbar-mobile-links a:hover,
+.navbar-mobile-links a.active {
+    color: var(--secondary);
+    padding-left: var(--space-6);
+}
+
+/* Mobile dropdown */
+.navbar-mobile-sub {
+    list-style: none;
+    padding-left: var(--space-4);
+}
+
+.navbar-mobile-sub a {
+    font-size: var(--text-sm) !important;
+    color: rgba(248, 243, 231, 0.7) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    border-bottom-color: rgba(200, 164, 77, 0.08) !important;
+}
+
+.navbar-mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: auto;
+}
+
+.navbar-mobile-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4);
+    font-size: var(--text-base);
+}
+
+/* ── RESPONSIVE ── */
+/* =====================================
+   EXTRA LARGE SCREENS
+===================================== */
+
+@media (min-width: 1600px) {
+
+    .navbar-inner {
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    .navbar-logo-img,
+    .navbar-logo-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+
+    .navbar-logo-title {
+        font-size: 1.3rem;
+    }
+
+    .navbar-links > li > a {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+}
+
+/* =====================================
+   LARGE LAPTOPS
+===================================== */
+
+@media (max-width: 1400px) {
+
+    .navbar-logo-title {
+        font-size: 1rem;
+    }
+
+    .navbar-links > li > a {
+        font-size: 12px;
+        padding: 12px 10px;
+    }
+
+    .navbar-actions .btn {
+        padding: 8px 14px;
+    }
+}
+
+/* =====================================
+   LAPTOPS
+===================================== */
+
+@media (max-width: 1200px) {
+
+    .navbar-inner {
+        padding: 0 20px;
+    }
+
+    .navbar-logo-img,
+    .navbar-logo-placeholder {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navbar-logo-title {
+        font-size: 0.95rem;
+    }
+
+    .navbar-logo-tagline {
+        display: none;
+    }
+
+    .navbar-links > li > a {
+        font-size: 11px;
+        padding: 12px 8px;
+    }
+}
+
+/* =====================================
+   TABLETS
+===================================== */
+
+@media (max-width: 992px) {
+
+    .navbar-links,
+    .navbar-actions {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        display: flex;
+    }
+
+    .topbar-left {
+        gap: 12px;
+    }
+
+    .topbar-item {
+        font-size: 12px;
+    }
+
+    .topbar-follow {
+        display: none;
+    }
+
+    .navbar-logo-title {
+        font-size: 15px;
+    }
+
+    .navbar-logo-subtitle {
+        font-size: 11px;
+    }
+}
+
+/* =====================================
+   MOBILE DEVICES
+===================================== */
+
+@media (max-width: 768px) {
+
+    .topbar {
+        display: none;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+    }
+
+    .navbar-inner {
+        height: 75px;
+        padding: 0 16px;
+    }
+
+    .navbar-logo-img,
+    .navbar-logo-placeholder {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-logo-title {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .navbar-logo-subtitle {
+        font-size: 10px;
+    }
+
+    .navbar-logo-tagline {
+        display: none;
+    }
+
+    .navbar-mobile {
+        padding-top: 90px;
+    }
+
+    .navbar-mobile-links a {
+        font-size: 15px;
+        padding: 14px;
+    }
+
+    .navbar-mobile-actions {
+        margin-top: 30px;
+    }
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 576px) {
+
+    .navbar-inner {
+        padding: 0 12px;
+    }
+
+    .navbar-logo {
+        gap: 10px;
+    }
+
+    .navbar-logo-img,
+    .navbar-logo-placeholder {
+        width: 45px;
+        height: 45px;
+    }
+
+    .navbar-logo-title {
+        font-size: 13px;
+    }
+
+    .navbar-logo-subtitle {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+
+    .navbar-hamburger span {
+        width: 22px;
+    }
+
+    .navbar-mobile-links a {
+        font-size: 14px;
+    }
+}
+
+/* =====================================
+   VERY SMALL PHONES
+===================================== */
+
+@media (max-width: 380px) {
+
+    .navbar-inner {
+        padding: 0 10px;
+    }
+
+    .navbar-logo-img,
+    .navbar-logo-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-logo-title {
+        font-size: 12px;
+    }
+
+    .navbar-logo-subtitle {
+        font-size: 8px;
+    }
+
+    .navbar-mobile {
+        padding: 80px 15px 20px;
+    }
+
+    .navbar-mobile-links a {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
