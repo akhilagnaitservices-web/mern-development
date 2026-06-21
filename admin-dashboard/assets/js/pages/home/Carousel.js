@@ -215,11 +215,7 @@ bannerTable = new DataTable(
     "#dataTable"
 );
 
-await loadBanners();
 
-bannerTable = new DataTable(
-    "#dataTable"
-);
 
     }
 
@@ -250,12 +246,12 @@ async function editBanner(id) {
         document.querySelector(
             '[name="banner_title"]'
         ).value =
-        banner.banner_title;
+        banner.banner_title || "";
 
         document.querySelector(
             '[name="banner_subtitle"]'
         ).value =
-        banner.banner_subtitle;
+        banner.banner_subtitle || "";
 
         document.querySelector(
             '[name="button1_name"]'
@@ -266,6 +262,31 @@ async function editBanner(id) {
             '[name="button1_link"]'
         ).value =
         banner.button1_link || "";
+
+                document.querySelector(
+            '[name="button2_name"]'
+        ).value =
+        banner.button2_name || "";
+
+        document.querySelector(
+            '[name="button2_link"]'
+        ).value =
+        banner.button2_link || "";
+
+
+                document.querySelector(
+            '[name="button3_name"]'
+        ).value =
+        banner.button3_name || "";
+
+        document.querySelector(
+            '[name="button3_link"]'
+        ).value =
+        banner.button3_link || "";
+
+
+
+
 
         document.querySelector(
             '[name="status"]'
@@ -382,25 +403,35 @@ async function viewBanner(id) {
 
                             </td>
                         </tr>
+<tr>
+    <th>Button 1</th>
+    <td>${banner.button1_name || "-"}</td>
+</tr>
 
-                        <tr>
-                            <th>
-                                Button 1
-                            </th>
-                            <td>
-                                ${banner.button1_name || "-"}
-                            </td>
-                        </tr>
+<tr>
+    <th>Button 1 Link</th>
+    <td>${banner.button1_link || "-"}</td>
+</tr>
 
-                        <tr>
-                            <th>
-                                Link
-                            </th>
-                            <td>
-                                ${banner.button1_link || "-"}
-                            </td>
-                        </tr>
+<tr>
+    <th>Button 2</th>
+    <td>${banner.button2_name || "-"}</td>
+</tr>
 
+<tr>
+    <th>Button 2 Link</th>
+    <td>${banner.button2_link || "-"}</td>
+</tr>
+
+<tr>
+    <th>Button 3</th>
+    <td>${banner.button3_name || "-"}</td>
+</tr>
+
+<tr>
+    <th>Button 3 Link</th>
+    <td>${banner.button3_link || "-"}</td>
+</tr>
                     </table>
 
                 </div>

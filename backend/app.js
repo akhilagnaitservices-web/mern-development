@@ -24,6 +24,7 @@ import contactInformationRoutes from "./routes/contact/contactInformationRoutes.
 import contactMessageRoutes from "./routes/contact/contactMessageRoutes.js";
 import newsCategoryRoutes from "./routes/news/newsCategoryRoutes.js";
 import newsRoutes from "./routes/news/newsRoutes.js";
+import headerRoutes from "./routes/header/headerRoutes.js"
 const app = express();
 
 
@@ -58,5 +59,5 @@ app.use("/api/contact-information", contactInformationRoutes);
 app.use("/api/contact-messages", contactMessageRoutes);
 app.use("/api/news-categories", newsCategoryRoutes);
 app.use("/api/news", newsRoutes);
-
+app.use("/api/header",headerRoutes)
 export default app;
