@@ -1,8 +1,7 @@
 import db from "../../config/db.js";
 
-// ─────────────────────────────────────────────
-// SITE HEADER
-// ─────────────────────────────────────────────
+import createSlug from "../../helpers/slugify.js";
+import { getImageUrl } from "../../helpers/fileHelper.js";
 
 // GET /api/header
 const getHeader = async (req, res) => {
@@ -19,14 +18,18 @@ const getHeader = async (req, res) => {
         }
 
         // Transform file paths to full URLs
-        const headerData = rows[0];
-        if (headerData.logo) {
-            headerData.logo = `/uploads/${headerData.logo}`;
-        }
-        if (headerData.footer_logo) {
-            headerData.footer_logo = `/uploads/${headerData.footer_logo}`;
-        }
+const headerData = {
+    ...rows[0]
+};
 
+headerData.logo = getImageUrl(
+    "header",
+    headerData.logo);
+
+headerData.footer_logo = getImageUrl(
+    "header",
+    headerData.footer_logo
+);
         return res.status(200).json({
             success: true,
             message: "Header fetched successfully",
@@ -61,13 +64,13 @@ const createHeader = async (req, res) => {
         // Handle uploaded files (with .any(), req.files is an array)
         const logoFile = req.files?.find(f => f.fieldname === 'logo');
         const footerLogoFile = req.files?.find(f => f.fieldname === 'footer_logo');
-        const logo = logoFile
-            ? `header/${logoFile.filename}`
-            : null;
+const logo = logoFile
+    ? logoFile.filename
+    : null;
 
-        const footer_logo = footerLogoFile
-            ? `header/${footerLogoFile.filename}`
-            : null;
+const footer_logo = footerLogoFile
+    ? footerLogoFile.filename
+    : null;
 
         if (!name) {
             return res.status(400).json({
@@ -146,16 +149,13 @@ const updateHeader = async (req, res) => {
         // Use new file if uploaded, otherwise keep old value (with .any(), req.files is an array)
         const logoFile = req.files?.find(f => f.fieldname === 'logo');
         const footerLogoFile = req.files?.find(f => f.fieldname === 'footer_logo');
-        const logo = logoFile
-            ? `header/${logoFile.filename}`
-            : existing[0].logo || null;
+const logo = logoFile
+    ? logoFile.filename
+    : existing[0].logo || null;
 
-        const footer_logo = footerLogoFile
-            ? `header/${footerLogoFile.filename}`
-            : existing[0].footer_logo || null;
-                console.log("logo:", logo);
-                console.log("footer_logo:", footer_logo);
-
+const footer_logo = footerLogoFile
+    ? footerLogoFile.filename
+    : existing[0].footer_logo || null;
         await db.query(
             `UPDATE site_header SET
             name = ?, logo = ?, footer_logo = ?, phone_number = ?, email = ?,
@@ -268,7 +268,10 @@ const createSocialMediaLink = async (req, res) => {
 
         // Extract platform_icon file from req.files array
         const iconFile = req.files?.find(f => f.fieldname === 'platform_icon');
-        const platform_icon = iconFile ? `social-media/${iconFile.filename}` : null;
+       const platform_icon =
+    iconFile
+        ? iconFile.filename
+        : null;
 
         if (!platform_name) {
             return res.status(400).json({
@@ -326,8 +329,10 @@ const updateSocialMediaLink = async (req, res) => {
 
         // Extract platform_icon file from req.files array
         const iconFile = req.files?.find(f => f.fieldname === 'platform_icon');
-        const platform_icon =
-            iconFile ? `social-media/${iconFile.filename}` : existing[0].platform_icon || null;
+       const platform_icon =
+    iconFile
+        ? iconFile.filename
+        : existing[0].platform_icon || null;
 
         await db.query(
             `UPDATE social_media_links SET

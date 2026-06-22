@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Chat from './pages/Chat/Chat'
 import ScrollToTop from "./components/ScrollToTop";
 import News from './pages/News/News'
+
 function App() {
   return (
     <BrowserRouter>
