@@ -1,7 +1,5 @@
     import { useState, useEffect, useCallback } from 'react'
     import { Link } from 'react-router-dom'
-    import { getImageUrl } from "../../utils/imageHelper";
-
     const HeroBanner = ({ banners }) => {
         const [current, setCurrent] = useState(0)
 
@@ -38,7 +36,7 @@
                     >
                         {banner.banner_image ? (
                         <img
-                                src={getImageUrl(banner.banner_image)}
+                                src={banner.banner_image}
                                 alt={banner.banner_title}
                                 className="hero-img"
                             />

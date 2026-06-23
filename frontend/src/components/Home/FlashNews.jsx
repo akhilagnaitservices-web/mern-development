@@ -32,7 +32,7 @@ const FlashNews = ({ news }) => {
 
                                     <Link
                                         key={index}
-                                        to={`/flash-news/${item.id}`}
+                                        to={`/news`}
                                         className="flash-news-item"
                                     >
                                         {item.news_title}

@@ -6,21 +6,21 @@ import '../../styles/footer.css'
 // Social platform icon abbreviations
 const getPlatformIcon = (name) => {
     const icons = {
-        facebook:  'Fb',
+        facebook: 'Fb',
         instagram: 'In',
-        youtube:   'Yt',
-        twitter:   'Tw',
-        linkedin:  'Li',
-        whatsapp:  'Wa',
+        youtube: 'Yt',
+        twitter: 'Tw',
+        linkedin: 'Li',
+        whatsapp: 'Wa',
     }
     return icons[name?.toLowerCase()] || name?.charAt(0).toUpperCase()
 }
 
 const Footer = () => {
-    const [header,       setHeader]       = useState(null)
-    const [socialLinks,  setSocialLinks]  = useState([])
-    const [footerLinks,  setFooterLinks]  = useState([])
-    const [loading,      setLoading]      = useState(true)
+    const [header, setHeader] = useState(null)
+    const [socialLinks, setSocialLinks] = useState([])
+    const [footerLinks, setFooterLinks] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,9 +32,9 @@ const Footer = () => {
                     getFooterLinks(),
                 ])
 
-                if (headerRes.success)  setHeader(headerRes.data)
-                if (socialRes.success)  setSocialLinks(socialRes.data)
-                if (linksRes.success)   setFooterLinks(linksRes.data)
+                if (headerRes.success) setHeader(headerRes.data)
+                if (socialRes.success) setSocialLinks(socialRes.data)
+                if (linksRes.success) setFooterLinks(linksRes.data)
 
             } catch (error) {
                 console.error('Footer data fetch error:', error)
@@ -52,15 +52,6 @@ const Footer = () => {
                 <div className="footer-loading">Loading...</div>
             </footer>
         )
-    }
-
-    const BASE_URL = 'http://localhost:5000'
-
-    const getUploadedUrl = (filePath) => {
-        if (!filePath) return null
-        if (filePath.startsWith('http')) return filePath
-        if (filePath.startsWith('/')) return `${BASE_URL}${filePath}`
-        return `${BASE_URL}/uploads/${filePath}`
     }
 
     // Fallback contact values when backend header is empty
@@ -83,7 +74,7 @@ const Footer = () => {
                         <Link to="/" className="footer-logo">
                             {header?.footer_logo ? (
                                 <img
-                                    src={getUploadedUrl(header.footer_logo)}
+                                    src={header.footer_logo}
                                     alt={header?.name}
                                     className="footer-logo-img"
                                 />
@@ -99,6 +90,7 @@ const Footer = () => {
                         </Link>
 
                         <p className="footer-tagline">
+                            console.log(header?.description)
                             {header?.description || 'Unity | Service | Culture | Progress'}
                         </p>
 
@@ -141,7 +133,7 @@ const Footer = () => {
                                 ))
                             ) : (
                                 // Fallback static links
-                                ['Home','About Us','Events','Gallery','Membership','Contact'].map(item => (
+                                ['Home', 'About Us', 'Events', 'Gallery', 'Membership', 'Contact'].map(item => (
                                     <li key={item}>
                                         <Link to={`/${item.toLowerCase().replace(' ', '-')}`}>
                                             {item}

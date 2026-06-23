@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { formatDate } from './HomeHelpers'
- import { getImageUrl } from "../../utils/imageHelper";
-const UpcomingEvents = ({ events }) => {
+ const UpcomingEvents = ({ events }) => {
     if (!events.length) return null
 
     const displayed = events.slice(0, 3)
@@ -18,7 +17,7 @@ const UpcomingEvents = ({ events }) => {
                                    <div className="event-img-wrap">
                                        {event.event_image ? (
                                            <img
-                                               src={getImageUrl(event.event_image)}
+                                               src={event.event_image}
                                                alt={event.event_title}
                                                className="event-img"
                                            />

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getLeadershipMembers } from '../../services/aboutService'
 
-import { getImageUrl } from '../../utils/imageHelper'
 const Leadership = () => {
     const [leaders, setLeaders] = useState([])
     const [loading, setLoading] = useState(true)
@@ -40,7 +39,7 @@ const Leadership = () => {
                     <div className="leadership-president-photo">
                         {president.profile_image ? (
                             <img
-                                src={getImageUrl(president.profile_image)}
+                                src={president.profile_image}
                                 alt={president.full_name}
                                 className="leadership-president-img"
                             />
@@ -93,7 +92,7 @@ const Leadership = () => {
                                 <div key={member.id} className="leader-card">
                                     {member.profile_image ? (
                                         <img
-                                            src={getImageUrl(member.profile_image)}
+                                            src={member.profile_image}
                                             alt={member.full_name}
                                             className="leader-photo"
                                         />

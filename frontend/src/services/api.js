@@ -5,8 +5,14 @@ import axios from 'axios';
 // All API calls use this instance
 // Change BASE_URL here to switch environments
 // ─────────────────────────────────────────
+let currentBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// If Vite wasn't restarted, it might still have the old IP in memory. Force it to localhost.
+if (currentBaseUrl.includes('145.223.18.188')) {
+    currentBaseUrl = 'http://localhost:5000/api';
+}
+
 const API = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: currentBaseUrl,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { getImageUrl } from "../../utils/imageHelper";
-
 const formatDate = (dateStr) => {
 
     if (!dateStr) {
@@ -82,9 +80,9 @@ const PastEvents = ({ events }) => {
                                     {event.event_image ? (
 
                                         <img
-                                            src={getImageUrl(
+                                            src={
                                                 event.event_image
-                                            )}
+                                            }
                                             alt={event.event_title}
                                             className="event-page-img"
                                         />

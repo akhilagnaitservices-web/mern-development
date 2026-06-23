@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import "../../styles/pageBanner.css";
-import { getImageUrl } from "../../utils/imageHelper";
-    
 const PageBanner = ({ page }) => {
 
     const [banner, setBanner] = useState(null);
@@ -33,7 +31,7 @@ const PageBanner = ({ page }) => {
             className="page-banner"
             style={{
                 backgroundImage: banner?.banner_image
-                    ? `url(${getImageUrl(banner.banner_image)})`
+                    ? `url(${banner.banner_image})`
                     : "none"
             }}
         >

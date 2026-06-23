@@ -2,32 +2,6 @@ import { Link } from "react-router-dom";
 
 const Logo = ({ header, closeMenu }) => {
 
-    const BASE_URL = "http://localhost:5000";
-
-    const getUploadedUrl = (filePath) => {
-    if (!filePath) return null;
-
-    // Fix API returning undefined/uploads/...
-    if (filePath.startsWith("undefined")) {
-        return filePath.replace(
-            "undefined",
-            BASE_URL
-        );
-    }
-
-    // Already full URL
-    if (filePath.startsWith("http")) {
-        return filePath;
-    }
-
-    // /uploads/...
-    if (filePath.startsWith("/uploads")) {
-        return `${BASE_URL}${filePath}`;
-    }
-
-    // site-header/logo.png
-    return `${BASE_URL}/uploads/${filePath}`;
-};
     return (
         <Link
             to="/"
@@ -37,7 +11,7 @@ const Logo = ({ header, closeMenu }) => {
             {header?.logo ? (
                 <>
                     <img
-                        src={getUploadedUrl(header.logo)}
+                        src={header.logo}
                         alt={header?.name || "VRKSS"}
                         className="navbar-logo-img"
                         onError={(e) => {

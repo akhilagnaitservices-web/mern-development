@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
- import { getImageUrl } from "../../utils/imageHelper";
 const AboutSamiti = ({ data }) => {
 
     if (!data) return null;
-console.log(data.about_image);
+    console.log(data.about_image);
     return (
 
         <section className="about-samiti">
@@ -17,7 +16,7 @@ console.log(data.about_image);
                         {data.about_image ? (
 
                             <img
-                                src={getImageUrl(data.about_image)}
+                                src={data.about_image}
                                 alt={data.about_title}
                                 className="about-samiti-img"
                             />

@@ -25,71 +25,34 @@ SITE HEADER
 
 router.get("/", getHeader);
 
-router.post(
-"/",
-upload("header").any(),
-createHeader
-);
+router.post("/",upload("header").any(),createHeader);
 
-router.put(
-"/:id",
-upload("header").any(),
-updateHeader
-);
+router.put("/:id",upload("header").any(),updateHeader);
 
-router.delete(
-"/:id",
-deleteHeader
-);
+router.delete("/:id",deleteHeader);
 
 /* =====================================================
 SOCIAL MEDIA LINKS
 ===================================================== */
 
-router.get(
-"/social-media",
-getSocialMediaLinks
-);
+router.get("/social-media",getSocialMediaLinks);
 
-router.post(
-"/social-media",
-upload("social-media").any(),
-createSocialMediaLink
-);
+router.post("/social-media",createSocialMediaLink);
 
-router.put(
-"/social-media/:id",
-upload("social-media").any(),
-updateSocialMediaLink
-);
+router.put("/social-media/:id",updateSocialMediaLink);
 
-router.delete(
-"/social-media/:id",
-deleteSocialMediaLink
-);
+router.delete("/social-media/:id",deleteSocialMediaLink);
 
 /* =====================================================
 FOOTER QUICK LINKS
 ===================================================== */
 
-router.get(
-"/footer-links",
-getFooterQuickLinks
-);
+router.get("/footer-links",getFooterQuickLinks);
 
-router.post(
-"/footer-links",
-createFooterQuickLink
-);
+router.post("/footer-links",createFooterQuickLink);
 
-router.put(
-"/footer-links/:id",
-updateFooterQuickLink
-);
+router.put("/footer-links/:id",updateFooterQuickLink);
 
-router.delete(
-"/footer-links/:id",
-deleteFooterQuickLink
-);
+router.delete("/footer-links/:id",deleteFooterQuickLink);
 
 export default router;

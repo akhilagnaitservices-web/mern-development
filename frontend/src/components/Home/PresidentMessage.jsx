@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
- import { getImageUrl } from "../../utils/imageHelper";
-const PresidentMessage = ({ data }) => {
+ const PresidentMessage = ({ data }) => {
     if (!data) return null
 
     return (
@@ -10,7 +9,7 @@ const PresidentMessage = ({ data }) => {
                     <div className="president-photo-wrap">
                         {data.president_photo ? (
                             <img
-                                src={getImageUrl(data.president_photo)}
+                                src={data.president_photo}
                                 alt={data.president_name}
                                 className="president-photo"
                             />
@@ -35,7 +34,7 @@ const PresidentMessage = ({ data }) => {
                         </p>
                         {data.button_name && (
                             <Link
-                                to={data.button_link || '/about'}
+                                to={data.button_link || '/membership'}
                                 className="btn btn-primary"
                             >
                                 {data.button_name}

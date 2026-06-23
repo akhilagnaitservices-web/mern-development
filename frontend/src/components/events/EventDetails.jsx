@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getImageUrl } from "../../utils/imageHelper";
 import {
     FaPhoneAlt,
     FaEnvelope,
@@ -151,7 +150,7 @@ const EventDetails = () => {
                         <div className="event-main-content">
 
                             <img
-                                src={getImageUrl(event.event_image)}
+                                src={event.event_image}
                                 alt={event.event_title}
                                 className="event-main-image"
                             />

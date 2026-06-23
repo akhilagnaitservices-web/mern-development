@@ -1,6 +1,4 @@
 import { FaImages, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
-import { getImageUrl } from "../../utils/imageHelper";
-
 const GalleryAlbums = ({
     albums,
     setSelectedAlbum
@@ -33,7 +31,7 @@ const GalleryAlbums = ({
                             <div className="gallery-album-image">
 
                                 <img
-                                    src={getImageUrl(album.album_cover_image)}
+                                    src={album.album_cover_image}
                                     alt={album.album_title}
                                 />
 

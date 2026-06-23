@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
-import { getImageUrl } from "../../utils/imageHelper";
-
 const formatDate = (dateStr) => {
     if (!dateStr) return { day: '--', month: '---', year: '----', full: '' }
     const d = new Date(dateStr)
     return {
-        day:   d.getDate().toString().padStart(2, '0'),
+        day: d.getDate().toString().padStart(2, '0'),
         month: d.toLocaleString('default', { month: 'short' }).toUpperCase(),
-        year:  d.getFullYear(),
-        full:  d.toLocaleDateString('en-IN', {
+        year: d.getFullYear(),
+        full: d.toLocaleDateString('en-IN', {
             weekday: 'long', year: 'numeric',
             month: 'long', day: 'numeric'
         }),
@@ -23,8 +21,9 @@ const EventCard = ({ event, onView }) => {
         <div className="event-page-card">
             <div className="event-page-img-wrap">
                 {event.event_image ? (
+                    console.log("EVENT IMAGE:", event.event_image),
                     <img
-                        src={getImageUrl(event.event_image)}
+                        src={event.event_image}
                         alt={event.event_title}
                         className="event-page-img"
                         loading="lazy"
@@ -123,7 +122,7 @@ const EventsGrid = ({ events, viewAllLabel }) => {
                 </button>
             </div>
 
-            
+
 
         </>
     )

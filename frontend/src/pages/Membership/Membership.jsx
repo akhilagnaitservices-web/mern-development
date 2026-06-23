@@ -15,8 +15,23 @@ import {
 const Membership = () => {
     return (
         <>
-            <PageBanner page="membership" />
+            {/* <PageBanner page="membership" /> */}
 
+            <div className="membership-banner">
+
+              <div className="membership-banner-content">
+
+                  <h1 className="membershipbanner">Membership Registration</h1>
+
+                  <p>
+                      Join Vadiyaraju Kshatriya Seva Samiti and become
+                      a part of our growing community dedicated to
+                      culture, unity, service, and future generations.
+                  </p>
+
+              </div>
+
+          </div>
             <section className="membership-page">
 
                 <div className="container">
@@ -210,14 +225,6 @@ const Membership = () => {
                                 <div className="upload-box">
                                     <label>Upload Photo</label>
                                     <input type="file" />
-                                </div>
-
-                                <div className="checkbox-row">
-                                    <input type="checkbox" />
-                                    <span>
-                                        I agree to Terms &
-                                        Conditions
-                                    </span>
                                 </div>
 
                                 <button

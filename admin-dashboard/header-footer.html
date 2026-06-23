@@ -335,20 +335,7 @@
             <a href="add-blog.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add Blog</a>
           </li>
         </ul>
-      </li>   
-      
-       <li class="dropdown">
-        <a href="javascript:void(0)">
-          <i class="ri-news-line text-xl me-14 d-flex w-auto"></i>
-          <span>Header-Footer</span>
-        </a>
-        <ul class="sidebar-submenu">
-          <li>
-            <a href="header-footer.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Header and footer</a>
-          </li>
-        
-        </ul>
-      </li>
+      </li>      
 
       <li class="sidebar-menu-group-title"> Users</li>
       <li class="dropdown">
@@ -860,271 +847,791 @@
 
 <!-- main -->
 
-
 <div class="dashboard-main-body">
-
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 
     <div>
 
         <h6 class="fw-semibold mb-0">
-            Event Gallery Management
+            Header & Footer Management
         </h6>
 
         <small class="text-muted">
-            Manage Event Gallery Images
+            Manage Header Information, Social Media Links and Footer Quick Links
         </small>
 
     </div>
 
-    <button
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#eventGalleryModal">
-
-        <i class="ri-add-line"></i>
-        Add Gallery Image
-
-    </button>
-
 </div>
 
 
 
-<div class="card">
-
-<div class="card-body">
-
-<table
-    class="table bordered-table"
-    id="dataTable">
-
-<thead>
-
-<tr>
-
-<th>ID</th>
-
-<th>Image</th>
-
-<th>Event</th>
-
-<th>Image Title</th>
-
-<th>Sort Order</th>
-
-<th>Status</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody id="eventGalleryTableBody">
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-
-<div
-class="modal fade"
-id="eventGalleryModal"
-tabindex="-1">
-
-<div class="modal-dialog modal-lg">
-
-<div class="modal-content">
-
-<div class="modal-header">
-
-<h5 class="modal-title">
-Add Gallery Image
-</h5>
-
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
-
-</div>
-
-<form
-id="eventGalleryForm"
-enctype="multipart/form-data">
-
-<div class="modal-body">
+<!-- =======================================
+HEADER INFORMATION
+======================================= -->
 
 <div class="row">
 
-<div class="col-md-6 mb-3">
+    <div class="col-12">
 
-<label>
-Event
-</label>
+        <div class="card shadow-none border-0">
 
-<select
-id="event_id"
-name="event_id"
-class="form-select"
-required>
+            <div class="card-header">
 
-<option value="">
-Select Event
-</option>
+                <h5 class="card-title mb-0">
+                    Header Information
+                </h5>
 
-</select>
+            </div>
+
+            <div class="card-body">
+
+                <form
+                    id="headerForm"
+                    enctype="multipart/form-data">
+
+                    <div class="row">
+
+                        <!-- NAME -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Organization Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                        <!-- PHONE -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="phone_number"
+                                name="phone_number"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- EMAIL -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- WEBSITE -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Website
+                            </label>
+
+                            <input
+                                type="text"
+                                id="website"
+                                name="website"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- LOCATION -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- GOOGLE LOCATION -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Google Map URL
+                            </label>
+
+                            <input
+                                type="text"
+                                id="google_location"
+                                name="google_location"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- LOGO -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Header Logo
+                            </label>
+
+                            <input
+                                type="file"
+                                id="logo"
+                                name="logo"
+                                class="form-control"
+                                accept="image/*">
+
+                        </div>
+
+                        <!-- LOGO PREVIEW -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Logo Preview
+                            </label>
+
+                            <div>
+
+                                <img
+                                    id="logo_preview"
+                                    src=""
+                                    class="rounded border"
+                                    style="
+                                        width:120px;
+                                        height:90px;
+                                        object-fit:contain;
+                                    ">
+
+                            </div>
+
+                        </div>
+
+                        <!-- FOOTER LOGO -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Footer Logo
+                            </label>
+
+                            <input
+                                type="file"
+                                id="footer_logo"
+                                name="footer_logo"
+                                class="form-control"
+                                accept="image/*">
+
+                        </div>
+
+                        <!-- FOOTER LOGO PREVIEW -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Footer Logo Preview
+                            </label>
+
+                            <div>
+
+                                <img
+                                    id="footer_logo_preview"
+                                    src=""
+                                    class="rounded border"
+                                    style="
+                                        width:120px;
+                                        height:90px;
+                                        object-fit:contain;
+                                    ">
+
+                            </div>
+
+                        </div>
+
+                        <!-- ADDRESS -->
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                name="address"
+                                rows="3"
+                                class="form-control"></textarea>
+
+                        </div>
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="4"
+                                class="form-control"></textarea>
+
+                        </div>
+
+                        <!-- COPYRIGHT -->
+
+                        <div class="col-md-8 mb-3">
+
+                            <label class="form-label">
+                                Copyright Text
+                            </label>
+
+                            <input
+                                type="text"
+                                id="copyright_text"
+                                name="copyright_text"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- STATUS -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Status
+                            </label>
+
+                            <select
+                                id="status"
+                                name="status"
+                                class="form-select">
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="text-end">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Save Header Information
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="col-md-6 mb-3">
+<!-- =======================================
+SOCIAL MEDIA LINKS
+======================================= -->
 
-<label>
-Image Title
-</label>
+<div class="row mt-4">
 
-<input
-type="text"
-id="image_title"
-name="image_title"
-class="form-control">
+    <div class="col-12">
 
-</div>
+        <div class="card shadow-none border-0">
 
-<div class="col-md-12 mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
 
-<label>
-Gallery Image
-</label>
+                <h5 class="card-title mb-0">
+                    Social Media Links
+                </h5>
 
-<input
-type="file"
-id="image_path"
-name="image_path"
-class="form-control"
-accept="image/*">
+                <button
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#socialMediaModal">
 
-</div>
+                    <i class="ri-add-line"></i>
+                    Add Social Media
 
-<div class="col-md-6 mb-3">
+                </button>
 
-<label>
-Sort Order
-</label>
+            </div>
 
-<input
-type="number"
-id="sort_order"
-name="sort_order"
-value="0"
-class="form-control">
+            <div class="card-body">
 
-</div>
+                <table
+                    class="table bordered-table mb-0"
+                    id="socialMediaTable">
 
-<div class="col-md-6 mb-3">
+                    <thead>
 
-<label>
-Status
-</label>
+                        <tr>
 
-<select
-id="status"
-name="status"
-class="form-select">
+                            <th width="80">
+                                #
+                            </th>
 
-<option value="active">
-Active
-</option>
+                        
 
-<option value="inactive">
-Inactive
-</option>
+                            <th>
+                                Platform
+                            </th>
 
-</select>
+                            <th>
+                                URL
+                            </th>
 
-</div>
+                            <th width="120">
+                                Order
+                            </th>
 
-</div>
+                            <th width="120">
+                                Status
+                            </th>
 
-</div>
+                            <th width="150">
+                                Action
+                            </th>
 
-<div class="modal-footer">
+                        </tr>
 
-<button
-type="button"
-class="btn btn-secondary"
-data-bs-dismiss="modal">
+                    </thead>
 
-Cancel
+                    <tbody id="socialMediaTableBody">
 
-</button>
+                    </tbody>
 
-<button
-type="submit"
-class="btn btn-primary">
+                </table>
 
-Save Gallery Image
+            </div>
 
-</button>
+        </div>
 
-</div>
-
-</form>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
 
 
 <div
-class="modal fade"
-id="viewEventGalleryModal"
-tabindex="-1">
+    class="modal fade"
+    id="socialMediaModal"
+    tabindex="-1">
 
-<div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">
 
-<div class="modal-content">
+        <div class="modal-content">
 
-<div class="modal-header">
+            <div class="modal-header">
 
-<h5 class="modal-title">
-Gallery Details
-</h5>
+                <h5 class="modal-title">
+                    Add Social Media Link
+                </h5>
 
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal">
-</button>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <form id="socialMediaForm">
+
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Platform
+                            </label>
+
+                            <select
+                                id="platform_name"
+                                name="platform_name"
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Select Platform
+                                </option>
+
+                                <option value="facebook">
+                                    Facebook
+                                </option>
+
+                                <option value="instagram">
+                                    Instagram
+                                </option>
+
+                                <option value="youtube">
+                                    YouTube
+                                </option>
+
+                                <option value="linkedin">
+                                    LinkedIn
+                                </option>
+
+                                <option value="twitter">
+                                    Twitter / X
+                                </option>
+
+                                <option value="whatsapp">
+                                    WhatsApp
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Display Order
+                            </label>
+
+                            <input
+                                type="number"
+                                id="link_order"
+                                name="link_order"
+                                class="form-control"
+                                value="0">
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Platform URL
+                            </label>
+
+                            <input
+                                type="text"
+                                id="platform_link"
+                                name="platform_link"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Status
+                            </label>
+
+                            <select
+                                id="social_status"
+                                name="status"
+                                class="form-select">
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Save Social Media
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<!-- =======================================
+FOOTER QUICK LINKS
+======================================= -->
+
+<div class="row mt-4">
+
+    <div class="col-12">
+
+        <div class="card shadow-none border-0">
+
+            <div class="card-header d-flex justify-content-between align-items-center">
+
+                <h5 class="card-title mb-0">
+                    Footer Quick Links
+                </h5>
+
+                <button
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#footerLinkModal">
+
+                    <i class="ri-add-line"></i>
+                    Add Footer Link
+
+                </button>
+
+            </div>
+
+            <div class="card-body">
+
+                <table
+                    class="table bordered-table mb-0"
+                    id="footerLinksTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th width="80">
+                                #
+                            </th>
+
+                            <th>
+                                Link Name
+                            </th>
+
+                            <th>
+                                Link URL
+                            </th>
+
+                            <th width="120">
+                                Order
+                            </th>
+
+                            <th width="120">
+                                Status
+                            </th>
+
+                            <th width="150">
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="footerLinksTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 <div
-class="modal-body"
-id="viewEventGalleryContent">
+    class="modal fade"
+    id="footerLinkModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Add Footer Link
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <form id="footerLinkForm">
+
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <!-- LINK NAME -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Link Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="link_name"
+                                name="link_name"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                        <!-- DISPLAY ORDER -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Display Order
+                            </label>
+
+                            <input
+                                type="number"
+                                id="footer_link_order"
+                                name="link_order"
+                                class="form-control"
+                                value="0">
+
+                        </div>
+
+                        <!-- LINK URL -->
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Link URL
+                            </label>
+
+                            <input
+                                type="text"
+                                id="link_url"
+                                name="link_url"
+                                class="form-control"
+                                placeholder="/about-us"
+                                required>
+
+                        </div>
+
+                        <!-- STATUS -->
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label">
+                                Status
+                            </label>
+
+                            <select
+                                id="footer_status"
+                                name="status"
+                                class="form-select">
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="inactive">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Save Footer Link
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
 
 </main>
   
@@ -1162,8 +1669,8 @@ id="viewEventGalleryContent">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="assets/js/api/events/event-gallery-api.js"></script>
+<script src="assets/js/api/header-footer/header-footer-api.js"></script>
 
-<script src="assets/js/pages/events/event-gallery.js"></script>
+<script src="assets/js/pages/header-footer/header-footer.js"></script>
 </body>
 </html>

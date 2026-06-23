@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import NewsFilter from '../../components/news/NewsFilter'
 import NewsCard from '../../components/news/NewsCard'
 import NewsSidebar from '../../components/news/NewsSidebar'
@@ -26,6 +26,8 @@ const News = () => {
 
     const [currentPage, setCurrentPage] = useState(1)
 
+    const newsSectionRef = useRef(null)
+
     useEffect(() => {
 
         const params = {
@@ -48,25 +50,74 @@ const News = () => {
         ])
             .then(([newsRes, catRes]) => {
 
-                if (newsRes.data?.success)
-                    setNews(newsRes.data.data || [])
+                if (newsRes.data?.success) {
+
+                    const sorted = (newsRes.data.data || [])
+                        .slice()
+                        .sort((a, b) => {
+
+                            const orderA =
+                                a.display_order ?? Infinity
+
+                            const orderB =
+                                b.display_order ?? Infinity
+
+                            if (orderA !== orderB)
+                                return orderA - orderB
+
+                            return (
+                                new Date(b.news_date) -
+                                new Date(a.news_date)
+                            )
+
+                        })
+
+                    setNews(sorted)
+
+                }
 
                 if (catRes.data?.success)
-                    setCategories(catRes.data.data || [])
+                    setCategories(
+                        catRes.data.data || []
+                    )
 
             })
             .catch(err => {
-                console.error('News error:', err)
+
+                console.error(
+                    'News error:',
+                    err
+                )
+
             })
             .finally(() => {
+
                 setLoading(false)
+
             })
 
     }, [activeCategory, search])
 
     useEffect(() => {
+
         setCurrentPage(1)
+
     }, [activeCategory, search])
+
+    const handlePageChange = (page) => {
+
+        setCurrentPage(page)
+
+        setTimeout(() => {
+
+            newsSectionRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+
+        }, 100)
+
+    }
 
     const totalPages = Math.ceil(
         news.length / ITEMS_PER_PAGE
@@ -101,7 +152,7 @@ const News = () => {
 
                     <div className="news-layout-inner">
 
-                        <div>
+                        <div ref={newsSectionRef}>
 
                             {loading ? (
 
@@ -139,7 +190,9 @@ const News = () => {
                                             <button
                                                 disabled={currentPage === 1}
                                                 onClick={() =>
-                                                    setCurrentPage(prev => prev - 1)
+                                                    handlePageChange(
+                                                        currentPage - 1
+                                                    )
                                                 }
                                             >
                                                 Previous
@@ -157,7 +210,9 @@ const News = () => {
                                                                 : ''
                                                         }
                                                         onClick={() =>
-                                                            setCurrentPage(index + 1)
+                                                            handlePageChange(
+                                                                index + 1
+                                                            )
                                                         }
                                                     >
                                                         {index + 1}
@@ -171,7 +226,9 @@ const News = () => {
                                                     currentPage === totalPages
                                                 }
                                                 onClick={() =>
-                                                    setCurrentPage(prev => prev + 1)
+                                                    handlePageChange(
+                                                        currentPage + 1
+                                                    )
                                                 }
                                             >
                                                 Next

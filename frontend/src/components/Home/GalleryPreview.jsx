@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { getImageUrl } from "../../utils/imageHelper";
 const GalleryPreview = ({ gallery = [] }) => {
     const items = Array.isArray(gallery) ? gallery.slice(0, 7) : []
     const hasItems = items.length > 0
@@ -16,7 +15,7 @@ const GalleryPreview = ({ gallery = [] }) => {
                         {items.map(item => (
                             <div key={item.id} className="gallery-item">
                                 {item.gallery_image ? (
-                                    <img src={getImageUrl(item.gallery_image)} alt={item.image_title || ''} />
+                                    <img src={item.gallery_image} alt={item.image_title || ''} />
                                 ) : (
                                     <div className="gallery-item-placeholder">🖼️</div>
                                 )}

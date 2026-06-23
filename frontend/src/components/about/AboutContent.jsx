@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { getImageUrl } from "../../utils/imageHelper";
 const AboutContent = ({ about }) => {
 
     if (!about) return null
@@ -15,7 +14,7 @@ const AboutContent = ({ about }) => {
 
                         {about.about_image ? (
                             <img
-                                src={getImageUrl(about.about_image)}
+                                src={about.about_image}
                                 alt={about.about_title}
                                 className="who-we-are-img"
                             />

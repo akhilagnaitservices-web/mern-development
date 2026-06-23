@@ -1,6 +1,5 @@
 import db from "../../config/db.js";
 
-import createSlug from "../../helpers/slugify.js";
 import { getImageUrl } from "../../helpers/fileHelper.js";
 
 // GET /api/header
@@ -239,12 +238,7 @@ const getSocialMediaLinks = async (req, res) => {
         );
 
         // Transform file paths to full URLs
-        const linksData = rows.map(link => {
-            if (link.platform_icon) {
-                link.platform_icon = `/uploads/${link.platform_icon}`;
-            }
-            return link;
-        });
+        const linksData = rows
 
         return res.status(200).json({
             success: true,
@@ -261,106 +255,105 @@ const getSocialMediaLinks = async (req, res) => {
 };
 
 // POST /api/header/social-media
-const createSocialMediaLink = async (req, res) => {
+ const createSocialMediaLink = async (req, res) => {
+
     try {
-        const { platform_name, platform_link, link_order, status, created_by } =
-            req.body;
 
-        // Extract platform_icon file from req.files array
-        const iconFile = req.files?.find(f => f.fieldname === 'platform_icon');
-       const platform_icon =
-    iconFile
-        ? iconFile.filename
-        : null;
-
-        if (!platform_name) {
-            return res.status(400).json({
-                success: false,
-                message: "Platform name is required",
-            });
-        }
+        const {
+            platform_name,
+            platform_link,
+            link_order,
+            status,
+            created_by
+        } = req.body;
 
         const [result] = await db.query(
-            `INSERT INTO social_media_links
-            (platform_name, platform_icon, platform_link, link_order, status, created_by)
-            VALUES (?, ?, ?, ?, ?, ?)`,
+            `
+            INSERT INTO social_media_links
+            (
+                platform_name,
+                platform_link,
+                link_order,
+                status,
+                created_by
+            )
+            VALUES (?, ?, ?, ?, ?)
+            `,
             [
                 platform_name,
-                platform_icon,
                 platform_link || null,
                 link_order || 0,
                 status || "active",
-                created_by || null,
+                created_by || null
             ]
         );
 
         return res.status(201).json({
             success: true,
-            message: "Social media link created successfully",
-            data: { id: result.insertId },
+            message: "Social media link created successfully"
         });
+
     } catch (error) {
-        console.error("createSocialMediaLink error:", error);
+
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: error.message
         });
+
     }
+
 };
 
 // PUT /api/header/social-media/:id
-const updateSocialMediaLink = async (req, res) => {
+ const updateSocialMediaLink = async (req, res) => {
+
     try {
+
         const { id } = req.params;
 
-        const [existing] = await db.query(
-            "SELECT * FROM social_media_links WHERE id = ?",
-            [id]
-        );
-        if (existing.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: "Social media link not found",
-            });
-        }
-
-        const { platform_name, platform_link, link_order, status, updated_by } =
-            req.body;
-
-        // Extract platform_icon file from req.files array
-        const iconFile = req.files?.find(f => f.fieldname === 'platform_icon');
-       const platform_icon =
-    iconFile
-        ? iconFile.filename
-        : existing[0].platform_icon || null;
+        const {
+            platform_name,
+            platform_link,
+            link_order,
+            status,
+            updated_by
+        } = req.body;
 
         await db.query(
-            `UPDATE social_media_links SET
-            platform_name = ?, platform_icon = ?, platform_link = ?,
-            link_order = ?, status = ?, updated_by = ?
-            WHERE id = ?`,
+            `
+            UPDATE social_media_links
+            SET
+                platform_name = ?,
+                platform_link = ?,
+                link_order = ?,
+                status = ?,
+                updated_by = ?
+            WHERE id = ?
+            `,
             [
-                platform_name || existing[0].platform_name,
-                platform_icon,
-                platform_link ?? existing[0].platform_link,
-                link_order ?? existing[0].link_order,
-                status || existing[0].status,
+                platform_name,
+                platform_link,
+                link_order,
+                status,
                 updated_by || null,
-                id,
+                id
             ]
         );
 
         return res.status(200).json({
             success: true,
-            message: "Social media link updated successfully",
+            message: "Social media link updated successfully"
         });
+
     } catch (error) {
-        console.error("updateSocialMediaLink error:", error);
+
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: error.message
         });
+
     }
+
 };
 
 // DELETE /api/header/social-media/:id
