@@ -5,6 +5,7 @@ import upload from "../../middlewares/uploadMiddleware.js";
 import {
     getEvents,
     getEventById,
+     getEventBySlug,
     createEvent,
     updateEvent,
     deleteEvent
@@ -21,6 +22,8 @@ router.get(
     "/:id",
     getEventById
 );
+
+router.get("/slug/:slug", getEventBySlug);
 
 router.post(
     "/",

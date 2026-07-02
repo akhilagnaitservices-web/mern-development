@@ -4,10 +4,5 @@ const APP_CONFIG = {
 };
 
 
-// const APP_CONFIG = {
-
-//     API_BASE_URL:
-//     "http://localhost:5000/api"
-
-// };
+// const APP_CONFIG = {API_BASE_URL: "http://localhost:5010/api"};
 

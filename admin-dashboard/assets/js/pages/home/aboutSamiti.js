@@ -41,6 +41,11 @@ async function loadAboutSamiti() {
         ).value =
         about.about_subtitle || "";
 
+                document.querySelector(
+            '[name="description"]'
+        ).value =
+        about.description || "";
+
         document.querySelector(
             '[name="vision"]'
         ).value =

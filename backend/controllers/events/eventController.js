@@ -194,6 +194,51 @@ export const getEventById = async (req,res) => {
 
 };
 
+
+export const getEventBySlug = async (req, res) => {
+    try {
+
+        const { slug } = req.params;
+
+        const [rows] = await db.query(
+            `
+            SELECT *
+            FROM events_master
+            WHERE event_slug = ?
+            `,
+            [slug]
+        );
+
+        if (!rows.length) {
+            return res.status(404).json({
+                success: false,
+                message: "Event not found"
+            });
+        }
+
+        const event = {
+            ...rows[0],
+            event_image: getImageUrl(
+                "events",
+                rows[0].event_image
+            )
+        };
+
+        return res.status(200).json({
+            success: true,
+            data: event
+        });
+
+    } catch (error) {
+
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+
+    }
+};
+
 export const createEvent = async (req,res) => {
 
     try {

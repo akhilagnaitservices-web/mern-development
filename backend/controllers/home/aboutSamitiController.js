@@ -132,6 +132,7 @@ export const createAboutSamiti = async (
     const {
       about_title,
       about_subtitle,
+        description,
       vision,
       mission,
       objectives,
@@ -148,6 +149,7 @@ export const createAboutSamiti = async (
       INSERT INTO about_samiti (
         about_title,
         about_subtitle,
+        description,   
         about_image,
         vision,
         mission,
@@ -156,12 +158,13 @@ export const createAboutSamiti = async (
         button_link,
         status
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const values = [
       about_title,
       about_subtitle,
+      description,  
       about_image,
       vision,
       mission,
@@ -202,7 +205,6 @@ export const createAboutSamiti = async (
 
 
 
-
 // UPDATE ABOUT SAMITI
 export const updateAboutSamiti = async (
   req,
@@ -216,6 +218,7 @@ export const updateAboutSamiti = async (
     const {
       about_title,
       about_subtitle,
+      description,
       vision,
       mission,
       objectives,
@@ -229,6 +232,7 @@ export const updateAboutSamiti = async (
       SET
         about_title = ?,
         about_subtitle = ?,
+        description = ?,
         vision = ?,
         mission = ?,
         objectives = ?,
@@ -240,6 +244,7 @@ export const updateAboutSamiti = async (
     const values = [
       about_title,
       about_subtitle,
+      description ,
       vision,
       mission,
       objectives,
