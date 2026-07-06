@@ -7,14 +7,11 @@ import {
 } from "react-icons/fa";
 
 import { getContactInfo } from "../../services/contactService";
-import {
-    getEventDetails
-} from "../../services/eventsService";
+import {getEventDetails} from "../../services/eventsService";
 
 import PageBanner from "../../components/PageBanner/PageBanner";
 
-import EventRegistrationModal
-from "../../components/events/EventRegistrationModal";
+import EventRegistrationModal from "../../components/events/EventRegistrationModal";
 
 import "../../styles/eventDetails.css";
 
@@ -36,7 +33,7 @@ const formatDate = (date) => {
 
 const EventDetails = () => {
 
-    const { id } = useParams();
+    const { slug } = useParams();
     const [event, setEvent] = useState(null);
     const [gallery, setGallery] = useState([]);
     const [contactInfo, setContactInfo] = useState(null);
@@ -48,7 +45,7 @@ const EventDetails = () => {
     setLoading(true);
 
     Promise.all([
-        getEventDetails(id),
+        getEventDetails(slug),
         getContactInfo()
     ])
 
@@ -93,7 +90,7 @@ const EventDetails = () => {
 
     });
 
-}, [id]);
+}, [slug]);
 
     if (loading) {
 
@@ -136,9 +133,6 @@ const EventDetails = () => {
     return (
 
         <>
-
-            <PageBanner page="events" />
-
             <section className="event-details-section">
 
                 <div className="container">
@@ -155,11 +149,6 @@ const EventDetails = () => {
                                 className="event-main-image"
                             />
 
-                            <span className="event-category-badge">
-
-                                {event.event_category}
-
-                            </span>
 
                             <h1 className="event-title">
 

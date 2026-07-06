@@ -4,7 +4,9 @@
 ───────────────────────────────────────── */
 
 :root {
-
+    --topbar-height: 44px;
+    --navbar-height: 90px;
+     --navbar-height-mobile: 64px;
     /* ── COLORS ── */
     --primary:          #7A1F1F;    /* Royal Maroon */
     --primary-dark:     #5C1717;    /* Darker Maroon for hover */

@@ -16,26 +16,8 @@ const DesktopMenu = ({ navLinks }) => {
                     >
                         {link.label}
 
-                        {link.dropdown && (
-                            <span className="dropdown-arrow">
-                                ▾
-                            </span>
-                        )}
+                        
                     </NavLink>
-
-                    {link.dropdown && (
-                        <ul className="navbar-dropdown">
-
-                            {link.dropdown.map((item) => (
-                                <li key={item.path}>
-                                    <Link to={item.path}>
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-
-                        </ul>
-                    )}
 
                 </li>
             ))}

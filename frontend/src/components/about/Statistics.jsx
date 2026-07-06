@@ -1,29 +1,29 @@
 import {
     FaEye,
-    FaHandsHelping,
-    FaLandmark
+    FaBullseye,
+    FaUsers
 } from "react-icons/fa";
 
 const Statistics = ({ about }) => {
 
-    if (!about) return null
+    if (!about) return null;
 
     const items = [
-    {
-    title: 'Our Vision',
-    text: about.vision,
-    icon: <FaEye />
-    },
-    {
-        title: 'Our Mission',
-        text: about.mission,
-        icon: <FaHandsHelping />
-    },
-    {
-        title: 'Our Objectives',
-        text: about.objectives,
-        icon: <FaLandmark />
-    }
+        {
+            title: "Our Vision",
+            text: about.vision,
+            icon: <FaEye />
+        },
+        {
+            title: "Our Mission",
+            text: about.mission,
+            icon: <FaBullseye />
+        },
+        {
+            title: "Our Objectives",
+            text: about.objectives,
+            icon: <FaUsers />
+        }
     ].filter(item => item.text);
 
     return (
@@ -32,30 +32,46 @@ const Statistics = ({ about }) => {
 
             <div className="container">
 
-                <h2 className="section-title center">
-                    Our Vision Mission & Objectives
-                </h2>
+                <div className="section-heading">
+
+                    <h2 className="section-title center">
+                        Our Vision Mission & Objectives
+                    </h2>
+
+                    <div className="section-divider">
+                        {/* <span></span>
+                        <span></span>
+                        <span></span> */}
+                    </div>
+
+                </div>
 
                 <div className="vmo-grid">
 
-                    {items.map((item,index)=>(
+                    {items.map((item, index) => (
 
                         <div
+                            className="vmo-item"
                             key={index}
-                            className="vmo-card"
                         >
 
                             <div className="vmo-icon">
+
                                 {item.icon}
+
                             </div>
 
-                            <h3>
-                                {item.title}
-                            </h3>
+                            <div className="vmo-content">
 
-                            <p>
-                                {item.text}
-                            </p>
+                                <h3>
+                                    {item.title}
+                                </h3>
+
+                                <p>
+                                    {item.text}
+                                </p>
+
+                            </div>
 
                         </div>
 
@@ -67,7 +83,8 @@ const Statistics = ({ about }) => {
 
         </section>
 
-    )
-}
+    );
 
-export default Statistics
+};
+
+export default Statistics;

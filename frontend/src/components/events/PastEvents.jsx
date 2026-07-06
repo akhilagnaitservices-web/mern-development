@@ -135,7 +135,7 @@ const PastEvents = ({ events }) => {
                                             📅 {full}
                                         </span>
 
-                                        {event.venue_name && (
+                                        {/* {event.venue_name && (
 
                                             <span className="event-page-meta-item">
 
@@ -147,11 +147,11 @@ const PastEvents = ({ events }) => {
 
                                             </span>
 
-                                        )}
+                                        )} */}
 
                                     </div>
 
-                                    {event.short_description && (
+                                    {/* {event.short_description && (
 
                                         <p className="event-page-desc">
 
@@ -159,18 +159,18 @@ const PastEvents = ({ events }) => {
 
                                         </p>
 
-                                    )}
+                                    )} */}
 
-                                    <button
+                                    {/* <button
                                         className="btn btn-primary"
                                         onClick={() =>
                                             navigate(
-                                                `/events/${event.event_id}`
+                                                `/events/${event.event_slug || event.slug || event.event_id}`
                                             )
                                         }
                                     >
                                         View Details
-                                    </button>
+                                    </button> */}
 
                                 </div>
 

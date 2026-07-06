@@ -6,6 +6,7 @@ from "../../middlewares/uploadMiddleware.js";
 import {
     getNews,
     getNewsById,
+    getNewsBySlug,
     createNews,
     updateNews,
     deleteNews,
@@ -19,6 +20,8 @@ express.Router();
 router.get("/",getNews);
 
 router.get("/popular",getPopularNews);
+
+router.get("/slug/:slug", getNewsBySlug);
 
 router.get("/:id",getNewsById);
 

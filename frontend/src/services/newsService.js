@@ -6,6 +6,9 @@ export const getNewsCategories = (params = {}) =>
 export const getNews = (params = {}) =>
     API.get('/news', { params })
 
+export const getNewsBySlug = (slug) =>
+    API.get(`/news/slug/${slug}`)
+
 export const getNewsById = (id) =>
     API.get(`/news/${id}`)
 

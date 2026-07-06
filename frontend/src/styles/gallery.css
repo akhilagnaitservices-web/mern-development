@@ -7,7 +7,7 @@
     background: var(--bg-white);
     padding: var(--space-5) 0;
     border-bottom: 1px solid var(--border);
-    position: sticky;
+    position: sticky !important;
     top: 0;
     z-index: 100;
     box-shadow: var(--shadow-sm);
@@ -107,7 +107,7 @@
 
 .gallery-section-title {
     font-family: var(--font-heading);
-    font-size: var(--text-3xl);
+    font-size: var(--text-base);
     font-weight: 700;
     color: var(--primary);
 }
@@ -261,7 +261,7 @@
 
 /* ── PHOTOS MASONRY GRID ── */
 .gallery-photos-header {
-
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;

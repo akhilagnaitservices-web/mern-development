@@ -2,19 +2,33 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getHeader, getSocialMediaLinks, getFooterLinks } from '../../services/headerService'
 import '../../styles/footer.css'
-
+import { Icons } from "../../constants/icons";
 // Social platform icon abbreviations
 const getPlatformIcon = (name) => {
-    const icons = {
-        facebook: 'Fb',
-        instagram: 'In',
-        youtube: 'Yt',
-        twitter: 'Tw',
-        linkedin: 'Li',
-        whatsapp: 'Wa',
-    }
-    return icons[name?.toLowerCase()] || name?.charAt(0).toUpperCase()
-}
+
+    const iconMap = {
+        facebook: Icons.Facebook,
+        instagram: Icons.Instagram,
+        youtube: Icons.Youtube,
+        linkedin: Icons.Linkedin,
+        twitter: Icons.Twitter,
+        x: Icons.Twitter,
+        whatsapp: Icons.MessageCircle,
+    };
+
+    const SocialIcon =
+        iconMap[name?.toLowerCase()] ||
+        Icons.Globe;
+
+    return (
+        <SocialIcon
+            size={18}
+            strokeWidth={2}
+        />
+    );
+
+};
+
 
 const Footer = () => {
     const [header, setHeader] = useState(null)
@@ -89,16 +103,16 @@ const Footer = () => {
                             </div>
                         </Link>
 
-                        <p className="footer-tagline">
-                            console.log(header?.description)
+                        <p className="footer-description">
+                            
                             {header?.description || 'Unity | Service | Culture | Progress'}
                         </p>
 
-                        <p className="footer-description">
+                        {/* <p className="footer-description">
                             Dedicated to preserving our rich cultural heritage and
                             building a stronger community through unity, education,
                             and social welfare.
-                        </p>
+                        </p> */}
 
                         {/* Social Media Icons */}
                         {socialLinks.length > 0 && (

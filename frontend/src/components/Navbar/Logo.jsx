@@ -45,10 +45,7 @@ const Logo = ({ header, closeMenu }) => {
                         "Seva Samiti"}
                 </span>
 
-                <span className="navbar-logo-tagline">
-                    {header?.description ||
-                        "Unity | Service | Culture | Progress"}
-                </span>
+            
 
             </div>
         </Link>

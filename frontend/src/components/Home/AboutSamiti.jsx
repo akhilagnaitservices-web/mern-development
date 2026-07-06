@@ -37,40 +37,10 @@ const AboutSamiti = ({ data }) => {
                             {data.about_title}
                         </h2>
 
-                        {data.about_subtitle && (
-
-                            <p className="section-subtitle">
-                                {data.about_subtitle}
-                            </p>
-
-                        )}
-
                         <div className="about-description">
-
-                            {data.about_description && (
-
                                 <p>
-                                    {data.about_description}
+                                    {data.description}
                                 </p>
-
-                            )}
-
-                            {!data.about_description && (
-
-                                <>
-                                    <p>{data.vision}</p>
-
-                                    <p style={{ marginTop: "20px" }}>
-                                        {data.mission}
-                                    </p>
-
-                                    <p style={{ marginTop: "20px" }}>
-                                        {data.objectives}
-                                    </p>
-                                </>
-
-                            )}
-
                         </div>
 
                         {data.button_name && (

@@ -1,14 +1,23 @@
 import axios from "axios";
 
+// Check if the environment variable exists
+const API_URL = import.meta.env.VITE_API_URL;
+
+console.log("API URL:", API_URL);
+
+if (!API_URL) {
+    console.error(
+        "❌ VITE_API_URL is not defined. Please check your .env file."
+    );
+}
+
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:5010/api",
+    baseURL: API_URL,
     timeout: 10000,
     headers: {
         "Content-Type": "application/json",
     },
 });
-
-console.log("API URL:", import.meta.env.VITE_API_URL);
 
 // Request Interceptor
 API.interceptors.request.use(

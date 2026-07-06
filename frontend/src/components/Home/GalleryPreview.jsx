@@ -19,9 +19,9 @@ const GalleryPreview = ({ gallery = [] }) => {
                                 ) : (
                                     <div className="gallery-item-placeholder">🖼️</div>
                                 )}
-                                <div className="gallery-item-overlay">
+                                {/* <div className="gallery-item-overlay">
                                     <span>🔍</span>
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                     </div>

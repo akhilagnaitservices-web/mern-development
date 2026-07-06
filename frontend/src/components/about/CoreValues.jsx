@@ -1,29 +1,28 @@
-    import {
-    FaHandsHelping,
-    FaUsers,
-    FaBalanceScale,
-    FaHeart,
-    FaBookOpen,
-    FaShieldAlt,
-    FaStar
-} from "react-icons/fa";
-    
+import 'remixicon/fonts/remixicon.css'
+const FALLBACK_ICONS = {
+    'warrior':      'ri-shield-fill',
+    'temple':       'ri-building-fill',
+    'inscription':  'ri-file-text-fill',
+    'cultural':     'ri-group-fill',
+    'unity':        'ri-group-fill',
+    'heritage':     'ri-ancient-gate-fill',
+}
+  const getFallbackIcon = (title = '') => {
+    const lower = title.toLowerCase()
+    for (const [key, icon] of Object.entries(FALLBACK_ICONS)) {
+        if (lower.includes(key)) return icon
+    }
+    return 'ri-star-fill'
+}  
     const CoreValues = ({ values }) => {
 
-        const getCoreValueIcon = (title) => {
-
-    const icons = {
-        "Unity": <FaUsers />,
-        "Service": <FaHandsHelping />,
-        "Integrity": <FaBalanceScale />,
-        "Respect": <FaHeart />,
-        "Education": <FaBookOpen />,
-        "Heritage": <FaShieldAlt />,
-        "Excellence": <FaStar />
-    };
-
-    return icons[title] || <FaStar />;
-};
+        const getFallbackIcon = (title = '') => {
+            const lower = title.toLowerCase()
+            for (const [key, icon] of Object.entries(FALLBACK_ICONS)) {
+                if (lower.includes(key)) return icon
+            }
+            return 'ri-star-fill'
+        }
         if (!values.length) return null
 
         return (
@@ -46,7 +45,7 @@
                             >
 
                                 <div className="core-value-icon">
-                                    {getCoreValueIcon(value.title)}
+                                   <i className={value.icon}></i>
                                 </div>
 
                                 <h3 className="core-value-title">

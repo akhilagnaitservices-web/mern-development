@@ -1,154 +1,67 @@
 import { useState, useEffect } from 'react'
 import { getContactInfo } from '../../services/contactService'
-import { getSocialMediaLinks } from '../../services/headerService'
-
-import {
-    FaFacebookF,
-    FaInstagram,
-    FaYoutube,
-    FaTwitter,
-    FaLinkedinIn,
-    FaWhatsapp,
-    FaTelegramPlane,
-    FaGlobe
-} from 'react-icons/fa';
-
-const getSocialIcon = (name) => {
-    const icons = {
-        facebook: 'f', instagram: '◎', youtube: '▶',
-        whatsapp: 'W', twitter: 'X', linkedin: 'in',
-    }
-    return icons[name?.toLowerCase()] || name?.charAt(0)?.toUpperCase()
-}
 
 const ContactSupport = () => {
-    const [info,    setInfo]    = useState(null)
-    const [socials, setSocials] = useState([])
+    const [info, setInfo] = useState(null)
 
     useEffect(() => {
-        Promise.all([getContactInfo(), getSocialMediaLinks()])
-            .then(([infoRes, socialRes]) => {
-                if (infoRes.data?.success && infoRes.data?.data) {
-                    setInfo(infoRes.data.data)
-                }
-                if (socialRes.data?.success) {
-                    setSocials(socialRes.data.data || [])
+        getContactInfo()
+            .then(res => {
+                if (res.data?.success && res.data?.data) {
+                    setInfo(res.data.data)
                 }
             })
-            
             .catch(() => {})
     }, [])
 
-    const cards = [
+    const deptCards = [
         {
-            icon: '📞',
-            title: 'Call Us',
-            text: info?.office_hours || 'Monday - Saturday  9:00 AM - 6:00 PM',
-            action: info?.primary_phone
-                ? <a href={`tel:${info.primary_phone}`} className="btn btn-primary" style={{ marginTop: '34x' }}>
-                    Call Now
-                  </a>
-                : null,
+            icon: '👥',
+            label: 'Membership Enquiries',
+            value: info?.membership_phone || '+91 9876543210',
+            href: `tel:${info?.membership_phone || '+919876543210'}`,
         },
         {
-            icon: '✉️',
-            title: 'Email Us',
-            text: 'Send us an email and we will respond within 24 working hours.',
-            action: info?.primary_email
-                ? <a href={`mailto:${info.primary_email}`} className="btn btn-outline" style={{ marginTop: '16px' }}>
-                    Send Email
-                  </a>
-                : null,
+            icon: '💍',
+            label: 'Matrimony Support',
+            value: info?.matrimony_phone || '+91 9123456789',
+            href: `tel:${info?.matrimony_phone || '+919123456789'}`,
         },
         {
-            icon: '🌐',
-            title: 'Follow Us',
-            text: 'Stay connected on social media for latest updates and announcements.',
-
-            action: (
-                <div
-                    className="contact-social-links"
-                    style={{ marginTop: '16px' }}
-                >
-
-                    {socials.length > 0 ? (
-
-                        socials.map((s) => (
-
-                            <a
-                                key={s.id}
-                                href={s.platform_link || '#'}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-social-link"
-                                title={s.platform_name}
-                            >
-                                {getSocialIcon(s.platform_name)}
-                            </a>
-
-                        ))
-
-                    ) : (
-
-                        <>
-                            <a
-                                href="https://instagram.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-social-link"
-                                title="Instagram"
-                            >
-                                <FaInstagram />
-                            </a>
-
-                            <a
-                                href="https://wa.me/919999999999"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-social-link"
-                                title="WhatsApp"
-                            >
-                                <FaWhatsapp />
-                            </a>
-
-                            <a
-                                href="https://telegram.org"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-social-link"
-                                title="Telegram"
-                            >
-                                <FaTelegramPlane />
-                            </a>
-                            <a
-                                href="https://facebook.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-social-link"
-                                title="Facebook"
-                            >
-                                <FaFacebookF />
-                            </a>
-                        </>
-
-                    )}
-
-                </div>
-            )
-        }
+            icon: '🎉',
+            label: 'Event & Programmes',
+            value: info?.events_phone || '+91 9988776655',
+            href: `tel:${info?.events_phone || '+919988776655'}`,
+        },
     ]
 
     return (
-        <div className="contact-support">
-            {cards.map((card, i) => (
-                <div key={i} className="contact-support-card">
-                    <span className="contact-support-icon">{card.icon}</span>
-                    <h4 className="contact-support-title">{card.title}</h4>
-                    <p className="contact-support-text">{card.text}</p>
-                    {card.action}
+        <section className="contact-dept-section">
+            <div className="container">
+                <h2 className="section-title center">
+                    We are just a call away!
+                </h2>
+                <div  />
+                <p className="contact-dept-subtitle">
+                    For urgent assistance, feel free to reach us directly.
+                </p>
+                <div className="contact-dept-grid">
+                    {deptCards.map((card, i) => (
+                        <a
+                            key={i}
+                            href={card.href}
+                            className="contact-dept-card"
+                        >
+                            <div className="contact-dept-icon-wrap">
+                                <span style={{ fontSize: '1.8rem' }}>{card.icon}</span>
+                            </div>
+                            <p className="contact-dept-label">{card.label}</p>
+                            <p className="contact-dept-value">{card.value}</p>
+                        </a>
+                    ))}
                 </div>
-            ))}
-        </div>
+            </div>
+        </section>
     )
 }
 

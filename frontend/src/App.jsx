@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Chat from './pages/Chat/Chat'
 import ScrollToTop from "./components/ScrollToTop";
 import News from './pages/News/News'
+import NewsDetails from './pages/News/NewsDetails'
 function App() {
   return (
     <BrowserRouter>
@@ -26,11 +27,12 @@ function App() {
           <Route path="/"           element={<Home />} />
           <Route path="/about"      element={<About />} />
           <Route path="/events"     element={<Events />} />
-          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/events/:slug" element={<EventDetails />} />
           <Route path="/gothras"    element={<Gothras />} />
           <Route path="/gallery"    element={<Gallery />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/news"       element={<News />} />
+          <Route path="/news/:slug" element={<NewsDetails />} />
           <Route path="/matrimony"  element={<Matrimony />} />
           <Route path="/contact"    element={<Contact />} />
           <Route path="/login"      element={<Login />} />

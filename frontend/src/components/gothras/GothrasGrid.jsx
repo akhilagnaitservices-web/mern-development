@@ -125,12 +125,14 @@ const GothraCard = ({ gothra, onView }) => {
                 {IconComponent ? (
 
                     <IconComponent
+                    className="gothra-icon"
                         size={42}
                     />
 
                 ) : (
 
                     <FaOm
+                        className="gothra-icon"
                         size={42}
                     />
 

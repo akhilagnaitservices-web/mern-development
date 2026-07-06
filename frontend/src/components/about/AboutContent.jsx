@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 const AboutContent = ({ about }) => {
 
     if (!about) return null
@@ -28,21 +29,18 @@ const AboutContent = ({ about }) => {
 
                     <div>
 
-                        <p className="who-section-label">
+                        <p className="who-section-label center">
                             Who We Are
                         </p>
 
                         <h2 className="section-title">
                             {about.about_title}
                         </h2>
-
-                        <p className="who-we-are-text">
-                            {about.about_subtitle}
-                        </p>
-
-                        <p className="who-we-are-text">
-                            {about.vision}
-                        </p>
+                        <div className="about-description">
+                                <p>
+                                    {about.description}
+                                </p>
+                        </div>
 
                         {about.button_name && (
                             <Link

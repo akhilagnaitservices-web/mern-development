@@ -82,7 +82,7 @@ const EventCard = ({ event, onView }) => {
                 )}
 
                 <Link
-                    to={`/events/${event.event_id}`}
+                    to={`/events/${event.slug || event.slug || event.event_id}`}
                     className="btn btn-primary"
                 >
                     View Details

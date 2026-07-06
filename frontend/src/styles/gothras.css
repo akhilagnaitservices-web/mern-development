@@ -177,7 +177,10 @@
     position: relative;
     overflow: hidden;
 }
-
+.gothra-card {
+    border-color: var(--primary);
+    color:rgb(232, 198, 112)
+}
 .gothra-card::before {
     content: '';
     position: absolute;

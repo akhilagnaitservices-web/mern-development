@@ -30,7 +30,7 @@ import { formatDate } from './HomeHelpers'
                                        </div>
                                    </div>
                                    <div className="event-body">
-                                       <h3 className="event-title">{event.event_title}</h3>
+                                       <h5 className="event-title">{event.event_title}</h5>
                                        <div className="event-meta">
                                            {event.event_time && (
                                                <span className="event-meta-item">

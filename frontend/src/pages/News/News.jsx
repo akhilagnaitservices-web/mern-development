@@ -136,7 +136,7 @@ const News = () => {
 
         <div className="news-page">
 
-            <PageBanner page="news" />
+            <PageBanner page="news" title="News" />
 
             <NewsFilter
                 categories={categories}

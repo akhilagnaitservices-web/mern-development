@@ -1,53 +1,45 @@
-import ContactHero    from '../../components/contact/ContactHero'
 import ContactCards   from '../../components/contact/ContactCards'
 import ContactForm    from '../../components/contact/ContactForm'
 import ContactMap     from '../../components/contact/ContactMap'
 import ContactSupport from '../../components/contact/ContactSupport'
-import PageBanner from "../../components/PageBanner/PageBanner";
+import PageBanner     from '../../components/PageBanner/PageBanner'
 import '../../styles/contact.css'
 
 const Contact = () => {
     return (
         <div className="contact-page">
 
-         <PageBanner page="contact-us   " />
+            {/* 1. Page Banner */}
+            <PageBanner page="contact-us" />
 
-            {/* 2. Info Cards + Contact Form */}
-            <section className="contact-section">
+            {/* 2. Top Info Cards */}
+            <section className="contact-top-section">
                 <div className="container">
-                    <div className="contact-grid">
-                        <div>
-                            <h2 className="section-title">Get In Touch</h2>
-                            <div className=""
-                                style={{ margin: '16px 0 32px', marginLeft: 0 }} />
-                            <ContactCards />
-                        </div>
+                    <h2 className="section-title center">Get In Touch</h2>
+                
+                    <p style={{
+                        textAlign: 'center',
+                        color: 'var(--text-medium)',
+                        marginTop: 'var(--space-3)'
+                    }}>
+                        We'd love to hear from you
+                    </p>
+                    <ContactCards />
+                </div>
+            </section>
+
+            {/* 3. Form + Map */}
+            <section className="contact-main-section">
+                <div className="container">
+                    <div className="contact-main-grid">
                         <ContactForm />
+                        <ContactMap />
                     </div>
                 </div>
             </section>
 
-            {/* 3. Support Options */}
-            <section style={{
-                background: 'var(--bg-main)',
-                padding: 'var(--space-16) 0'
-            }}>
-                <div className="container">
-                    <h2 className="section-title center">How Can We Help?</h2>
-                    <ContactSupport />
-                </div>
-            </section>
-
-            {/* 4. Google Map */}
-            <section style={{
-                padding: 'var(--space-16) 0',
-                background: 'var(--bg-white)'
-            }}>
-                <div className="container">
-                    <h2 className="section-title center">Find Us</h2>
-                    <ContactMap />
-                </div>
-            </section>
+            {/* 4. Department Contacts */}
+            <ContactSupport />
 
         </div>
     )

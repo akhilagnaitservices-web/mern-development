@@ -1,20 +1,21 @@
-import {
-    FaShieldAlt,
-    FaGopuram,
-    FaScroll,
-    FaUsers
-} from "react-icons/fa";
 
-const getFeatureIcon = (title) => {
-    const icons = {
-        "Warrior Heritage": <FaShieldAlt />,
-        "Temple Guardians": <FaGopuram />,
-        "Inscriptions & Proofs": <FaScroll />,
-        "Cultural Unity": <FaUsers />,
-    };
+import 'remixicon/fonts/remixicon.css'
+const FALLBACK_ICONS = {
+    'warrior':      'ri-shield-fill',
+    'temple':       'ri-building-fill',
+    'inscription':  'ri-file-text-fill',
+    'cultural':     'ri-group-fill',
+    'unity':        'ri-group-fill',
+    'heritage':     'ri-ancient-gate-fill',
+}
 
-    return icons[title] || <FaShieldAlt />;
-};
+const getFallbackIcon = (title = '') => {
+    const lower = title.toLowerCase()
+    for (const [key, icon] of Object.entries(FALLBACK_ICONS)) {
+        if (lower.includes(key)) return icon
+    }
+    return 'ri-star-fill'
+}
 
 const HeritageFeatures = ({ features }) => {
 
@@ -24,7 +25,7 @@ const HeritageFeatures = ({ features }) => {
         <section className="proud-descendants">
 
             <div className="container">
-
+                
                 <p className="who-section-label">
                     Who We Are
                 </p>
@@ -46,7 +47,7 @@ const HeritageFeatures = ({ features }) => {
                         >
 
                             <span className="heritage-icon">
-                                {getFeatureIcon(feature.title)}
+                                <i className={feature.icon}></i>   
                             </span>
 
                             <h3 className="heritage-title">

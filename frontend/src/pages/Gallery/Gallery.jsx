@@ -216,20 +216,34 @@ const Gallery = () => {
                         </div>
                     ) : (
                         <>
-                            {/* FILTERED ALBUMS */}
-                            <GalleryAlbums
-                                albums={filteredAlbums}
-                                selectedAlbum={selectedAlbum}
-                                setSelectedAlbum={setSelectedAlbum}
-                            />
+                            {/* Show Albums */}
+                               <GalleryAlbums
+                                    albums={filteredAlbums}
+                                    selectedAlbum={selectedAlbum}
+                                    setSelectedAlbum={setSelectedAlbum}
+                                />
 
-                            {/* FILTERED PHOTOS */}
-                            <GalleryGrid
-                                photos={filteredPhotos}
-                                openLightbox={openLightbox}
-                            />
-                        </>
-                    )}
+                                <GalleryGrid
+                                    photos={filteredPhotos}
+                                    openLightbox={openLightbox}
+                                    albumTitle={
+                                        selectedAlbum
+                                            ? albums.find(
+                                                album =>
+                                                    String(album.album_id) ===
+                                                    String(selectedAlbum)
+                                            )?.album_title
+                                            : ""
+                                    }
+                                    onBack={
+                                        selectedAlbum
+                                            ? () => setSelectedAlbum(null)
+                                            : null
+                                    }
+                                />
+
+                            </>
+                        )}
 
                 </div>
 

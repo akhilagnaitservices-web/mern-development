@@ -17,12 +17,14 @@ const GalleryGrid = ({ photos, openLightbox, albumTitle, onBack }) => {
 
     return (
         <div>
+            
             {/* Album header with back button */}
             {albumTitle && (
                 <div className="gallery-photos-header">
+                         
                     <div>
                         <h2 className="gallery-section-title">
-                            📸 {albumTitle}
+                            {albumTitle} 
                         </h2>
                         <p style={{
                             fontSize: 'var(--text-sm)',
@@ -62,7 +64,7 @@ const GalleryGrid = ({ photos, openLightbox, albumTitle, onBack }) => {
                         )}
 
                         <div className="gallery-masonry-overlay">
-                            <span className="gallery-overlay-icon">🔍</span>
+                            {/* <span className="gallery-overlay-icon">🔍</span> */}
                             {photo.photo_title && (
                                 <p className="gallery-overlay-title">
                                     {photo.photo_title}

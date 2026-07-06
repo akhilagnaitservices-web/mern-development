@@ -14,13 +14,15 @@ export const getEvents = (params = {}) =>
 export const getMainEvents = (params = {}) =>
     API.get("/mainevents", { params });
 
+export const getMainEventBySlug = (slug) =>
+    API.get(`/mainevents/slug/${slug}`);
+
 export const getMainEventById = (id) =>
     API.get(`/mainevents/${id}`);
 
 /* =========================
    EVENT GALLERY
 ========================= */
-
 export const getEventGallery = (eventId) =>
     API.get("/event-gallery", {
         params: {
@@ -39,28 +41,65 @@ export const registerForEvent = (data) =>
    EVENT DETAILS PAGE DATA
 ========================= */
 
-export const getEventDetails = async (id) => {
+export const getEventBySlug = (slug) =>
+    API.get(`/mainevents/slug/${slug}`);
+
+export const getEventById = (id) =>
+    API.get(`/mainevents/${id}`);
+
+export const getEventDetails = async (identifier) => {
 
     try {
 
-        const [eventRes, galleryRes] =
-            await Promise.all([
+        let eventResponse;
 
-                getMainEventById(id),
+        try {
 
-                getEventGallery(id)
+            eventResponse = await getEventBySlug(identifier);
 
-            ]);
+        } catch (error) {
+
+            if (error.response?.status === 404) {
+
+                eventResponse = await getEventById(identifier);
+
+            } else {
+
+                throw error;
+
+            }
+
+        }
+
+        const event = eventResponse?.data?.data;
+
+        if (!event?.event_id) {
+
+            return {
+
+                success: false,
+
+                event: null,
+
+                gallery: []
+
+            };
+
+        }
+
+        const galleryResponse = await getEventGallery(event.event_id);
 
         return {
 
             success: true,
 
-            event:
-                eventRes.data.data,
+            event: {
+                ...event,
+                slug: event.event_slug || identifier
+            },
 
             gallery:
-                galleryRes.data.data || []
+                galleryResponse?.data?.data || []
 
         };
 

@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from "react-router-dom";
+
 const formatDate = (dateStr) => {
     if (!dateStr) return ''
     return new Date(dateStr).toLocaleDateString('en-IN', {
@@ -5,7 +8,7 @@ const formatDate = (dateStr) => {
     })
 }
 
-const NewsCard = ({ news, onRead }) => {
+const NewsCard = ({ news }) => {
     return (
         <div className="news-card-horizontal">
 
@@ -44,11 +47,12 @@ const NewsCard = ({ news, onRead }) => {
             {news.short_description}
         </p>
 
-        <button
+        <Link
+            to={`/news/${news.news_slug}`}
             className="news-read-btn"
         >
-            Read More →
-        </button>
+            Read More
+        </Link>
 
     </div>
 
