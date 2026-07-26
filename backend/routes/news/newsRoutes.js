@@ -1,5 +1,10 @@
 import express from "express";
 
+import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
 import upload
 from "../../middlewares/uploadMiddleware.js";
 
@@ -25,10 +30,10 @@ router.get("/slug/:slug", getNewsBySlug);
 
 router.get("/:id",getNewsById);
 
-router.post("/",upload("news").single("featured_image"),createNews);
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),upload("news").single("featured_image"),createNews);
 
-router.put("/:id",upload("news").single("featured_image"),updateNews);
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),upload("news").single("featured_image"),updateNews);
 
-router.delete("/:id",deleteNews);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteNews);
 
 export default router;

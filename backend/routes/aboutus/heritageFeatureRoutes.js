@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getHeritageFeatures,
   getHeritageFeatureById,
   createHeritageFeature,
@@ -22,19 +27,19 @@ router.get(
 );
 
 router.post(
-  "/",
+  "/", verifyToken, authorizeRoles("admin", "super_admin"),
   createHeritageFeature
 );
 
 router.put(
-  "/:id",
+  "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
   updateHeritageFeature
 );
 
 
 
 router.delete(
-  "/:id",
+  "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
   deleteHeritageFeature
 );
 

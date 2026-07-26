@@ -7,7 +7,7 @@ console.log("API URL:", API_URL);
 
 if (!API_URL) {
     console.error(
-        "❌ VITE_API_URL is not defined. Please check your .env file."
+        " VITE_API_URL is not defined. Please check your .env file."
     );
 }
 
@@ -37,7 +37,11 @@ API.interceptors.request.use(
 API.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.status === 401) {
+        // Let auth pages (login/register) handle their own 401s inline,
+        // instead of force-redirecting and reloading the page.
+        const isAuthRequest = (error.config?.url || "").includes("/auth/");
+
+        if (error.response?.status === 401 && !isAuthRequest) {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             window.location.href = "/login";

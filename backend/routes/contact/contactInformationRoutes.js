@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
     getContactInformation,
     createContactInformation,
     getContactInformationById,
@@ -13,8 +18,8 @@ const router =express.Router();
 router.get("/",getContactInformation);
 router.get("/:id",getContactInformationById);
 
-router.post("/",createContactInformation);
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),createContactInformation);
 
-router.put("/:id",updateContactInformation);
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),updateContactInformation);
 
 export default router;

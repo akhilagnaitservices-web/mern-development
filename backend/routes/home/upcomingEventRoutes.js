@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getEvents,
   getEventById,
   createEvent,
@@ -20,10 +25,10 @@ router.get("/:id", getEventById);
 
 
 // ADMIN APIs
-router.post("/",upload("events").single("event_image"),createEvent);
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),upload("events").single("event_image"),createEvent);
 
-router.put("/:id",upload("events").single("event_image"),updateEvent);
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),upload("events").single("event_image"),updateEvent);
 
-router.delete("/:id", deleteEvent);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"), deleteEvent);
 
 export default router;

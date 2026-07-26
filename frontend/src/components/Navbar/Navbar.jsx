@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getHeader, getSocialMediaLinks } from '../../services/headerService'
+import { logoutUser } from '../../services/authService'
+import { getChatUrl } from '../../services/chatService'
+import { Icons } from '../../constants/icons'
 
 import TopBar from './TopBar'
 import Logo from './Logo'
@@ -8,6 +11,8 @@ import DesktopMenu from './DesktopMenu'
 import MobileMenu from './MobileMenu'
 
 import '../../styles/navbar.css'
+
+const MATRIMONY_APP_URL = import.meta.env.VITE_MATRIMONY_APP_URL
 
 const navLinks = [
     {
@@ -64,6 +69,10 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [aboutOpen, setAboutOpen] = useState(false)
+
+    const token = localStorage.getItem('token')
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    const isLoggedIn = Boolean(token)
 
     // Fetch Header Data
     useEffect(() => {
@@ -179,19 +188,136 @@ const Navbar = () => {
 
                     <div className="navbar-actions">
 
-                        <Link
-                            to="/login"
-                            className="btn btn-outline-gold"
-                        >
-                            Login
-                        </Link>
+                        {isLoggedIn ? (
 
-                        <Link
-                            to="/register"
-                            className="btn btn-secondary"
-                        >
-                            Register
-                        </Link>
+                            <div className="navbar-profile">
+
+                                <button className="navbar-profile-toggle">
+                                    <Icons.User
+                                        size={16}
+                                        strokeWidth={2}
+                                        className="navbar-profile-icon"
+                                    />
+                                    {user.full_name || 'My Account'}
+                                    <Icons.ChevronDown
+                                        size={14}
+                                        strokeWidth={2}
+                                        className="dropdown-arrow"
+                                    />
+                                </button>
+
+                                <ul className="navbar-dropdown">
+
+                                    <li>
+                                        <Link to="/profile">
+                                            <Icons.User size={15} strokeWidth={2} />
+                                            Profile
+                                        </Link>
+                                    </li>
+
+                                    <li>
+                                        <Link to="/change-password">
+                                            <Icons.KeyRound size={15} strokeWidth={2} />
+                                            Change Password
+                                        </Link>
+                                    </li>
+
+                                    <li><hr className="navbar-dropdown-divider" /></li>
+
+                                    <li>
+                                        <a
+                                            href="#"
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                const chatUrl = getChatUrl(user)
+                                                if (chatUrl) {
+                                                    window.location.href = chatUrl
+                                                }
+                                            }}
+                                        >
+                                            <Icons.MessageCircle size={15} strokeWidth={2} />
+                                            Chat
+                                        </a>
+                                    </li>
+
+                                    <li><hr className="navbar-dropdown-divider" /></li>
+
+                                    <li>
+                                        <a
+                                            href="#"
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                logoutUser()
+                                            }}
+                                        >
+                                            <Icons.LogOut size={15} strokeWidth={2} />
+                                            Logout
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        ) : (
+
+                            <>
+                                <div className="navbar-auth-dropdown navbar-auth-dropdown--login">
+
+                                    <button className="btn btn-outline-gold">
+                                        Login
+                                        <Icons.ChevronDown
+                                            size={14}
+                                            strokeWidth={2}
+                                            className="dropdown-arrow"
+                                        />
+                                    </button>
+
+                                    <ul className="navbar-dropdown">
+                                        <li>
+                                            <Link to="/login">Membership Login</Link>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="#"
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    if (MATRIMONY_APP_URL) {
+                                                        window.location.href = MATRIMONY_APP_URL
+                                                    }
+                                                }}
+                                            >
+                                                Matrimony Login
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                                <div className="navbar-auth-dropdown navbar-auth-dropdown--register">
+
+                                    <button className="btn btn-secondary">
+                                        Register
+                                        <Icons.ChevronDown
+                                            size={14}
+                                            strokeWidth={2}
+                                            className="dropdown-arrow"
+                                        />
+                                    </button>
+
+                                    <ul className="navbar-dropdown">
+                                        <li>
+                                            <Link to="/register">Membership Register</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/matrimony/register">Matrimony Register</Link>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </>
+
+                        )}
 
                     </div>
 

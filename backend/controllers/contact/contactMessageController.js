@@ -19,7 +19,7 @@ export const createContactMessage =async (req,res) => {
         } = req.body;
 
         const contact_id =
-        `CNT-${(Date.now()).slice(-6)}`;
+        `CNT-${String(Date.now()).slice(-6)}`;
 
         const [result] =
         await db.query(

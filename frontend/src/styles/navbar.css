@@ -265,7 +265,9 @@
 }
 
 .navbar-dropdown li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     padding: var(--space-3) var(--space-5);
     color: var(--text-dark);
     text-decoration: none;
@@ -325,6 +327,80 @@
     font-size: var(--text-sm);
     font-weight: 600;
     letter-spacing: 0.3px;
+}
+
+/* ── PROFILE DROPDOWN (logged-in state) ── */
+.navbar-profile {
+    position: relative;
+}
+
+.navbar-profile-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: none;
+    border: none;
+    padding: var(--space-2) var(--space-3);
+    color: rgba(248, 243, 231, 0.9);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.navbar-profile-toggle:hover,
+.navbar-profile-toggle:focus-visible {
+    color: var(--secondary);
+}
+
+.navbar-profile .navbar-dropdown {
+    left: auto;
+    right: 0;
+}
+
+.navbar-profile:hover .navbar-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navbar-profile:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* ── PROFILE DROPDOWN DIVIDER ── */
+.navbar-dropdown-divider {
+    height: 1px;
+    margin: var(--space-2) 0;
+    background: var(--border);
+    border: none;
+}
+
+/* ── LOGIN / REGISTER DROPDOWNS (logged-out state) ── */
+.navbar-auth-dropdown {
+    position: relative;
+}
+
+.navbar-auth-dropdown .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.navbar-auth-dropdown:hover .navbar-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navbar-auth-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.navbar-auth-dropdown--register .navbar-dropdown {
+    left: auto;
+    right: 0;
 }
 
 /* ── HAMBURGER ── */
@@ -433,6 +509,20 @@
     justify-content: center;
     padding: var(--space-4);
     font-size: var(--text-base);
+}
+
+.navbar-mobile-sub-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-left: var(--space-4);
+}
+
+.navbar-mobile-sub-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-3);
+    font-size: var(--text-sm);
 }
 
 /* ── RESPONSIVE ── */

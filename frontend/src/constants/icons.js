@@ -19,6 +19,9 @@ import {
   ChevronDown,
   LogIn,
   UserPlus,
+  User,
+  KeyRound,
+  LogOut,
 } from "lucide-react";
 import {
   FaFacebookF,
@@ -60,6 +63,9 @@ export const Icons = {
   ChevronDown,
   LogIn,
   UserPlus,
+  User,
+  KeyRound,
+  LogOut,
   Facebook: FaFacebookF,
   Instagram: FaInstagram,
   Youtube: FaYoutube,

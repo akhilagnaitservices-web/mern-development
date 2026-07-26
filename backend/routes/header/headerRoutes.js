@@ -1,6 +1,11 @@
  import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
 getHeader,
 createHeader,
 updateHeader,
@@ -25,11 +30,11 @@ SITE HEADER
 
 router.get("/", getHeader);
 
-router.post("/",upload("header").any(),createHeader);
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),upload("header").any(),createHeader);
 
-router.put("/:id",upload("header").any(),updateHeader);
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),upload("header").any(),updateHeader);
 
-router.delete("/:id",deleteHeader);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteHeader);
 
 /* =====================================================
 SOCIAL MEDIA LINKS
@@ -37,11 +42,11 @@ SOCIAL MEDIA LINKS
 
 router.get("/social-media",getSocialMediaLinks);
 
-router.post("/social-media",createSocialMediaLink);
+router.post("/social-media", verifyToken, authorizeRoles("admin", "super_admin"),createSocialMediaLink);
 
-router.put("/social-media/:id",updateSocialMediaLink);
+router.put("/social-media/:id", verifyToken, authorizeRoles("admin", "super_admin"),updateSocialMediaLink);
 
-router.delete("/social-media/:id",deleteSocialMediaLink);
+router.delete("/social-media/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteSocialMediaLink);
 
 /* =====================================================
 FOOTER QUICK LINKS
@@ -49,10 +54,10 @@ FOOTER QUICK LINKS
 
 router.get("/footer-links",getFooterQuickLinks);
 
-router.post("/footer-links",createFooterQuickLink);
+router.post("/footer-links", verifyToken, authorizeRoles("admin", "super_admin"),createFooterQuickLink);
 
-router.put("/footer-links/:id",updateFooterQuickLink);
+router.put("/footer-links/:id", verifyToken, authorizeRoles("admin", "super_admin"),updateFooterQuickLink);
 
-router.delete("/footer-links/:id",deleteFooterQuickLink);
+router.delete("/footer-links/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteFooterQuickLink);
 
 export default router;

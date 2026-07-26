@@ -9,11 +9,13 @@ import EventDetails from './components/events/EventDetails'
 import Gallery from './pages/Gallery/Gallery'
 import Membership from './pages/Membership/Membership'
 import Matrimony from './pages/Matrimony/Matrimony'
+import MatrimonyRegister from './pages/Matrimony/MatrimonyRegister'
 import Contact from './pages/Contact/Contact'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
-import Dashboard from './pages/Dashboard/Dashboard'
-import Chat from './pages/Chat/Chat'
+import ChangePassword from './pages/Auth/ChangePassword'
+import Profile from './pages/Profile/Profile'
+import ProtectedRoute from './components/ProtectedRoute'
 import ScrollToTop from "./components/ScrollToTop";
 import News from './pages/News/News'
 import NewsDetails from './pages/News/NewsDetails'
@@ -34,11 +36,12 @@ function App() {
           <Route path="/news"       element={<News />} />
           <Route path="/news/:slug" element={<NewsDetails />} />
           <Route path="/matrimony"  element={<Matrimony />} />
+          <Route path="/matrimony/register" element={<MatrimonyRegister />} />
           <Route path="/contact"    element={<Contact />} />
           <Route path="/login"      element={<Login />} />
           <Route path="/register"   element={<Register />} />
-          <Route path="/dashboard"  element={<Dashboard />} />
-          <Route path="/chat"       element={<Chat />} />
+          <Route path="/profile"    element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />

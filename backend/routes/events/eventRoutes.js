@@ -1,5 +1,10 @@
 import express from "express";
 
+import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
 import upload from "../../middlewares/uploadMiddleware.js";
 
 import {
@@ -26,19 +31,19 @@ router.get(
 router.get("/slug/:slug", getEventBySlug);
 
 router.post(
-    "/",
+    "/", verifyToken, authorizeRoles("admin", "super_admin"),
     upload("events").single("event_image"),
     createEvent
 );
 
 router.put(
-    "/:id",
+    "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
     upload("events").single("event_image"),
     updateEvent
 );
 
 router.delete(
-    "/:id",
+    "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
     deleteEvent
 );
 

@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getCoreValues,
   getCoreValueById,
   createCoreValue,
@@ -16,13 +21,13 @@ router.get("/",getCoreValues
 router.get("/:id",getCoreValueById
 );
 
-router.post("/",createCoreValue
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),createCoreValue
 );
 
-router.put("/:id",updateCoreValue
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),updateCoreValue
 );
 
-router.delete("/:id",deleteCoreValue
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteCoreValue
 );
 
 export default router;

@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getFlashNews,
   getFlashNewsBySlug,
   getFlashNewsById,
@@ -24,17 +29,17 @@ router.get("/slug/:slug", getFlashNewsBySlug);
 router.get("/:id", getFlashNewsById);
 
 router.post(
-  "/",
+  "/", verifyToken, authorizeRoles("admin", "super_admin"),
   upload("flash-news").single("news_image"),
   createFlashNews
 );
 
 router.put(
-  "/:id",
+  "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
   upload("flash-news").single("news_image"),
   updateFlashNews
 );
 
-router.delete("/:id", deleteFlashNews);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"), deleteFlashNews);
 
 export default router;

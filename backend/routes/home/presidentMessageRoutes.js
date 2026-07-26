@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getPresidentMessage,
   getPresidentMessageById,
   createPresidentMessage,
@@ -21,17 +26,17 @@ router.get("/", getPresidentMessage);
 router.get("/:id", getPresidentMessageById);
 
 router.post(
-  "/",
+  "/", verifyToken, authorizeRoles("admin", "super_admin"),
   upload("president-message").single("president_photo"),
   createPresidentMessage
 );
 
 router.put(
-  "/:id",
+  "/:id", verifyToken, authorizeRoles("admin", "super_admin"),
   upload("president-message").single("president_photo"),
   updatePresidentMessage
 );
 
-router.delete("/:id", deletePresidentMessage);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"), deletePresidentMessage);
 
 export default router;

@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
   getGothras,
   getGothraById,
   createGothra,
@@ -14,10 +19,10 @@ router.get("/", getGothras);
 
 router.get("/:id", getGothraById);
 
-router.post("/", createGothra);
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"), createGothra);
 
-router.put("/:id", updateGothra);
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"), updateGothra);
 
-router.delete("/:id", deleteGothra);
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"), deleteGothra);
 
 export default router;

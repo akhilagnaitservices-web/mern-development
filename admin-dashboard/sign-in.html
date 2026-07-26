@@ -167,12 +167,13 @@
                 <h4 class="mb-12">Sign In to your Account</h4>
                 <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
             </div>
-            <form action="#">
+            <form action="#" id="adminLoginForm">
+                <div id="loginError" class="alert alert-danger d-none mb-16" role="alert"></div>
                 <div class="icon-field mb-16">
                     <span class="icon top-50 translate-middle-y">
                         <iconify-icon icon="mage:email"></iconify-icon>
                     </span>
-                    <input type="email" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Email">
+                    <input type="email" id="email" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Email">
                 </div>
                 <div class="position-relative mb-20">
                     <div class="icon-field">
@@ -193,7 +194,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32"> Sign In</button>
+                <button type="submit" id="loginBtn" class="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32"> Sign In</button>
 
                 <div class="mt-32 center-border-horizontal text-center">
                     <span class="bg-base z-1 px-4">Or sign in with</span>
@@ -245,6 +246,14 @@
   
   <!-- main js -->
   <script src="assets/js/app.js"></script>
+
+<script src="assets/js/config.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="assets/js/api/auth/admin-auth-api.js"></script>
+
+<script src="assets/js/pages/auth/sign-in.js"></script>
 
 <script>
       // ================== Password Show Hide Js Start ==========

@@ -25,6 +25,9 @@ import contactMessageRoutes from "./routes/contact/contactMessageRoutes.js";
 import newsCategoryRoutes from "./routes/news/newsCategoryRoutes.js";
 import newsRoutes from "./routes/news/newsRoutes.js";
 import headerRoutes from "./routes/header/headerRoutes.js"
+import userAuthRoutes from "./routes/auth/userAuthRoutes.js";
+import adminAuthRoutes from "./routes/auth/adminAuthRoutes.js";
+import adminUserRoutes from "./routes/admin/adminUserRoutes.js";
 const app = express();
 
 
@@ -60,4 +63,7 @@ app.use("/api/contact-messages", contactMessageRoutes);
 app.use("/api/news-categories", newsCategoryRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/header",headerRoutes)
+app.use("/api/auth", userAuthRoutes);
+app.use("/api/admin/auth", adminAuthRoutes);
+app.use("/api/admin/users", adminUserRoutes);
 export default app;

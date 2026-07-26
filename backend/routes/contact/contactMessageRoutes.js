@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
 
     createContactMessage,
     getContactMessages,
@@ -22,10 +27,10 @@ router.get("/",getContactMessages
 
 router.get("/:id",getContactMessageById);
 
-router.put("/:id/status",updateContactMessageStatus
+router.put("/:id/status", verifyToken, authorizeRoles("admin", "super_admin"),updateContactMessageStatus
 );
 
-router.delete("/:id",deleteContactMessage
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteContactMessage
 );
 
 export default router;

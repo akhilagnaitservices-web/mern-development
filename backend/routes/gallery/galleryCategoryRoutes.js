@@ -1,6 +1,11 @@
 import express from "express";
 
 import {
+  verifyToken,
+  authorizeRoles
+} from "../../middlewares/authJwt.js";
+
+import {
     getGalleryCategories,
     getGalleryCategoryById,
     createGalleryCategory,
@@ -17,13 +22,13 @@ router.get("/",getGalleryCategories
 router.get("/:id",getGalleryCategoryById
 );
 
-router.post("/",createGalleryCategory
+router.post("/", verifyToken, authorizeRoles("admin", "super_admin"),createGalleryCategory
 );
 
-router.put("/:id",updateGalleryCategory
+router.put("/:id", verifyToken, authorizeRoles("admin", "super_admin"),updateGalleryCategory
 );
 
-router.delete("/:id",deleteGalleryCategory
+router.delete("/:id", verifyToken, authorizeRoles("admin", "super_admin"),deleteGalleryCategory
 );
 
 export default router;
