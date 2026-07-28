@@ -12,7 +12,8 @@ import Matrimony from './pages/Matrimony/Matrimony'
 import MatrimonyRegister from './pages/Matrimony/MatrimonyRegister'
 import Contact from './pages/Contact/Contact'
 import Login from './pages/Auth/Login'
-import Register from './pages/Auth/Register'
+import ForgotPassword from './pages/Auth/ForgotPassword'
+import ResetPassword from './pages/Auth/ResetPassword'
 import ChangePassword from './pages/Auth/ChangePassword'
 import Profile from './pages/Profile/Profile'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -39,7 +40,8 @@ function App() {
           <Route path="/matrimony/register" element={<MatrimonyRegister />} />
           <Route path="/contact"    element={<Contact />} />
           <Route path="/login"      element={<Login />} />
-          <Route path="/register"   element={<Register />} />
+          <Route path="/membership/forgot-password" element={<ForgotPassword />} />
+          <Route path="/membership/reset-password" element={<ResetPassword />} />
           <Route path="/profile"    element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/change-password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
         </Routes>

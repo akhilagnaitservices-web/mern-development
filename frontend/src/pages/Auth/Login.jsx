@@ -81,6 +81,10 @@ const Login = () => {
                         />
                     </div>
 
+                    <p className="auth-switch" style={{ textAlign: 'right', marginTop: '-8px' }}>
+                        <Link to="/membership/forgot-password" className="auth-link">Forgot Password?</Link>
+                    </p>
+
                     <button
                         type="submit"
                         className="btn btn-primary auth-submit"

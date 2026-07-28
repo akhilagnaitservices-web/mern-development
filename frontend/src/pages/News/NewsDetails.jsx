@@ -10,7 +10,7 @@ import {
 } from '../../services/newsService'
 
 import '../../styles/news.css'
-import '../../styles/newsDetails.css'
+import '../../styles/newsdetails.css'
 const formatDate = (dateStr) => {
     if (!dateStr) return ''
     return new Date(dateStr).toLocaleDateString('en-IN', {

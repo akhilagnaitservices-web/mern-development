@@ -1,12 +1,16 @@
 import API from './api.js'
 
-// POST user login
+// POST membership login
 export const loginUser = (data) =>
-    API.post('/auth/login', data)
+    API.post('/membership/auth/login', data)
 
-// POST user registration
-export const registerUser = (data) =>
-    API.post('/auth/register', data)
+// POST forgot password (sends reset email)
+export const forgotPassword = (data) =>
+    API.post('/membership/auth/forgot-password', data)
+
+// POST reset password (with token from email)
+export const resetPassword = (data) =>
+    API.post('/membership/auth/reset-password', data)
 
 // GET the logged-in user's own profile
 export const getMyProfile = () =>
@@ -14,7 +18,7 @@ export const getMyProfile = () =>
 
 // PUT change password (requires the logged-in user's token)
 export const changePassword = (data) =>
-    API.put('/auth/change-password', data)
+    API.put('/membership/auth/change-password', data)
 
 // Clear the session and return to login
 export const logoutUser = () => {

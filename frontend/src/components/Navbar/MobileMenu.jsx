@@ -175,7 +175,7 @@ const MobileMenu = ({
 
                         {registerOpen && (
                             <div className="navbar-mobile-sub-actions">
-                                <Link to="/register" className="btn btn-secondary" onClick={closeMenu}>
+                                <Link to="/membership" className="btn btn-secondary" onClick={closeMenu}>
                                     Membership Register
                                 </Link>
                                 <Link to="/matrimony/register" className="btn btn-secondary" onClick={closeMenu}>

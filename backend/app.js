@@ -28,6 +28,8 @@ import headerRoutes from "./routes/header/headerRoutes.js"
 import userAuthRoutes from "./routes/auth/userAuthRoutes.js";
 import adminAuthRoutes from "./routes/auth/adminAuthRoutes.js";
 import adminUserRoutes from "./routes/admin/adminUserRoutes.js";
+import membershipAuthRoutes from "./routes/membership/membershipAuthRoutes.js";
+import adminMembershipRoutes from "./routes/admin/adminMembershipRoutes.js";
 const app = express();
 
 
@@ -66,4 +68,6 @@ app.use("/api/header",headerRoutes)
 app.use("/api/auth", userAuthRoutes);
 app.use("/api/admin/auth", adminAuthRoutes);
 app.use("/api/admin/users", adminUserRoutes);
+app.use("/api/membership/auth", membershipAuthRoutes);
+app.use("/api/admin/membership", adminMembershipRoutes);
 export default app;

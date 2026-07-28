@@ -307,7 +307,7 @@ const Navbar = () => {
 
                                     <ul className="navbar-dropdown">
                                         <li>
-                                            <Link to="/register">Membership Register</Link>
+                                            <Link to="/membership">Membership Register</Link>
                                         </li>
                                         <li>
                                             <Link to="/matrimony/register">Matrimony Register</Link>

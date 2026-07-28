@@ -1,4 +1,6 @@
-import PageBanner from "../../components/PageBanner/PageBanner";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { registerMembership } from "../../services/membershipService";
 import "../../styles/membership.css";
 
 import {
@@ -13,6 +15,60 @@ import {
 } from "react-icons/fa";
 
 const Membership = () => {
+    const navigate = useNavigate()
+
+    const [form, setForm] = useState({
+        full_name: "", father_husband_name: "", gothram: "", surname: "",
+        gender: "", date_of_birth: "", mobile_number: "", email: "",
+        address: "", city: "", state: "", pincode: "",
+        password: "", confirm_password: "",
+    })
+    const [photo, setPhoto] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
+
+    const handleChange = (e) => {
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        setError("")
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!form.full_name || !form.father_husband_name || !form.gothram || !form.surname || !form.password) {
+            setError("Please fill in all required fields.")
+            return
+        }
+
+        if (form.password !== form.confirm_password) {
+            setError("Passwords do not match.")
+            return
+        }
+
+        setLoading(true)
+        try {
+            const data = new FormData()
+            Object.entries(form).forEach(([key, value]) => {
+                if (key !== "confirm_password") data.append(key, value)
+            })
+            if (photo) data.append("photo", photo)
+
+            const res = await registerMembership(data)
+
+            if (res.data?.success) {
+                setSuccess(res.data.message || "Registration submitted successfully.")
+                setTimeout(() => navigate("/login"), 1500)
+            } else {
+                setError(res.data?.message || "Registration failed.")
+            }
+        } catch (err) {
+            setError(err.response?.data?.message || "Registration failed. Please try again.")
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <>
             {/* <PageBanner page="membership" /> */}
@@ -36,73 +92,10 @@ const Membership = () => {
 
                 <div className="container">
 
-                    {/* Benefits */}
-
-                    <div className="section-title">
-                        <h2>Membership Benefits</h2>
-                    </div>
-
-                    <div className="benefits-grid">
-
-                        <div className="benefit-card">
-                            <FaUsers />
-                            <h4>Community Connection</h4>
-                            <p>
-                                Connect with thousands of
-                                Vadiyaraju Kshatriya families.
-                            </p>
-                        </div>
-
-                        <div className="benefit-card">
-                            <FaShieldAlt />
-                            <h4>Exclusive Privileges</h4>
-                            <p>
-                                Access community programs
-                                and welfare initiatives.
-                            </p>
-                        </div>
-
-                        <div className="benefit-card">
-                            <FaGraduationCap />
-                            <h4>Support Education</h4>
-                            <p>
-                                Contribute to educational
-                                welfare programs.
-                            </p>
-                        </div>
-
-                        <div className="benefit-card">
-                            <FaHandHoldingHeart />
-                            <h4>Welfare Support</h4>
-                            <p>
-                                Be part of social and
-                                emergency support.
-                            </p>
-                        </div>
-
-                        <div className="benefit-card">
-                            <FaVoteYea />
-                            <h4>Voting Rights</h4>
-                            <p>
-                                Participate in important
-                                community decisions.
-                            </p>
-                        </div>
-
-                        <div className="benefit-card">
-                            <FaIdCard />
-                            <h4>Digital ID Card</h4>
-                            <p>
-                                Receive official member
-                                identification.
-                            </p>
-                        </div>
-
-                    </div>
 
                     {/* Plans */}
 
-                    <div className="section-title mt-60">
+                    {/* <div className="section-title mt-60">
                         <h2>Membership Plans</h2>
                     </div>
 
@@ -176,7 +169,7 @@ const Membership = () => {
                             </button>
                         </div>
 
-                    </div>
+                    </div> */}
 
                     {/* Registration */}
 
@@ -188,50 +181,67 @@ const Membership = () => {
 
                         <div className="membership-form">
 
-                            <form>
+                            {success && <p className="form-success">{success}</p>}
+                            {error && <p className="form-error">{error}</p>}
+
+                            <form onSubmit={handleSubmit}>
 
                                 <div className="form-grid">
 
-                                    <input placeholder="Full Name *" />
-                                    <input placeholder="Father / Husband Name *" />
+                                    <input name="full_name" value={form.full_name} onChange={handleChange} placeholder="Full Name *" />
+                                    <input name="father_husband_name" value={form.father_husband_name} onChange={handleChange} placeholder="Father / Husband Name *" />
 
-                                    <input placeholder="Gothram *" />
-                                    <input placeholder="Surname / Inti Peru *" />
+                                    <input name="gothram" value={form.gothram} onChange={handleChange} placeholder="Gothram *" />
+                                    <input name="surname" value={form.surname} onChange={handleChange} placeholder="Surname / Inti Peru *" />
 
-                                    <select>
-                                        <option>Select Gender</option>
+                                    <select name="gender" value={form.gender} onChange={handleChange}>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
                                     </select>
 
-                                    <input placeholder="Date Of Birth" type="date" />
+                                    <input name="date_of_birth" value={form.date_of_birth} onChange={handleChange} placeholder="Date Of Birth" type="date" />
 
-                                    <input placeholder="Mobile Number" />
-                                    <input placeholder="Email ID" />
+                                    <input name="mobile_number" value={form.mobile_number} onChange={handleChange} placeholder="Mobile Number" />
+                                    <input name="email" value={form.email} onChange={handleChange} placeholder="Email ID" type="email" />
 
                                 </div>
 
                                 <textarea
+                                    name="address"
+                                    value={form.address}
+                                    onChange={handleChange}
                                     rows="4"
                                     placeholder="Address"
                                 ></textarea>
 
                                 <div className="form-grid mt-20">
 
-                                    <input placeholder="City" />
-                                    <input placeholder="State" />
-                                    <input placeholder="Pincode" />
+                                    <input name="city" value={form.city} onChange={handleChange} placeholder="City" />
+                                    <input name="state" value={form.state} onChange={handleChange} placeholder="State" />
+                                    <input name="pincode" value={form.pincode} onChange={handleChange} placeholder="Pincode" />
+
+                                </div>
+
+                                <div className="form-grid mt-20">
+
+                                    <input name="password" value={form.password} onChange={handleChange} placeholder="Password *" type="password" />
+                                    <input name="confirm_password" value={form.confirm_password} onChange={handleChange} placeholder="Confirm Password *" type="password" />
 
                                 </div>
 
                                 <div className="upload-box">
                                     <label>Upload Photo</label>
-                                    <input type="file" />
+                                    <input type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} />
                                 </div>
 
                                 <button
                                     className="submit-btn"
                                     type="submit"
+                                    disabled={loading}
                                 >
-                                    Submit Registration
+                                    {loading ? "Submitting..." : "Submit Registration"}
                                 </button>
 
                             </form>
@@ -281,7 +291,74 @@ const Membership = () => {
 
                     </div>
 
+                                        {/* Benefits */}
+
+                    <div className="section-title">
+                        <h2>Membership Benefits</h2>
+                    </div>
+
+                    <div className="benefits-grid">
+
+                        <div className="benefit-card">
+                            <FaUsers />
+                            <h4>Community Connection</h4>
+                            <p>
+                                Connect with thousands of
+                                Vadiyaraju Kshatriya families.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaShieldAlt />
+                            <h4>Exclusive Privileges</h4>
+                            <p>
+                                Access community programs
+                                and welfare initiatives.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaGraduationCap />
+                            <h4>Support Education</h4>
+                            <p>
+                                Contribute to educational
+                                welfare programs.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaHandHoldingHeart />
+                            <h4>Welfare Support</h4>
+                            <p>
+                                Be part of social and
+                                emergency support.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaVoteYea />
+                            <h4>Voting Rights</h4>
+                            <p>
+                                Participate in important
+                                community decisions.
+                            </p>
+                        </div>
+
+                        <div className="benefit-card">
+                            <FaIdCard />
+                            <h4>Digital ID Card</h4>
+                            <p>
+                                Receive official member
+                                identification.
+                            </p>
+                        </div>
+
+                    </div>
+
+
                 </div>
+
+                
 
             </section>
         </>
