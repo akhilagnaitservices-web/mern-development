@@ -160,44 +160,41 @@ const MatrimonyRegister = () => {
                     </div>
 
                     <div className="auth-row">
+
                         <div className="auth-group">
-                            <label className="auth-label">Gender (code) *</label>
-                            <input
-                                type="text"
-                                name="gender"
-                                className="auth-input"
-                                placeholder="e.g. 1"
-                                value={form.gender}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
+    <label className="auth-label">Gender *</label>
+    <select
+        name="gender"
+        className="auth-input"
+        value={form.gender}
+        onChange={handleChange}
+        required
+    >
+        <option value="">Select Gender</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+        <option value="3">Others</option>
+    </select>
+</div>
+                      
+
                         <div className="auth-group">
-                            <label className="auth-label">Looking For (code) *</label>
-                            <input
-                                type="text"
-                                name="looking_for"
-                                className="auth-input"
-                                placeholder="e.g. 1"
-                                value={form.looking_for}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
+    <label className="auth-label">Looking For *</label>
+    <select
+        name="looking_for"
+        className="auth-input"
+        value={form.looking_for}
+        onChange={handleChange}
+        required
+    >
+        <option value="">Select Preference</option>
+        <option value="1">Groom</option>
+        <option value="2">Bride</option>
+    </select>
+</div>
                     </div>
 
-                    <div className="auth-group">
-                        <label className="auth-label">Gothram (code) *</label>
-                        <input
-                            type="text"
-                            name="gothram"
-                            className="auth-input"
-                            placeholder="e.g. 1"
-                            value={form.gothram}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+              
 
                     <div className="auth-row">
                         <div className="auth-group">
