@@ -14,7 +14,11 @@ export const resetPassword = (data) =>
 
 // GET the logged-in user's own profile
 export const getMyProfile = () =>
-    API.get('/auth/me')
+    API.get('/membership/auth/me')
+
+// PUT update the logged-in user's own profile
+export const updateMyProfile = (data) =>
+    API.put('/membership/auth/me', data)
 
 // PUT change password (requires the logged-in user's token)
 export const changePassword = (data) =>

@@ -193,6 +193,15 @@
     border-radius:6px;
 }
 
+.membership-form textarea{
+    margin-top:15px;
+}
+
+
+.mt-20{
+    margin-top:20px;
+}
+
 .upload-box{
     margin-top:20px;
 }

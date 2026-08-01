@@ -44,18 +44,32 @@
 /* Alphabet tabs */
 .gothras-alpha-tabs {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
     flex: 1;
+    min-width: 0;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+}
+
+.gothras-alpha-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.gothras-alpha-tabs::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-full);
 }
 
 .alpha-tab {
-    width: 34px;
-    height: 34px;
-    border-radius: var(--radius-md);
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
     border: 1.5px solid var(--border);
     background: transparent;
-    font-size: var(--text-sm);
+    font-size: 10px;
     font-weight: 700;
     color: var(--text-medium);
     cursor: pointer;
@@ -80,7 +94,8 @@
 
 .alpha-tab.all {
     width: auto;
-    padding: 0 12px;
+    flex-shrink: 0;
+    padding: 0 10px;
     background: var(--primary);
     border-color: var(--primary);
     color: var(--text-light);
@@ -97,52 +112,47 @@
 .gothras-search {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 6px;
     margin-left: auto;
-    margin-top: 0%;
+    flex-shrink: 0;
     border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 8px 14px;
-    background: var(--bg-white);
-    width: 280px;
-    min-width: 280px;
+    border-radius: var(--radius-full);
+    padding: 6px 12px;
+    background: var(--bg-main);
+    width: 170px;
+    min-width: 140px;
 
     transition: var(--transition-fast);
 }
 
 .gothras-search:focus-within {
     border-color: var(--primary);
+    background: var(--bg-white);
     box-shadow: 0 0 0 3px rgba(122,31,31,0.08);
+}
+
+.gothras-search-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.gothras-search:focus-within .gothras-search-icon {
+    color: var(--primary);
 }
 
 .gothras-search input {
     border: none;
     outline: none;
-    font-size: var(--text-sm);
+    font-size: 12px;
     color: var(--text-dark);
     background: transparent;
     flex: 1;
+    min-width: 0;
     font-family: var(--font-body);
 }
 
-.gothras-search-btn {
-    background: var(--primary);
-    border: none;
-    border-radius: var(--radius-sm);
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: white;
-    font-size: var(--text-base);
-    transition: var(--transition-fast);
-    flex-shrink: 0;
-}
-
-.gothras-search-btn:hover {
-    background: var(--primary-dark);
+.gothras-search input::placeholder {
+    font-size: 12px;
 }
 
 /* ── GOTHRAS SECTION ── */

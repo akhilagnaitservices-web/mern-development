@@ -5,7 +5,9 @@ import {
   loginMembership,
   forgotMembershipPassword,
   resetMembershipPassword,
-  changeMembershipPassword
+  changeMembershipPassword,
+  getMyProfile,
+  updateMyProfile
 } from "../../controllers/membership/membershipAuthController.js";
 
 import {
@@ -33,5 +35,9 @@ router.put(
   verifyToken,
   changeMembershipPassword
 );
+
+router.get("/me", verifyToken, getMyProfile);
+
+router.put("/me", verifyToken, updateMyProfile);
 
 export default router;

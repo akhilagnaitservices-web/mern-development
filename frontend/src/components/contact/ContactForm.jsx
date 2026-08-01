@@ -85,7 +85,7 @@ const ContactForm = () => {
 
             {submitted && (
                 <div className="form-success">
-                    ✅ Your message has been sent! We'll respond within 24 hours.
+                     Your message has been sent! We'll respond within 24 hours.
                 </div>
             )}
 
@@ -186,11 +186,11 @@ const ContactForm = () => {
                     className="form-submit-btn"
                     disabled={loading || submitted}
                 >
-                    {loading ? '⏳ Sending...' : '📨 Send Message'}
+                    {loading ? ' Sending...' : ' Send Message'}
                 </button>
 
                 <p className="form-privacy">
-                    🔒 Your information is safe with us. We respect your privacy.
+                     Your information is safe with us. We respect your privacy.
                 </p>
             </form>
         </div>

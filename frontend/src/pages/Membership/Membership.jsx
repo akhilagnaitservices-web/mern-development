@@ -29,7 +29,14 @@ const Membership = () => {
     const [success, setSuccess] = useState("")
 
     const handleChange = (e) => {
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        const { name, value } = e.target
+
+        if (name === "mobile_number" || name === "pincode") {
+            const digits = value.replace(/\D/g, "").slice(0, name === "mobile_number" ? 10 : 6)
+            setForm((prev) => ({ ...prev, [name]: digits }))
+        } else {
+            setForm((prev) => ({ ...prev, [name]: value }))
+        }
         setError("")
     }
 
@@ -43,6 +50,16 @@ const Membership = () => {
 
         if (form.password !== form.confirm_password) {
             setError("Passwords do not match.")
+            return
+        }
+
+        if (form.mobile_number && form.mobile_number.length !== 10) {
+            setError("Mobile Number must be 10 digits.")
+            return
+        }
+
+        if (form.pincode && form.pincode.length !== 6) {
+            setError("Pincode must be 6 digits.")
             return
         }
 
@@ -192,7 +209,7 @@ const Membership = () => {
                                     <input name="father_husband_name" value={form.father_husband_name} onChange={handleChange} placeholder="Father / Husband Name *" />
 
                                     <input name="gothram" value={form.gothram} onChange={handleChange} placeholder="Gothram *" />
-                                    <input name="surname" value={form.surname} onChange={handleChange} placeholder="Surname / Inti Peru *" />
+                                    <input name="surname" value={form.surname} onChange={handleChange} placeholder="Surname *" />
 
                                     <select name="gender" value={form.gender} onChange={handleChange}>
                                         <option value="">Select Gender</option>
@@ -201,9 +218,9 @@ const Membership = () => {
                                         <option value="other">Other</option>
                                     </select>
 
-                                    <input name="date_of_birth" value={form.date_of_birth} onChange={handleChange} placeholder="Date Of Birth" type="date" />
+                                    <input name="date_of_birth" value={form.date_of_birth} onChange={handleChange} type="date" />
 
-                                    <input name="mobile_number" value={form.mobile_number} onChange={handleChange} placeholder="Mobile Number" />
+                                    <input name="mobile_number" value={form.mobile_number} onChange={handleChange} placeholder="Mobile Number" type="tel" inputMode="numeric" maxLength={10} />
                                     <input name="email" value={form.email} onChange={handleChange} placeholder="Email ID" type="email" />
 
                                 </div>
@@ -220,7 +237,7 @@ const Membership = () => {
 
                                     <input name="city" value={form.city} onChange={handleChange} placeholder="City" />
                                     <input name="state" value={form.state} onChange={handleChange} placeholder="State" />
-                                    <input name="pincode" value={form.pincode} onChange={handleChange} placeholder="Pincode" />
+                                    <input name="pincode" value={form.pincode} onChange={handleChange} placeholder="Pincode" type="text" inputMode="numeric" maxLength={6} />
 
                                 </div>
 

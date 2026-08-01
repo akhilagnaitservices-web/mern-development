@@ -42,6 +42,16 @@ const PageBanner = ({ page }) => {
 
                 <div className="page-banner-content">
 
+                    <h1 className="page-banner-title">
+                        {banner?.banner_title || page}
+                    </h1>
+
+                    {banner?.banner_subtitle && (
+                        <p className="page-banner-subtitle">
+                            {banner.banner_subtitle}
+                        </p>
+                    )}
+
                     <div className="breadcrumb">
 
                         <Link to="/">
@@ -55,16 +65,6 @@ const PageBanner = ({ page }) => {
                         </span>
 
                     </div>
-
-                    <h1 className="page-banner-title">
-                        {banner?.banner_title || page}
-                    </h1>
-
-                    {banner?.banner_subtitle && (
-                        <p className="page-banner-subtitle">
-                            {banner.banner_subtitle}
-                        </p>
-                    )}
 
                 </div>
 

@@ -1,3 +1,5 @@
+import { Icons } from '../../constants/icons'
+
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 const GothrasFilter = ({ activeLetter, setActiveLetter, search, setSearch }) => {
@@ -27,13 +29,14 @@ const GothrasFilter = ({ activeLetter, setActiveLetter, search, setSearch }) => 
 
                     {/* Search */}
                     <div className="gothras-search">
+                        
                         <input
                             type="text"
                             placeholder="Search Gothra..."
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                         />
-                        <button className="gothras-search-btn">🔍</button>
+                        <Icons.Search size={14} className="gothras-search-icon" />
                     </div>
 
                 </div>

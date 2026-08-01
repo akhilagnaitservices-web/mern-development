@@ -29,7 +29,13 @@ const MatrimonyRegister = () => {
     }
 
     const handleChange = (e) => {
-        setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+        const { name, value } = e.target
+
+        if (name === 'gothram') {
+            setForm(prev => ({ ...prev, gothram: value.replace(/\D/g, '') }))
+        } else {
+            setForm(prev => ({ ...prev, [name]: value }))
+        }
         setError('')
     }
 
@@ -194,7 +200,19 @@ const MatrimonyRegister = () => {
 </div>
                     </div>
 
-              
+                    <div className="auth-group">
+                        <label className="auth-label">Gothram Code *</label>
+                        <input
+                            type="text"
+                            name="gothram"
+                            className="auth-input"
+                            placeholder="Enter your gothram code"
+                            inputMode="numeric"
+                            value={form.gothram}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
                     <div className="auth-row">
                         <div className="auth-group">

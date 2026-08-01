@@ -3,6 +3,149 @@ import db from "../../config/db.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../../helpers/generateToken.js";
 import sendMail from "../../helpers/mailer.js";
+import { getImageUrl } from "../../helpers/fileHelper.js";
+
+export const getMyProfile =
+async (req, res) => {
+
+  try {
+
+    const { id } = req.user;
+
+    const [rows] =
+    await db.query(
+      `
+      SELECT
+        id, member_id, full_name, father_husband_name, gothram, surname,
+        gender, date_of_birth, mobile_number, email, address, city, state,
+        pincode, photo, status, created_at
+      FROM membership_registrations
+      WHERE id = ?
+      `,
+      [id]
+    );
+
+    if (!rows.length) {
+
+      return res.status(404).json({
+        success: false,
+        message: "Member not found"
+      });
+
+    }
+
+    const member = rows[0];
+    member.photo = getImageUrl("membership", member.photo);
+
+    return res.status(200).json({
+      success: true,
+      message: "Profile fetched successfully",
+      data: member
+    });
+
+  } catch (error) {
+
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+
+};
+
+export const updateMyProfile =
+async (req, res) => {
+
+  try {
+
+    const { id } = req.user;
+
+    const {
+      full_name,
+      father_husband_name,
+      gothram,
+      surname,
+      gender,
+      date_of_birth,
+      mobile_number,
+      email,
+      address,
+      city,
+      state,
+      pincode
+    } = req.body;
+
+    if (
+      !full_name ||
+      !father_husband_name ||
+      !gothram ||
+      !surname
+    ) {
+
+      return res.status(400).json({
+        success: false,
+        message:
+        "Full Name, Father/Husband Name, Gothram and Surname are required"
+      });
+
+    }
+
+    if (email) {
+
+      const [emailDup] =
+      await db.query(
+        `
+        SELECT id
+        FROM membership_registrations
+        WHERE email = ? AND id != ?
+        `,
+        [email, id]
+      );
+
+      if (emailDup.length) {
+
+        return res.status(400).json({
+          success: false,
+          message: "Email already registered"
+        });
+
+      }
+
+    }
+
+    await db.query(
+      `
+      UPDATE membership_registrations
+      SET
+        full_name = ?, father_husband_name = ?, gothram = ?, surname = ?,
+        gender = ?, date_of_birth = ?, mobile_number = ?, email = ?,
+        address = ?, city = ?, state = ?, pincode = ?, updated_by = ?
+      WHERE id = ?
+      `,
+      [
+        full_name, father_husband_name, gothram, surname,
+        gender || null, date_of_birth || null, mobile_number || null, email || null,
+        address || null, city || null, state || null, pincode || null,
+        `member:${id}`, id
+      ]
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Profile updated successfully"
+    });
+
+  } catch (error) {
+
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+
+};
 
 export const registerMembership =
 async (req, res) => {

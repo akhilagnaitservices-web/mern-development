@@ -43,16 +43,9 @@ const AboutSamiti = ({ data }) => {
                                 </p>
                         </div>
 
-                        {data.button_name && (
-
-                            <Link
-                                to={data.button_link || "/about"}
-                                className="btn btn-primary"
-                            >
-                                {data.button_name}
-                            </Link>
-
-                        )}
+                        <Link to="/about" className="btn btn-primary">
+                            Read More
+                        </Link>
 
                     </div>
 
