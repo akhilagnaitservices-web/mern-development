@@ -47,7 +47,7 @@ response?.data?.data || [];
         "FlashNewsTableBody"
     ).innerHTML = `
         <tr>
-            <td colspan="7" class="text-center">
+            <td colspan="6" class="text-center">
                 No FlashNewss Found
             </td>
         </tr>
@@ -62,16 +62,6 @@ response?.data?.data || [];
 <tr>
 
 <td>${FlashNews.id}</td>
-
-<td>
-
-<img
-src="${FlashNews.news_image}"
-width="70"
-height="50"
-style="object-fit:cover;border-radius:8px">
-
-</td>
 
 <td>${FlashNews.news_title}</td>
 
@@ -264,16 +254,6 @@ async function editFlashNews(id) {
         ).value =
         FlashNews.news_slug;
 
-        document.querySelector(
-            '[name="short_description"]'
-        ).value =
-        FlashNews.short_description || "";
-
-        document.querySelector(
-            '[name="full_description"]'
-        ).value =
-        FlashNews.full_description || "";
-
        document.querySelector(
           '[name="news_date"]'
           ).value =
@@ -364,16 +344,7 @@ async function viewFlashNews(id) {
 
             <div class="row g-4">
 
-                <div class="col-md-5">
-
-                    <img
-                        src="${FlashNews.news_image}"
-                        class="img-fluid rounded shadow-sm w-100"
-                        style="height:250px;object-fit:cover;">
-
-                </div>
-
-                <div class="col-md-7">
+                <div class="col-md-12">
 
                   <h4 class="mb-3">
 ${FlashNews.news_title}
@@ -384,16 +355,6 @@ ${FlashNews.news_title}
 <tr>
 <th>Slug</th>
 <td>${FlashNews.news_slug}</td>
-</tr>
-
-<tr>
-<th>Short Description</th>
-<td>${FlashNews.short_description}</td>
-</tr>
-
-<tr>
-<th>Full Description</th>
-<td>${FlashNews.full_description}</td>
 </tr>
 
 <tr>
@@ -427,10 +388,6 @@ Inactive
 </tr>
 
 </table>
-
-       
-
-                    </table>
 
                 </div>
 

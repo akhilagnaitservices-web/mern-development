@@ -194,15 +194,9 @@ export const createFlashNews = async (
     const {
       news_title,
       news_slug,
-      short_description,
-      full_description,
       news_date,
       status
     } = req.body;
-
-    const news_image = req.file
-      ? req.file.filename
-      : null;
 
     const query = `
       INSERT INTO flash_news (
@@ -220,10 +214,10 @@ export const createFlashNews = async (
     const values = [
       news_title,
       news_slug,
-      short_description,
-      full_description,
-      news_image,
-      news_date,
+      null,
+      null,
+      null,
+      news_date || null,
       status || "active"
     ];
 
@@ -270,8 +264,6 @@ export const updateFlashNews = async (
     const {
       news_title,
       news_slug,
-      short_description,
-      full_description,
       news_date,
       status
     } = req.body;
@@ -281,8 +273,6 @@ export const updateFlashNews = async (
       SET
         news_title = ?,
         news_slug = ?,
-        short_description = ?,
-        full_description = ?,
         news_date = ?,
         status = ?
     `;
@@ -290,23 +280,9 @@ export const updateFlashNews = async (
     const values = [
       news_title,
       news_slug,
-      short_description,
-      full_description,
-      news_date,
+      news_date || null,
       status
     ];
-
-    if (req.file) {
-
-      query += `,
-        news_image = ?
-      `;
-
-      values.push(
-        req.file.filename
-      );
-
-    }
 
     query += `
       WHERE id = ?

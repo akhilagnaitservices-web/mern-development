@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import NewsFilter from '../../components/news/NewsFilter'
 import NewsCard from '../../components/news/NewsCard'
 import NewsSidebar from '../../components/news/NewsSidebar'
@@ -28,6 +29,9 @@ const News = () => {
 
     const newsSectionRef = useRef(null)
 
+    const [searchParams] = useSearchParams()
+    const highlightSlug = searchParams.get('slug')
+
     useEffect(() => {
 
         const params = {
@@ -55,6 +59,11 @@ const News = () => {
                     const sorted = (newsRes.data.data || [])
                         .slice()
                         .sort((a, b) => {
+
+                            if (highlightSlug) {
+                                if (a.news_slug === highlightSlug) return -1
+                                if (b.news_slug === highlightSlug) return 1
+                            }
 
                             const orderA =
                                 a.display_order ?? Infinity
@@ -96,7 +105,7 @@ const News = () => {
 
             })
 
-    }, [activeCategory, search])
+    }, [activeCategory, search, highlightSlug])
 
     useEffect(() => {
 

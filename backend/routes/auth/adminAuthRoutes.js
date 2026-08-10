@@ -2,7 +2,8 @@ import express from "express";
 
 import {
   registerAdmin,
-  loginAdmin
+  loginAdmin,
+  changeAdminPassword
 } from "../../controllers/auth/adminAuthController.js";
 
 import {
@@ -20,5 +21,11 @@ router.post(
 );
 
 router.post("/login", loginAdmin);
+
+router.put(
+  "/change-password",
+  verifyToken,
+  changeAdminPassword
+);
 
 export default router;

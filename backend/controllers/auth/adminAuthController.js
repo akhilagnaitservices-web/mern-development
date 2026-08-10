@@ -100,6 +100,104 @@ async (req, res) => {
 
 };
 
+export const changeAdminPassword =
+async (req, res) => {
+
+  try {
+
+    const { id } = req.user;
+
+    const {
+      current_password,
+      new_password
+    } = req.body;
+
+    if (
+      !current_password ||
+      !new_password
+    ) {
+
+      return res.status(400).json({
+        success: false,
+        message:
+        "Current Password and New Password are required"
+      });
+
+    }
+
+    if (current_password === new_password) {
+
+      return res.status(400).json({
+        success: false,
+        message:
+        "New password must be different from the current password"
+      });
+
+    }
+
+    const [rows] =
+    await db.query(
+      `
+      SELECT password
+      FROM user_signup
+      WHERE id = ?
+      `,
+      [id]
+    );
+
+    if (!rows.length) {
+
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found"
+      });
+
+    }
+
+    const isMatch =
+    await bcrypt.compare(
+      current_password,
+      rows[0].password
+    );
+
+    if (!isMatch) {
+
+      return res.status(401).json({
+        success: false,
+        message:
+        "Current password is incorrect"
+      });
+
+    }
+
+    const hashedPassword =
+    await bcrypt.hash(new_password, 10);
+
+    await db.query(
+      `
+      UPDATE user_signup
+      SET password = ?
+      WHERE id = ?
+      `,
+      [hashedPassword, id]
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Password changed successfully"
+    });
+
+  } catch (error) {
+
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+
+};
+
 export const loginAdmin =
 async (req, res) => {
 

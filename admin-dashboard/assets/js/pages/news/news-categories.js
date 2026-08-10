@@ -147,7 +147,7 @@ async function saveNewsCategory(e) {
             display_order.value,
 
             status:
-            status.value
+            document.getElementById("status").value
 
         };
 
@@ -213,7 +213,7 @@ async function editNewsCategory(id) {
         display_order.value =
         category.display_order;
 
-        status.value =
+        document.getElementById("status").value =
         category.status;
 
         document.querySelector(

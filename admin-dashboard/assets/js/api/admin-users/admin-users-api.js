@@ -8,3 +8,12 @@ async function getAdminUserById(id) {
     );
 
 }
+
+async function updateAdminUser(id, data) {
+
+    return axios.put(
+        `${ADMIN_USERS_API}/${id}`,
+        data
+    );
+
+}

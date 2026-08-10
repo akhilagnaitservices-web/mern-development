@@ -64,8 +64,13 @@ const QuickServices = ({ services }) => {
 
                             <div className="service-icon">
 
-                                {getIcon(
-                                    service.service_name
+                                {service.service_icon ? (
+                                    <img
+                                        src={service.service_icon}
+                                        alt={service.service_name}
+                                    />
+                                ) : (
+                                    getIcon(service.service_name)
                                 )}
 
                             </div>

@@ -9,3 +9,12 @@ async function adminLogin(data) {
     );
 
 }
+
+async function changeAdminPassword(data) {
+
+    return axios.put(
+        `${ADMIN_AUTH_API}/change-password`,
+        data
+    );
+
+}

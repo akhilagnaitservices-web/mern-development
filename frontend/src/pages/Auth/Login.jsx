@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Eye, EyeOff } from 'lucide-react'
 import { loginUser } from '../../services/authService'
 import '../../styles/auth.css'
 
@@ -8,6 +9,7 @@ const Login = () => {
     const [form, setForm] = useState({ email: '', password: '' })
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
 
     const handleChange = (e) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -70,15 +72,25 @@ const Login = () => {
 
                     <div className="auth-group">
                         <label className="auth-label">Password *</label>
-                        <input
-                            type="password"
-                            name="password"
-                            className="auth-input"
-                            placeholder="Enter your password"
-                            value={form.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="auth-password-wrap">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                name="password"
+                                className="auth-input"
+                                placeholder="Enter your password"
+                                value={form.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="auth-password-toggle"
+                                onClick={() => setShowPassword(prev => !prev)}
+                                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                            >
+                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
+                        </div>
                     </div>
 
                     <p className="auth-switch" style={{ textAlign: 'right', marginTop: '-8px' }}>

@@ -231,7 +231,7 @@ const Navbar = () => {
                                                 e.preventDefault()
                                                 const chatUrl = getChatUrl(user)
                                                 if (chatUrl) {
-                                                    window.location.href = chatUrl
+                                                    window.open(chatUrl, '_blank', 'noopener,noreferrer')
                                                 }
                                             }}
                                         >

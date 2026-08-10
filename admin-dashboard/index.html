@@ -199,7 +199,7 @@
 
         <li><a href="carousel.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Carousel</a></li>
         <li><a href="flash-news.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Flash News</a></li>
-        <li><a href="aboutsamiti.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>About Samiti</a></li>
+        <li><a href="aboutSamiti.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>About Samiti</a></li>
         <li><a href="president-message.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>President Message</a></li>
         <li><a href="quick-services.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Quick Services</a></li>
         <li><a href="upcomingevents.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Upcoming Events</a></li>
@@ -321,24 +321,7 @@
 </li> 
 
 
-      <li class="dropdown">
-        <a href="javascript:void(0)">
-          <i class="ri-news-line text-xl me-14 d-flex w-auto"></i>
-          <span>Blog</span>
-        </a>
-        <ul class="sidebar-submenu">
-          <li>
-            <a href="blog.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Blog</a>
-          </li>
-          <li>
-            <a href="blog-details.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Blog
-              Details</a>
-          </li>
-          <li>
-            <a href="add-blog.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add Blog</a>
-          </li>
-        </ul>
-      </li>   
+      <!--       -->
       
       <li class="dropdown">
         <a href="javascript:void(0)">
@@ -372,27 +355,7 @@
       </li>
        
       
-   
-      <li class="sidebar-menu-group-title">Authentication</li>
 
-      <li class="dropdown">
-        <a href="javascript:void(0)">
-          <iconify-icon icon="simple-line-icons:vector" class="menu-icon"></iconify-icon>
-          <span>Authentication</span>
-        </a>
-        <ul class="sidebar-submenu">
-          <li>
-            <a href="sign-in.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Sign In</a>
-          </li>
-          <li>
-            <a href="sign-up.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Sign Up</a>
-          </li>
-          <li>
-            <a href="forgot-password.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Forgot
-              Password</a>
-          </li>
-        </ul>
-      </li>
 
       
        
@@ -1178,6 +1141,13 @@
 <script src="assets/js/homeOneChart.js"></script>
 
 <script src="assets/js/utils/auth-guard.js"></script>
+
+<script>
+    // Dashboard has no widgets yet — send admins straight to a real page
+    if (localStorage.getItem("token")) {
+        window.location.replace("carousel.html");
+    }
+</script>
 
 <script src="assets/js/pages/admin/admin-profile.js"></script>
 
