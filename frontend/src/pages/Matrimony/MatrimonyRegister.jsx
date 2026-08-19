@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { registerMatrimony } from '../../services/matrimonyAuthService'
+import { getGothras } from '../../services/gothraService'
 import '../../styles/auth.css'
 
 const MATRIMONY_APP_URL = import.meta.env.VITE_MATRIMONY_APP_URL
@@ -22,22 +23,27 @@ const MatrimonyRegister = () => {
     const [error, setError] = useState('')
     const [successMessage, setSuccessMessage] = useState('')
 
+    const [gothras, setGothras] = useState([])
+    const [gothraLoading, setGothraLoading] = useState(true)
+    const [gothraSearch, setGothraSearch] = useState('')
+    const [gothraOpen, setGothraOpen] = useState(false)
+
     const goToMatrimonyLogin = () => {
         if (MATRIMONY_APP_URL) {
             window.location.href = MATRIMONY_APP_URL
         }
     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
+const handleChange = (e) => {
+    const { name, value } = e.target
 
-        if (name === 'gothram') {
-            setForm(prev => ({ ...prev, gothram: value.replace(/\D/g, '') }))
-        } else {
-            setForm(prev => ({ ...prev, [name]: value }))
-        }
-        setError('')
-    }
+    setForm(prev => ({
+        ...prev,
+        [name]: value,
+    }))
+
+    setError('')
+}
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -85,6 +91,45 @@ const MatrimonyRegister = () => {
             setLoading(false)
         }
     }
+
+useEffect(() => {
+    const fetchGothras = async () => {
+        try {
+            setGothraLoading(true)
+
+            const res = await getGothras({ status: 'active' })
+
+            if (res.data?.success) {
+                setGothras(res.data.data || [])
+            } else {
+                setGothras([])
+            }
+        } catch (err) {
+            console.error('Gothras error:', err)
+            setGothras([])
+        } finally {
+            setGothraLoading(false)
+        }
+    }
+
+    fetchGothras()
+}, [])
+
+
+const filteredGothras = useMemo(() => {
+    const query = gothraSearch.trim().toLowerCase()
+
+    if (!query) return gothras
+
+    return gothras
+        .filter(gothra =>
+            gothra.gothra_name?.toLowerCase().startsWith(query)
+        )
+}, [gothras, gothraSearch])
+
+const selectedGothra = gothras.find(
+    gothra => String(gothra.id) === String(form.gothram)
+)
 
     return (
         <div className="auth-page">
@@ -200,19 +245,87 @@ const MatrimonyRegister = () => {
 </div>
                     </div>
 
-                    <div className="auth-group">
-                        <label className="auth-label">Gothram Code *</label>
-                        <input
-                            type="text"
-                            name="gothram"
-                            className="auth-input"
-                            placeholder="Enter your gothram code"
-                            inputMode="numeric"
-                            value={form.gothram}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+                   <div className="auth-group gothra-select-group">
+    <label className="auth-label">Gothram *</label>
+
+    <div className="gothra-select-wrapper">
+        <button
+            type="button"
+            className="auth-input gothra-select-trigger"
+            onClick={() => {
+                if (!gothraLoading && gothras.length > 0) {
+                    setGothraOpen(prev => !prev)
+                }
+            }}
+            disabled={gothraLoading}
+            aria-haspopup="listbox"
+            aria-expanded={gothraOpen}
+        >
+            <span className={!selectedGothra ? 'gothra-placeholder' : ''}>
+                {gothraLoading
+                    ? 'Loading Gothrams...'
+                    : selectedGothra
+                        ? selectedGothra.gothra_name
+                        : 'Search or select your Gothram'}
+            </span>
+
+            <span className="gothra-select-arrow">
+                {gothraOpen ? '▲' : '▼'}
+            </span>
+        </button>
+
+        {gothraOpen && (
+            <div className="gothra-dropdown">
+                <div className="gothra-search-box">
+                    <input
+                        type="text"
+                        className="auth-input"
+                        placeholder="Search Gothram..."
+                        value={gothraSearch}
+                        onChange={(e) => setGothraSearch(e.target.value)}
+                        autoFocus
+                    />
+                </div>
+
+                <div className="gothra-options" role="listbox">
+                    {filteredGothras.length > 0 ? (
+                        filteredGothras.map((gothra) => (
+                            <button
+                                key={gothra.id}
+                                type="button"
+                                className={`gothra-option ${
+                                    String(form.gothram) === String(gothra.id)
+                                        ? 'selected'
+                                        : ''
+                                }`}
+                                onClick={() => {
+                                    setForm(prev => ({
+                                        ...prev,
+                                        gothram: String(gothra.id),
+                                    }))
+
+                                    setGothraSearch('')
+                                    setGothraOpen(false)
+                                    setError('')
+                                }}
+                            >
+                                <span>{gothra.gothra_name}</span>
+
+                                {String(form.gothram) === String(gothra.id) && (
+                                    <span className="gothra-check">✓</span>
+                                )}
+                            </button>
+                        ))
+                    ) : (
+                        <div className="gothra-no-results">
+                            No Gothram found
+                        </div>
+                    )}
+                </div>
+            </div>
+        )}
+    </div>
+</div>
 
                     <div className="auth-row">
                         <div className="auth-group">

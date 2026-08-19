@@ -27,7 +27,7 @@ const FlashNews = ({ news }) => {
 
                         <div className="flash-news-track">
 
-                            {[...news, ...news].map(
+                            {...news.map(
                                 (item, index) => (
 
                                     <Link

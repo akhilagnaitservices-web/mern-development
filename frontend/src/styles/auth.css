@@ -169,6 +169,101 @@
     text-decoration: underline;
 }
 
+.gothra-select-group {
+    position: relative;
+}
+
+.gothra-select-wrapper {
+    position: relative;
+}
+
+.gothra-select-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+    background: #fff;
+}
+
+.gothra-select-trigger:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.gothra-placeholder {
+    color: #888;
+}
+
+.gothra-select-arrow {
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.gothra-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+.gothra-search-box {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.gothra-search-box .auth-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gothra-options {
+    max-height: 190px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.gothra-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    border: 0;
+    background: #fff;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.gothra-option:hover {
+    background: #f6f6f6;
+}
+
+.gothra-option.selected {
+    background: #f1f1f1;
+    font-weight: 600;
+}
+
+.gothra-check {
+    font-weight: 700;
+}
+
+.gothra-no-results {
+    padding: 15px;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
 /* ── Responsive ── */
 @media (max-width: 520px) {
     .auth-row {
